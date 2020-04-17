@@ -1,0 +1,21 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-ble-central": {
+      "PACKAGE_NAME": "com.soliditek.marco.SoliditekBLE"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.soliditek.marco.SoliditekBLE"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.soliditek.marco.SoliditekBLE"
+    }
+  },
+  "dependent_plugins": {}
+}

@@ -1,0 +1,68 @@
+/* Settings */
+
+.menu-cell-toggle {
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+}
+
+.menu-cell-slider {
+  padding: 8px 0px 30px 30px;
+}
+
+.menu-cell-slider-label {
+  width: 100%;
+  padding: 10px 0px 8px 50px;
+}
+
+.menu-cell-slider-label.disabled {
+  color: rgba(0,0,0, 0.26);
+}
+
+/* Drawer */
+
+.mdl-navigation a {
+  cursor: pointer;
+}
+
+/* Charts */
+
+#temperature,
+#humidity {
+  margin-top: 20px;
+}
+
+#material {
+  width: 100%;
+  text-align: center;
+}
+
+/* Extra Stats, like Battery */
+
+.stats-row {
+  height: 24px;
+  padding: 8px 20px;
+  font-size: 24px;
+  background-color: black;
+  color: white;
+}
+
+.stats-label {
+  margin-left: 10px;
+  font-weight: bold;
+  float: left;
+}
+
+.stats-data {
+  margin-right: 10px;
+  float: right;
+}
+
+
+/* gauge table stuff */
+
+
+.gauges {
+  width: 50%;   /* actually width is adjusted by app to 100% */
+  padding:0; 
+  margin: 0;
+}
