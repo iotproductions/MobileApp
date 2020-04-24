@@ -15,6 +15,9 @@
     },
     "cordova-plugin-compat": {
       "PACKAGE_NAME": "com.soliditek.marco.SoliditekBLE"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.soliditek.marco.SoliditekBLE"
     }
   },
   "dependent_plugins": {}

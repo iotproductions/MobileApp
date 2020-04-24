@@ -5,58 +5,164 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <!-- Jquery -->
+    <script type="text/javascript" src="./js/jquery-3.5.0.min.js"></script>
+    <!-- AngularJS -->
+    <script type="text/javascript" src="./js/angular.min.js"></script>
 
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="./js/popper.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+    <!-- Sweet Alert2 -->
+    <script src="./js/sweetalert2.all.js"></script>
+    <link rel="stylesheet" href="./css/sweetalert2.css">
+    <!-- Highchart -->
+    <script src="./highchart/highcharts.js"></script>
+    <script src="./highchart/modules/series-label.js"></script>
+    <script src="./highchart/modules/exporting.js"></script>
+    <script src="./highchart/modules/export-data.js"></script>
+    <!-- Highcharts-ng -->
+    <script src="./js/highcharts-ng.js"></script>
+    <script src="./css/highcharts-ng.css"></script>
+    <!-- <script src="./highchart/themes/dark-unica.js"></script> -->
+    <!-- MomentJS -->
+    <script src="./js/moment.js"></script>
+    <script src="./js/moment-timezone-with-data-1970-2030.js"></script>
     <link rel="stylesheet" href="./css/index.css">
     <script type="text/javascript" src="./js/index.js"></script>
 
 </head>
 
-
-<!-- creating tabs based on W3school javascript tutorial -->
-<!-- http://www.w3schools.com/howto/howto_js_tabs.asp -->
-
-<body onload="createCharts()">
+<body onload="createCharts()" ng-app="UDTapp">
 
 <ul class="tab">
   <li><a href="javascript:void(0)" class="tablinks" onclick="openPage(event, 'PageMain')">Show Data</a></li>
   <li><a href="javascript:void(0)" class="tablinks" onclick="openPage(event, 'PageSetup')">Setup</a></li>
 </ul>
 
-<div id="PageMain" class="tabcontent">
+<div id="PageMain" class="tabcontent" ng-controller="ngcharts">
           <div class="page-content">
-            <div class="gauges" id="temperature-gauge"></div>
+            <div class="gauges" id="salinity-gauge"></div>
+            <!-- <highchart id="chart1" config="chartConfig" ></highchart> -->
+            <div id="id_salinity_chart" style="min-width: 310px; height: 300px; margin: 0 auto"></div>
           </div>
 </div>
 
-<div id="PageSetup" class="tabcontent">
-          <div class="page-content" style="text-align: center;width: 100%">
+<div id="PageSetup" class="tabcontent" >
+  <div class="page-content">
 
-            <!-- Accent-colored raised button with ripple -->
-            <button disabled onclick="app.refreshDeviceList()" id="button-scan">
-              Scan
+    <div class="container">
+      <div class="row">
+          <!-- Accent-colored raised button with ripple -->
+          <button type="button" class="btn btn-primary" disabled onclick="app.refreshDeviceList()" id="button-scan">
+            Scan
+          </button>
+       
+          <button type="button" class="btn btn-danger" disabled onclick="ble.disconnect(iDry.id,app.bleConnectionFailure,app.bleConnectionFailure)" id="button-disconnect">
+            Disconnect
+          </button>
+        
+          <button type="button" class="btn btn-info" onclick="ble_write_data()" id="id_btn_send_data">
+            Sync RTC
+          </button>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+       
+          <button type="button" class="btn btn-success" onclick="ble_get_data()" id="id_btn_get_data">
+            Get Data
+          </button>
+       
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sample Time
             </button>
-
-            <button disabled onclick="ble.disconnect(iDry.id,app.bleConnectionFailure,app.bleConnectionFailure)" id="button-disconnect">
-              Disconnect Soliditek
-            </button>
-
-            <div id="info">Connection Info</div>
-            <div id="debug-info">Debug Info</div>
-            <div id="debug-area">debug area</div>
-
-            <table id='BLE-table' style="text-align: center; width: 100%">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric">Device</th>
-                  <th class="mdl-data-table__cell--non-numeric">RSSI</th>
-                  <th class="mdl-data-table__cell--non-numeric">ID</th>
-                </tr>
-              </thead>
-              <tbody id="BLE-table-body">
-              </tbody>
-            </table> 
-          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" onclick="set_sample_time(1)">1</a>
+              <a class="dropdown-item" onclick="set_sample_time(2)">2</a>
+              <a class="dropdown-item" onclick="set_sample_time(5)">5</a>
+              <a class="dropdown-item" onclick="set_sample_time(10)">10</a>
+              <a class="dropdown-item" onclick="set_sample_time(15)">15</a>
+              <a class="dropdown-item" onclick="set_sample_time(30)">30</a>
+              <a class="dropdown-item" onclick="set_sample_time(60)">60</a>
+            </div>
           </div>
+        
+          <button type="button" class="btn btn-warning" onclick="start_stop_measure()" >
+            Start/Stop
+          </button>
+       
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Log Index</span>
+      </div>
+      <input type="number" id="log_index_start" aria-label="Start" class="form-control">
+      <input type="number" id="log_index_stop"  aria-label="Stop" class="form-control">
+    </div>
+
+    <button type="button" class="btn btn-success" onclick="read_logs()" >
+      Read logs
+    </button>
+    
+    <button type="button" class="btn btn-danger" onclick="clear_logs()" >
+      Clear logs
+    </button>
+
+    <button type="button" class="btn btn-primary" onclick="add_logs()" >
+      Add logs
+    </button>
+  
+    <table id='BLE-table'  class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Device Name</th>
+          <th class="mdl-data-table__cell--non-numeric">RSSI</th>
+          <th class="mdl-data-table__cell--non-numeric">Address</th>
+        </tr>
+      </thead>
+      <tbody id="BLE-table-body">
+      </tbody>
+    </table>
+
+
+    <div class="alert alert-primary" role="alert" id="info">Connection Info</div>
+    <div class="alert alert-secondary" id="debug-info">Debug Info</div>
+    <!-- <div  class="alert alert-info" role="alert" id="debug-area">debug area</div> -->
+    <div class="alert alert-info" role="alert" id="id_sensor_value">Sensor value</div>
+    <div class="alert alert-info" role="alert" id="id_number_logs">Number Logs</div>
+    <!-- <table id='BLE-table' style="text-align: center; width: 100%">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Device</th>
+          <th class="mdl-data-table__cell--non-numeric">RSSI</th>
+          <th class="mdl-data-table__cell--non-numeric">ID</th>
+        </tr>
+      </thead>
+      <tbody id="BLE-table-body">
+      </tbody>
+    </table>  -->
+  
+    
+  </div>
 </div>
 
 <script type="text/javascript" src="cordova.js"></script>
