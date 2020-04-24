@@ -1,0 +1,67 @@
+<ons-page ng-controller="tablepricectrl" modifier="page_bg swm">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.TABLE_PRICE"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+
+    <div class="wrap-table-price">
+        <div class="table-price-item" ng-if="$index == 0" ng-repeat="item in Data | orderBy: '-ApplyDatePri'">
+            <div style="padding:10px; margin-bottom:20px">
+                <div class="about-list">
+                    <div>
+                        <span ng-bind="Language.TABLE_PRICE"></span>
+                        <span ng-bind="item.NameOup"></span>
+                    </div>
+                    <div>
+                        <span ng-bind="Language.DATE_USE"></span>
+                        <span ng-bind="item.ApplyDatePri | date:'dd/MM/yyyy'"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-price-content">
+                <div class="head-table-price">
+                    <div ng-bind="Language.WATER_USED_1"></div>
+                    <div>
+                        <span ng-bind="Language._PRICE"></span> (
+                        <span ng-bind="Language._NOT_VAT"></span>)</div>
+                </div>
+                <div class="price" ng-repeat="price in item.ListPrice" ng-class="{'active': ($index + 1) % 2 == 0}">
+                    <div ng-if="$index ==0">
+                        <span ng-bind="Language.FROM"></span>
+                        <span ng-bind="price.QuotaToPri"></span>m
+                        <sup>3</sup>
+                        <span ng-bind="Language.DOWN_TO"></span>
+                    </div>
+                    <div ng-if="$index != (item.ListPrice.length - 1) && $index !=0">
+                        <span ng-bind="Language.FROM"></span>
+                        <span ng-bind="price.QuotaFromPri"></span>m
+                        <sup>3</sup>
+                        <span ng-bind="Language.TO"></span>
+                        <span ng-bind="price.QuotaToPri"></span>m
+                        <sup>3</sup>
+                    </div>
+                    <div ng-if="$index == (item.ListPrice.length - 1) && $index !=0">
+                        <span ng-bind="Language.MORE_THAN"></span>
+                        <span ng-bind="price.QuotaFromPri"></span>m
+                        <sup>3</sup>
+                    </div>
+
+                    <div>
+                        <span ng-bind="ConvertNumber(price.Price)"></span>đ</div>
+                </div>
+                <!--<div class="date-apply-price">
+                    <span ng-bind="Language.DATE_USE"></span>: <span ng-bind="item.ApplyDatePri | date:'dd/MM/yyyy'"></span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+    </ons-bottom-toolbar>
+</ons-page>

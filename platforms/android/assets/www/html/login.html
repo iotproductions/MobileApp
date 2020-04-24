@@ -1,0 +1,30 @@
+<ons-navigator  id="navigator" ons-postpop="RefreshPage()">
+    <ons-page id="login.html" modifier="login" ng-controller="loginctrl" class="login-bg">
+        <div name="lostconnect" class="lostconnect login-c" id="login-lostconnect"></div>
+        <div id="login" class="bg-login">
+            <div class="login-title">
+                <div class="content">
+                    <div class="app-name">SMART HOME SYSTEM</div>
+                    <div class="app-description">Ready to smart your home</div>
+                </div>
+            </div>
+            <div id="login-content" class="login-content">
+                <div class="login-user">
+                    <i class="fa fa-user-o login-icon-usr" aria-hidden="true"></i>
+                    <input type="text" class="text-input login" placeholder="{{Language.USERNAME}}" ng-model="LoginData.UserName" value="smarthome"
+                    />
+                </div>
+                <div class="login-user">
+                    <i class="fa fa-key login-icon-usr" aria-hidden="true"></i>
+                    <input type="password" placeholder="{{Language.PASSWORD}}" class="text-input login" ng-model="LoginData.Password" value="123456"
+                    />
+                </div>
+                <div class="login-button">
+                    <!--<button type="button" ng-click="Login()" class="button login" ng-bind="Language.LOGIN"></button>-->
+                    <ons-button modifier="login" ng-click="Login()" ng-bind="Language.LOGIN"></ons-button>
+                </div>
+            </div>
+            <div class="login-footer"></div>
+        </div>
+    </ons-page>
+</ons-navigator>

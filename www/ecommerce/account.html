@@ -1,0 +1,88 @@
+<ons-page  modifier="Ecommerce account" ng-controller="accountctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center"></div>
+        <div class="right">
+                <ons-toolbar-button ng-click="Back()">
+                        <ons-icon icon="ion-ios-camera-outline"></ons-icon>
+                    </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div class="white-background ">
+        <div class="ecommerce-profile-head-panel">
+            <div class="avatar">
+                <img ng-src="{{ipImageEcommerce}}{{RAPInfo.Avatar}}" onerror="this.src='http://115.78.161.19:2222/Avatar/Customer/W740100001.jpg'" />
+            </div>
+            <div class="info">
+                <div class="name" ng-bind="RAPInfo.CustomerName"></div>
+                <div class="email" ng-bind="RAPInfo.Email"></div>
+                 <div class="phone" ng-bind="RAPInfo.PhoneNumber"></div>
+            </div>
+            <div class="tab-func-acc">
+            <div ng-click="ShowByIndex(0)" class="tabchild">Mua Hàng</div><div ng-click="ShowByIndex(1)" class="tabchild">Bán Hàng</div>
+            </div>
+        </div>
+        <div ng-if="CateIndexActive==0">
+        <div class="item-cate func" ng-click="GoToUpdateProfile()">
+                <div>
+                    <img class="mini" src="ecommerce/img/editprofile.png">
+                    <div ng-bind="LanguageEcom.PROFILE">Thông tin cá nhân</div>
+                </div>
+            </div>
+            <div class="item-cate func" ng-click="ShowNotification()">
+                    <div>
+                        <img class="mini" src="ecommerce/img/alert.png">
+                        <div ng-bind="LanguageEcom.NOTIFICATION">Thông báo</div>
+                    </div>
+                </div>
+                <div class="item-cate func">
+                        <div>
+                            <img class="mini" src="ecommerce/img/config.png">
+                            <div ng-bind="LanguageEcom.CONFIG">Thiết lập cấu hình</div>
+                        </div>
+                    </div>
+                    <div ng-click="ShowOrder()" class="item-cate func">
+                            <div>
+                                <img class="mini" src="ecommerce/img/ordericon.png">
+                                <div>Đơn hàng của tôi</div>
+                            </div>
+                        </div>
+                        <div ng-click="ShowFavoriteProducts()" class="item-cate func">
+                            <div>
+                                <img class="mini" src="ecommerce/img/famous.png">
+                                <div ng-bind="LanguageEcom.FAVORITE_PRODUCT">Sản phẩm yêu thích</div>
+                            </div>
+                        </div>
+                        <div ng-click="ShowVouchers()" class="item-cate func">
+                            <div>
+                                <img class="mini" src="ecommerce/img/famous.png">
+                                <div ng-bind="LanguageEcom.DISCOUNT_CODE"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="CateIndexActive==1">
+                        <div class="item-cate func" ng-click="GoToUpdateProfile()">
+                            <div>
+                                <img class="mini" src="ecommerce/img/editprofile.png">
+                                <div ng-bind="LanguageEcom.ADD_PRO_NEW"></div>
+                            </div>
+                        </div>
+                        <div class="item-cate func" ng-click="GoToUpdateProfile()">
+                            <div>
+                                <img class="mini" src="ecommerce/img/editprofile.png">
+                                <div ng-bind="LanguageEcom.SALES_SHOP"></div>
+                            </div>
+                        </div>
+                        <div class="item-cate func" ng-click="UpdateShop()">
+                            <div>
+                                <img class="mini" src="ecommerce/img/editprofile.png">
+                                <div ng-bind="LanguageEcom.UPDATE_SHOP"></div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</ons-page>

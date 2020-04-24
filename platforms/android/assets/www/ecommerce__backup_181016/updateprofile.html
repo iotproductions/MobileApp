@@ -1,0 +1,68 @@
+<ons-page modifier="Ecommerce" ng-controller="updateprofilectrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.ACCOUNT"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <ons-list class="profile-list">
+        <ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.FULLNAME"></div>
+            <div class="center">
+                <input type="text" ng-model="RAPInfo.CustomerName" class="text-input full-width" placeholder="{{RAPInfo.CustomerName}}">
+            </div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.EMAIL_LABEL"></div>
+            <div class="center">
+                <input type="text" ng-model="RAPInfo.Email" class="text-input full-width" placeholder="{{RAPInfo.Email}}">
+            </div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.PHONE"></div>
+            <div class="center">
+                <input type="text" ng-model="RAPInfo.PhoneNumber" class="text-input full-width" placeholder="{{RAPInfo.PhoneNumber}}">
+            </div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+            <div class="center">
+                <input type="text" ng-model="RAPInfo.Address" class="text-input full-width" placeholder="{{RAPInfo.Address}}">
+            </div>
+        </ons-list-item>
+        <!--<ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.PROVINCE"></div>
+            <div class="center">
+                <input type="text" ng-model="RAPInfo.ProvinceName" ng-click="ModalListProvince.show()" readonly class="text-input full-width"
+                    placeholder="{{RAPInfo.ProvinceName}}">
+            </div>
+        </ons-list-item>-->
+        <ons-list-item>
+            <div class="left min-width-120" ng-bind="LanguageEcom.GENDER"></div>
+            <div class="center">
+                <!--<ons-switch ng-model="RAPInfo.Gender"></ons-switch>-->
+                <span style="margin:0 10px;">
+                    <label>
+                        <ons-radio name="gender"  input-id="nam-1" ng-model="RAPInfo.Gender" value="0" checked></ons-radio>
+                    </label>
+                        <label for="nam-1" ng-bind="LanguageEcom.MALE"></label>
+                </span>
+                <span style="margin:0 10px;">
+                    <label>
+                        <ons-radio name="gender" input-id="nu-1" ng-model="RAPInfo.Gender" value="1"></ons-radio>
+                    </label>
+                    <label for="nu-1" ng-bind="LanguageEcom.FEMALE"></label>
+                </span>
+            </div>
+        </ons-list-item>
+    </ons-list>
+    <!--<div loader></div> -->
+
+    <ons-bottom-toolbar modifier="transparent"  class="padding-10 auto-height">
+        <ons-button ng-click="Update()"  modifier="large ecommerce-main" ng-bind="LanguageEcom.UPDATE"></ons-button>
+    </ons-bottom-toolbar>
+</ons-page>

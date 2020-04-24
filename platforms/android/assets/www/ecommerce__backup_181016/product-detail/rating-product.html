@@ -1,0 +1,19 @@
+<ons-page modifier="Ecommerce backgwhite">
+    <div ng-if="ListRate != null && ListRate.length > 0" class="white-background box-shadow-2 padding-10">
+        <div ng-repeat="comment in ListRate" class="ecommerce-item-comment">
+            <div class="ecommerce-item-comment-avatar">
+                <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{comment._idCustomer.Avatar}}" />
+            </div>
+            <div class="ecommerce-item-comment-detail">
+                <div>
+                    <span class="ecommerce-item-comment-customer-name" ng-bind="comment._idCustomer.CustomerName"></span>
+                    <!--<i ng-if="comment.BoughtFlag == 1" class="ion-checkmark-circled rate-verify-icon"></i>-->
+                    <span class="ecommerce-item-comment-date" ng-bind="comment.DateCreate | date:'HH:mm dd/MM/yyyy'"></span>
+                </div>
+                <div class="product-rating" ng-bind-html="ConvertObject.ConvertShowStarRating(comment.Rate)"></div>
+                <div class="ecommerce-item-comment-content" ng-bind="comment.Description"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div ng-if="ListRate  == null || ListRate.length == 0" notfound text="{{LanguageEcom.NO_RATING_FOUND}}"  icon="ion-alert"></div> -->
+</ons-page>

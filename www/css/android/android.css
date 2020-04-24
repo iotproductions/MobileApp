@@ -1,0 +1,1031 @@
+#main{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+.page--swm .toolbar--material__center{
+    text-align: center;
+    font-size: 1em
+}
+
+.page--swm .tabbar__button{
+    line-height: 1 !important;
+}
+
+.alysis-bottom >.alysis-item >.lb {
+    font-size: inherit;
+}
+
+.alysis-bottom >.alysis-item >.vl {
+    font-size: 130%;
+}
+
+.alysis-bottom >.content-rori {
+    font-size: 95%;
+}
+
+.alysis-content > div >.left-alysis {
+    width: 80px;
+}
+
+.page--main__content .ripple, .page--pressure__content .ripple{
+    display: none !important;
+}
+.page--main__content .btn-trans:active{
+    background: rgba(255,255,255,0.3);
+}
+.mk-main-content-time{
+    margin-bottom: 5px;
+}
+.mk-main-backnext > .button{
+    padding: 0 5px !important;
+    float: none !important;
+    border-radius: 4px;
+}
+.mk-main-label-datetime{
+    font-size: 1em !important;
+}
+.mk-title-chart{
+    width: calc(100% - 7px) !important;
+}
+.mk-main-content-sali-valuesali {
+    font-size: 1.9em !important;
+}
+/*Nexus 10*/
+
+@media screen and (max-device-width: 800px) {
+   
+    .list__item {
+        padding: 15px 25px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        font-size: 7vw;
+        width: auto;
+        padding: 10px 25px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 15px;
+    }
+    .menu-main > .avatar {
+        height: 23vw;
+        width: 23vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 15px;
+        width: 35%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 15px;
+        width: 37%;
+    }
+    .detail-item-invoice > div > .total-index {
+        font-size: 175%;
+    }
+    .status-invoice {
+        padding: 5px 10px;
+    }
+    .detail-item-invoice > div > .label-detail {
+        font-size: 90%;
+    }
+    .item-invoice {
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+    .detail-item-invoice {
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+    .detail-noti-centent {
+        padding: 20px;
+    }
+    .noti-group {
+        padding: 20px;
+    }
+    .alysis-bottom {
+        padding: 10px 20px;
+        width: calc(100% - 40px);
+    }
+    .title-alysis-form {
+        line-height: 1.5;
+    }
+    .alysis-content >.data {
+        padding: 15px 25px;
+        width: calc(100% - 50px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 100px;
+    }
+    /*main*/
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 75px;
+    }
+    .leftmain, .rightmain, .centermain {
+        line-height: 2.5 !important;
+    }
+    
+    .page--swm__content {
+        font-size: 30px;
+        /* top: 105px !important; */
+    }
+    .toolbar-button-padding-mini {
+        font-size: 30px;
+    }
+    .page--swm .toolbar {
+        font-size: 30px;
+        /* height: 90px; */
+    }
+    .toolbar-main {
+        height: 110px;
+    }
+  
+    /* .page--page_bg_main__content {
+        top: 125px !important;
+        bottom: 105px !important;
+    } */
+    .canvas-base {
+        padding-bottom: 15px;
+        margin-top: 10px;
+    }
+    .mk-main-item-func {
+        /* padding-top: 15px; */
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 40px;
+    }
+    .page--swm .bottom-bar {
+        height: 75px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 30px;
+        width: 55%;
+    }
+   
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .tab-bar__item {
+        font-size: 30px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+
+/*Nexus 7--------------*/
+
+@media screen and (max-device-width: 630px) {
+  
+    .list__item {
+        padding: 10px 25px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        width: auto;
+        font-size: 7vw;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 5px;
+    }
+    .menu-main > .avatar {
+        height: 23vw;
+        width: 23vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 15px;
+        width: 35%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 15px;
+        width: 37%;
+    }
+    .detail-item-invoice > div > .total-index {
+        font-size: 175%;
+    }
+    .status-invoice {
+        padding: 5px 10px;
+    }
+    .detail-item-invoice > div > .label-detail {
+        font-size: 90%;
+    }
+    .detail-item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .item-invoice {
+        padding: 15px;
+        width: calc(100% - 30px);
+    }
+    .detail-noti-centent {
+        padding: 15px;
+    }
+    .noti-group {
+        padding: 20px;
+    }
+    .alysis-bottom {
+        padding: 10px 20px;
+        width: calc(100% - 40px);
+    }
+    .title-alysis-form {
+        line-height: 1.5;
+    }
+    .alysis-content >.data {
+        padding: 15px 25px;
+        width: calc(100% - 50px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 100px;
+    }
+
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 65px;
+    }
+    .leftmain, .rightmain, .centermain {
+        line-height: 2.5 !important;
+    }
+  
+
+    .page--swm__content {
+        font-size: 25px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 25px;
+    }
+    .page--swm .toolbar {
+        font-size: 25px;
+    }
+    .toolbar-main {
+        height: 90px;
+    }
+
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 35px;
+    }
+    .page--swm .bottom-bar {
+        height: 65px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 25px;
+        width: 55%;
+    }
+ 
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .tab-bar__item {
+        font-size: 25px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+
+/*Nexus 6-------------------------*/
+
+@media screen and (max-device-width: 480px) {
+  
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 40vw;
+        width: 40vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .detail-item-invoice > div > .total-index {
+        font-size: 175%;
+    }
+    
+    .detail-item-invoice > div > .label-detail {
+        font-size: 90%;
+    }
+    .detail-item-invoice {
+        padding: 0px;
+        width: calc(100% - 10px);
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 15px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 10px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 80px;
+    }
+
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 55px;
+    }
+    .leftmain, .rightmain, .centermain {
+        line-height: 2.5 !important;
+    }
+
+    .page--swm__content {
+        font-size: 17px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 17px;
+    }
+    .page--swm .toolbar {
+        font-size: 17px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+
+    .canvas-base {
+        padding-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 25px;
+    }
+    .page--swm .bottom-bar {
+        height: 55px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 17px;
+        width: 75%;
+    }
+  
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 17px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+
+/*Nexus 4-------------------------*/
+
+@media screen and (max-device-width: 384px) {
+   
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 43vw;
+        width: 43vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .detail-item-invoice > div > .total-index {
+        font-size: 175%;
+    }
+    .status-invoice {
+        padding: 5px 10px;
+    }
+    .detail-item-invoice > div > .label-detail {
+        font-size: 90%;
+    }
+    .detail-item-invoice {
+        padding: 0px;
+        width: calc(100% - 10px);
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 10px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 4px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 80px;
+    }
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 50px;
+    }
+    .leftmain, .rightmain, .centermain {
+        line-height: 2.5 !important;
+    }
+   
+    .page--swm__content {
+        font-size: 17px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 17px;
+    }
+    .page--swm .toolbar {
+        font-size: 17px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+   
+  
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+ 
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 25px;
+    }
+    .page--swm .bottom-bar {
+        height: 50px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 17px;
+        width: 75%;
+    }
+   
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 17px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+
+/*Nexus 5-------------------------*/
+
+@media screen and (max-device-width: 360px) {
+  
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 43vw;
+        width: 43vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .detail-item-invoice > div > .total-index {
+        font-size: 175%;
+    }
+    .status-invoice {
+        padding: 5px 10px;
+    }
+    .detail-item-invoice > div > .label-detail {
+        font-size: 90%;
+    }
+    .detail-item-invoice {
+        padding: 0px;
+        width: calc(100% - 10px);
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 10px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 4px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 80px;
+    }
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 48px;
+    }
+    .leftmain, .rightmain, .centermain {
+        line-height: 2.5 !important;
+    }
+    .mk-main-datetime {
+        line-height: 1.4;
+    }
+ 
+    .page--swm__content {
+        font-size: 15px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 15px;
+    }
+    .page--swm .toolbar {
+        font-size: 15px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+  
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+    .mk-main-item-func > img {
+        width: 10vw;
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 20px;
+    }
+    .page--swm .bottom-bar {
+        height: 44px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 15px;
+        width: 75%;
+    }
+   
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 15px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+@media screen and (max-device-width: 360px) and (max-device-height: 660px) {
+   
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 43vw;
+        width: 43vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 10px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 4px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 80px;
+    }
+    /*main*/
+    .mk-main-datetime {
+        line-height: 1.4;
+    }
+   
+    .page--swm__content {
+        font-size: 16px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 16px;
+    }
+    .page--swm .toolbar {
+        font-size: 16px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+   
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+    .mk-main-item-func > img {
+        width: 10vw;
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 20px;
+    }
+    .page--swm .bottom-bar {
+        height: 44px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 16px;
+        width: 75%;
+    }
+  
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 16px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+@media screen and (max-device-width: 360px) and (max-device-height: 570px) {
+  
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 43vw;
+        width: 43vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 10px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 4px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 80px;
+    }
+    /*main*/
+    .mk-main-datetime {
+        line-height: 1.4;
+    }
+
+    .page--swm__content {
+        font-size: 15px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 15px;
+    }
+    .page--swm .toolbar {
+        font-size: 15px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+  
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+
+    .mk-main-item-func > img {
+        width: 10vw;
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 20px;
+    }
+    .page--swm .bottom-bar {
+        height: 48px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 15px;
+        width: 75%;
+    }
+  
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 15px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+@media screen and (max-device-width: 320px) {
+   
+    .list__item {
+        padding: 2px 10px;
+    }
+    .item-sliding-menu > i {
+        line-height: 0;
+        padding: 5px 15px;
+    }
+    .item-sliding-menu {
+        line-height: 2.5;
+        padding: 0;
+    }
+    .menu-main > .avatar {
+        height: 43vw;
+        width: 43vw;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        padding: 3px;
+        width: 40%;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        padding: 3px;
+        width: 43%;
+    }
+    .item-invoice {
+        padding: 10px;
+        width: calc(100% - 20px);
+    }
+    .detail-noti-centent {
+        padding: 10px;
+    }
+    .noti-group {
+        padding: 10px;
+    }
+    .alysis-bottom {
+        padding: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .title-alysis-form {
+        line-height: 1;
+    }
+    .alysis-content >.data {
+        padding: 4px 5px;
+        width: calc(100% - 10px);
+    }
+    .alysis-content > div >.left-alysis {
+        width: 60px;
+    }
+    .total-data-chart {
+        font-size: 75%;
+    }
+    .mk-main-datetime {
+        line-height: 1.4;
+    }
+   
+    .page--swm__content {
+        font-size: 14px;
+    }
+    .toolbar-button-padding-mini {
+        font-size: 15px;
+    }
+    .page--swm .toolbar {
+        font-size: 14px;
+    }
+    .toolbar-main {
+        height: 60px;
+    }
+    
+    .canvas-base {
+        padding-bottom: 0px;
+        margin-top: 5px;
+    }
+
+    .mk-main-item-func > img {
+        width: 10vw;
+    }
+    .tab-bar__button {
+        font-size: 100% !important;
+        height: 100%;
+        line-height: 1 !important;
+    }
+    .tab-bar__button >img {
+        height: 20px;
+    }
+    .page--swm .bottom-bar {
+        height: 44px;
+    }
+    .tab-bar__label {
+        font-size: 85%;
+    }
+    .page--swm .alert-dialog {
+        font-size: 14px;
+        width: 75%;
+    }
+   
+    .total-data-chart {
+        font-size: 90%;
+    }
+    .midble-title-navi {
+        margin-top: 0;
+    }
+    .tab-bar__item {
+        font-size: 14px;
+    }
+    .page--login__content {
+        top: 0 !important;
+    }
+}
+
+@media screen and (min-width: 412px){
+   
+    canvas#myChart {
+        height: 40vh  !important;
+    }
+}
+
+@media screen and (min-width: 600px){
+    .tabbar__button > img {
+        height: 30px;
+    }
+    canvas#myChart {
+        height: 45vh  !important;
+    }
+}
+
+@media screen and (min-width: 720px){
+    canvas#myChart {
+        height: 55vh !important;
+    }
+}
+
+@media screen and (min-width: 800px){
+    canvas#myChart {
+        height: 49vh !important;
+    }
+}

@@ -1,0 +1,7 @@
+<ons-dialog id="dialog-3" cancelable="true" ng-controller="CustomDialogAvatar">
+    <div style="padding: 10px;">
+        <span style="font-weight: bold;" ng-bind="Language.CHANGE_AVATAR">Thay đổi ảnh đại diện</span>
+        <ons-button modifier="large--quiet" class="btnnewImage" ng-click="capturePhotoAvatar()" ng-bind="Language.TAKE_NEW_PHOTO">Chụp ảnh mới</ons-button>
+        <ons-button modifier="large--quiet" class="btnLibrary" ng-click="getPhotoAvatar()" ng-bind="Language.SELECT PHOTO_FROM_GALLERY">Chọn ảnh từ thư viện</ons-button>
+    </div>
+</ons-dialog>

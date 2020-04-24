@@ -1,0 +1,24 @@
+<ons-page id="maintabbar.html"  ng-controller="maintabbarctrl"   modifier="Ecommerce tabbar">
+    <ons-tabbar animation="fade" var="EcommerceTabbar" ons-prechange="PreChange()" ons-postchange="changetab()" class="ecommerce-tabbar" modifier="ecommerce">
+        <ons-tab page="ecommerce/mainecommerce.html" active>
+            <div class="shop"></div>
+            <div class="tab-bar__label" ng-bind="LanguageEcom.SHOP"></div>
+        </ons-tab>
+       
+        <ons-tab page="ecommerce/category.html" page="eccomerce/category.html">
+            <div class="menu-icon"></div>
+            <!--<div class="shopping-cart"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>-->
+            <div class="tab-bar__label" ng-bind="LanguageEcom.CATEGORY"></div>
+        </ons-tab>
+         <ons-tab label="Tab 2"  page="ecommerce/orders.html">
+         
+            <div class="order"></div>
+            <div class="tab-bar__label" ng-bind="LanguageEcom.ORDER_1"></div>
+        </ons-tab>
+        <ons-tab label="Tab 2" page="ecommerce/account.html">
+          
+            <div class="user"></div>
+            <div class="tab-bar__label" ng-bind="LanguageEcom.ACCOUNT"></div>
+        </ons-tab>
+    </ons-tabbar>
+</ons-page>

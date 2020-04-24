@@ -1,0 +1,22 @@
+<ons-page id="detailnotica.html" modifier="page_bg swm"  ng-controller="detailnotificationctrl">
+     <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="ion-ios-arrow-back"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.INFO" style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+        </div>
+        <div class="right">
+            
+        </div>
+    </ons-toolbar>
+      <div name="lostconnect" class="lostconnect" id="detailnotica-lostconnect"></div>
+    <div id="detailnotica">
+   
+        <div class="detail-noti-centent">
+            <div ng-bind="DataNotica.Title" class="detail-noti-title">  </div>
+            <div class="detail-noti-time"><span ng-bind-template="{{Language.DATE_PUB_INFO}}: {{DataNotica.FromDate|date:'dd/MM/yyyy'}}"></span></div>
+            <div style="max-width:98%;width: 98%" ng-bind-html="DataNotica.Content"></div>
+        </div></div>
+</ons-page>

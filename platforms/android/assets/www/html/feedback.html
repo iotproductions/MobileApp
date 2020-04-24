@@ -1,0 +1,45 @@
+<ons-page id="feedback.html" modifier="page_bg swm" ng-controller="feedbackctrl">
+    <ons-toolbar class="none-border">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.FEEDBACK">
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <!-- <div class="top-feedback">
+        <div><img ng-src="{{ipImage}}{{Data.Avatar}}" /> </div>
+        <div>
+            <div ng-bind="Data.NameReg"></div>
+            <div ng-bind="Data.AddressReg"></div>
+        </div>
+    </div> -->
+    <div class="content-feedback">
+        <div class="label">
+            <span ng-bind="Language.FEEDBACK_CUS"></span>
+        </div>
+        <div style="text-align: center;">
+            <textarea class="feeddesc" placeholder="Nhập thông tin phản hồi" ng-model="Data.DescRPpd" ng-value="Data.DescRPpd" type="textarea"
+                rows="3">
+
+            </textarea>
+        </div>
+        <div class="label">
+            <span ng-bind="Language.PICTURE"></span>
+        </div>
+        <div style="text-align:left">
+            <img ng-repeat="itemimg in Data.ListImage" ng-src="{{ipImage}}{{itemimg}}" />
+            <div ng-click="AddPicture()" class="add-picture">
+                <i class="ion-plus-round"></i>
+            </div>
+        </div>
+    </div>
+    <canvas style="display:none" id="imgCanvasRg"></canvas>
+    <ons-bottom-toolbar style="text-align:center">
+        <div style="height: calc(100% - 10px);padding: 5px;">
+            <button type="button" class="button btn-sendfeedback" ng-click="SendFeedback()" ng-bind="Language.FEEDBACK_CUS"></button></div>
+    </ons-bottom-toolbar>
+</ons-page>

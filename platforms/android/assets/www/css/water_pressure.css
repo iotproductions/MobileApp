@@ -1,0 +1,42 @@
+.main_pressure{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+#chart-pressure{
+    height: calc(40vh + 40px) !important;
+}
+.title-bottom-chart-pressure{
+    min-height: 20px;
+    padding: 5px;
+    font-size: 0.9em;
+    background-color: #1d1718;
+    line-height:1.5;
+}
+.title-bottom-chart-pressure .left{
+    float: left;
+    color: rgba(11, 214, 214, 1);
+}
+.title-bottom-chart-pressure .left > span:first-child{
+    display: inline-block;width: 10px;
+    height:10px;background: rgba(11, 214, 214, 1);
+}
+
+.title-bottom-chart-pressure .right{
+    float: right;
+}
+.label-no-data-chart-pressure{
+    position: absolute;
+    top: calc(50% - 12px );
+    left: calc(50%);
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%) rotate(-45deg);
+    -moz-transform: translate(-50%,-50%) rotate(-45deg);
+    -ms-transform: translate(-50%,-50%) rotate(-45deg);
+    color: #FFF;
+    opacity: 0.5;
+    display: none;
+}

@@ -1,0 +1,29 @@
+<ons-page id="home.html" modifier="page_bg_main swm main" ng-controller="homectrl" ng-init="get_data();">
+  <ons-toolbar>
+    <div class="center">
+      <span  ng-bind="title"></span>
+    </div>
+    <div class="right">
+      <ons-toolbar-button ng-click="ShowMenu()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ons-toolbar-button>
+    </div>
+
+  </ons-toolbar>
+    
+      <section style="padding: 8px">
+          <h3 class="dashboard-title">Realtime monitoring temperature</h3>
+
+          
+          <ons-progress-circular indeterminate ng-if="showchartloading == true"></ons-progress-circular>
+          <ons-icon size="50px" spin icon="md-spinner" ng-if="showchartloading == true"></ons-icon>
+
+          <div id="id_temperature_chart" ng-init="plot_temperature_charts();" style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+   
+      </section>
+
+      <ons-fab position="bottom right">
+        <ons-icon icon="md-plus"></ons-icon>
+      </ons-fab>
+</ons-page>
+  

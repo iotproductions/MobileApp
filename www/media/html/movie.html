@@ -1,0 +1,61 @@
+<ons-page id="movie.html" modifier="page_bg media notop" ng-controller="moviectrl">
+    <div ng-if="Data.length>0" class="topfilm">
+        <ons-carousel auto-scroll-ratio="0.1" ng-click="DetailMovie(Data[0])" style="height:100%" swipeable auto-scroll overscrollable id="carousel">
+            <ons-carousel-item ng-repeat="item in Data[0].ListImage">
+                <img onerror="this.src='media/img/novideo.png'" style="width:100%" ng-src="{{ipImageMovie}}{{item}}" />
+                <div ng-bind="Data[0].Title" class="label-topfilm">
+
+                </div>
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+    <div class="header-film">
+        <div>Phim Mới</div>
+    </div>
+    <div ng-click="DetailMovie(item)" ng-if="$index>0" ng-repeat="item in Data" class="itemfilm">
+        <div class="imgfilm" style="background-image:url({{ipImageMovie}}{{item.Avatar}})"></div>
+        <div class="label" ng-bind="item.Title"></div>
+    </div>
+    <!-- <ons-splitter id="slitter-movie">
+        <ons-splitter-side id="menu" side="right" width="230px" collapse>
+            <ons-page ng-controller="menumoviectrl">
+                <div class="top-menu">
+                    <div>
+                        <img class="avatar-menu" src="{{ipImage}}{{Avatar}}" />
+                    </div>
+                    <div>
+                        <div ng-bind="FullName">
+
+                        </div>
+                        <div ng-bind="Email"></div>
+                    </div>
+                </div>
+                <div  class="item-menu-movie">
+                    <div onclick="ShowMovieByCate(-1)">Trang Chủ</div>
+                </div>
+                <div class="item-menu-movie">
+                    <div ng-click="ShowChildMenu()" style="float: left;
+                    position: relative ;width: 100%;">Thể Loại
+                        <div style="position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%) ;
+                    right: 10px;"><i class="ion-android-more-vertical"></i>
+                        </div>
+                    </div>
+                    <div id="typemovie" style="float:left;padding:10px;display:none">
+                        <div id="{{item.MediaType}}" onclick="ShowMovieByCate(this)" class="child-menu-child" ng-repeat="item in ListCateMovie" ng-bind="item.Description">
+
+                        </div>
+                    </div>
+                </div>
+                <div onclick="ShowMovieByCate(-2)" class="item-menu-movie">
+                    <span>Phim Lẻ</span>
+                </div>
+                <div onclick="ShowMovieByCate(-3)" class="item-menu-movie">
+                    <span>Phim Bộ</span>
+                </div>
+            </ons-page>
+        </ons-splitter-side>
+    </ons-splitter> -->
+
+</ons-page>

@@ -1,0 +1,38 @@
+<ons-page id="billing.html" modifier="page_bg swm billing" ng-controller="billingctrl">
+    <ons-toolbar style="border-bottom: 1px solid rgba(1, 1, 1, .4);box-shadow: 0px 0px 10px 0px rgba(1,1,1, .5);">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+               <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.BILL_WATER">
+        </div>
+        <div class="right">
+            <!-- <ons-toolbar-button ng-click="SearchBill()"><i class="ion-ios-search"></i></ons-toolbar-button> -->
+        </div>
+        <div></div>
+    </ons-toolbar>
+    <div name="lostconnect" class="lostconnect" id="billing-lostconnect"></div>
+    <div id="billing">
+        <div>
+            <div ng-repeat="item in Data" ng-click="ShowBillWater(item)" class="item-invoice">
+                <div style="width: 100%">
+                    <div style="float: left;">
+                        <div><span ng-bind="Language.BILL"></span> <span style="text-transform: lowercase" ng-bind="Language.MONTH"></span> : <span ng-bind="item.MonthBill"></span></div>
+                        <div>
+                            <span ng-bind-template="{{Language.BILLING_CODE}} : {{item.NoInvoice}}"></span>
+                        </div>
+
+                    </div>
+                    <div style="float: right;">
+                        <div style="color:orange;padding-bottom: 5px" ng-bind-template="{{item.BillAfterTax|number}} đ"></div>
+                        <div ng-if="item.StatusMco==1" class="status-invoice" ng-bind="Language.PAID"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+    </ons-bottom-toolbar>
+</ons-page>

@@ -1,0 +1,81 @@
+<ons-page id="profile.html" modifier="page_bg swm" ng-controller="profilectrl">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.MY_ACCOUNT_INFO">
+        </div>
+        <div class="right">
+                <ons-toolbar-button class="save-profile-btn" ng-click="SaveProfile()" ng-bind="Language.SAVE"></ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div name="lostconnect" class="lostconnect" id="profile-lostconnect"></div>
+    <div class="profile">
+        <div class="profile-top">
+            <div class="wrap-avatar">
+                <!-- <div class="icon-camera" ng-click="ChangeAvatar()">
+                    <i  class="ion-android-camera"></i>
+                </div> -->
+                <img class="customer-avatar" ng-click="ChangeAvatar()" ng-src="{{ipImage}}{{User.Avatar}}" />
+
+            </div>
+            <div class="name" ng-bind="UserShow.FullName"></div>
+            <div class="email" ng-bind="UserShow.Email"></div>
+
+        </div>
+
+        <div class="wrap-update-profile">
+            <ons-list class="profile-list">
+                <ons-list-item>
+                    <div class="left" ng-bind="Language.FULLNAME"></div>
+                    <div class="center">
+                        <input type="text" readonly  class="text-input full-width" placeholder="Nhập họ tên" ng-model="User.FullName">
+                        <!-- <ons-icon ng-click="Edit($event)" icon="ion-edit"></ons-icon> -->
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item>
+                        <div class="left" ng-bind="Language.EMAIL"></div>
+                        <div class="center">
+                            <input type="text" readonly  class="text-input full-width" placeholder="Nhập Email" ng-model="User.Email">
+                            <!-- <ons-icon ng-click="Edit($event)" icon="ion-edit"></ons-icon> -->
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                            <div class="left" ng-bind="Language.PHONE_NUMBER"></div>
+                            <div class="center">
+                                <input type="text"  readonly class="text-input full-width" placeholder="Nhập số điện thoại" ng-model="User.PhoneNumber">
+                                <!-- <ons-icon ng-click="Edit($event)" icon="ion-edit"></ons-icon> -->
+                            </div>
+                        </ons-list-item>
+            </ons-list>
+        </div>
+
+        <!-- <div style="padding: 10px;float:left;width:calc(100% - 20px)">
+            <div class="itemprofile">
+                <div><img src="img/profile.png" /></div>
+                <div>
+                    <div style="float: left;color:lightgray" ng-bind="Language.FULLNAME"></div>
+                    <div ng-bind="Users.FullName" class="profile-value"></div>
+                </div>
+            </div>
+            <div class="itemprofile">
+                <div><img src="img/email.png" /></div>
+                <div>
+                    <div style="float: left;color:lightgray;" ng-bind="Language.EMAIL"></div>
+                    <div ng-bind="Users.Email" class="profile-value"></div>
+                </div>
+            </div>
+            <div class="itemprofile">
+                <div><img src="img/phone.png" /></div>
+                <div>
+                    <div style="float: left;color:lightgray;" ng-bind="Language.PHONE_NUMBER"></div>
+                    <div ng-bind="Users.PhoneNumber" class="profile-value"></div>
+                </div>
+            </div>
+
+        </div>
+        <canvas style="display:none" id="imgCanvas" />  -->
+</ons-page>

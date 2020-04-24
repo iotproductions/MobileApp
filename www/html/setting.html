@@ -1,0 +1,82 @@
+<ons-page id="setting.html" modifier="page_bg swm" ng-controller="SettingCtrl">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="Back()">
+        <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center" ng-bind="Language.SETTING"></div>
+    <div class="right">
+
+    </div>
+  </ons-toolbar>
+  <div name="lostconnect" class="lostconnect" id="setting-lostconnect"></div>
+  <div id="setting">
+    <div style="display:none" class="list-item">
+        <div class="list-item__center" ng-bind="Language.ENABLE_CHAT"></div>
+        <div class="list-item__right">
+          <ons-switch id="switch-chat" ng-modal="ListSetting.EnableChat" ng-checked="ListSetting.EnableChat"></ons-switch>
+        </div>
+    </div>
+    <div style="display:none" class="list-item" id="allow-chat" style="border-bottom: 0px solid">
+        <div class="list-item__center" ng-bind="Language.ALLOW_CHAT">
+        </div>
+        <div class="list-item__right">
+          <ons-switch id="switch-chat_" ng-modal="ListSetting.GetNotificationChat" ng-checked="ListSetting.GetNotificationChat"></ons-switch>
+        </div>
+    </div>
+    <div style="display:none" class="row-setting-empty" ng-bind="Language.MSS_TURN_OFF_CHAT_NOTIFICATION"></div>
+    <div class="list-item">
+        <div class="list-item__center">
+          <div ng-bind="Language.WARNING_WATER_OUT_MONTH"></div>
+          <div class="desc" ng-bind="Language.WARNING_WATER_OUT_DESC"></div>
+        </div>
+        <div class="list-item__right">
+          <ons-switch id="switch-sali" ng-modal="ListSetting.GetNotificationUseInMonth" ng-checked="ListSetting.GetNotificationUseInMonth"></ons-switch>
+        </div>
+    </div>
+    <div class="list-item" ng-click="SelectRangeSali()">
+      <div class="list-item__center">
+        <div ng-bind="Language.VALUE_WARNING"></div>
+      </div>
+      <div class="list-item__right">
+        <span ng-bind="ListSetting.UseInMonth"></span>
+        <i class="ion-ios-arrow-right" style="margin-left:7px;"></i>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="list-item__center">
+        <div ng-bind="Language.WARNING_WATER_OUT_DATE"></div>
+        <div class="desc" ng-bind="Language.WARNING_WATER_OUT_DESC"></div>
+      </div>
+      <div class="list-item__right">
+        <ons-switch id="switch-sali-date" ng-modal="ListSetting.GetNotificationUseInDay" ng-checked="ListSetting.GetNotificationUseInDay"></ons-switch>
+      </div>
+    </div>
+    <div class="list-item" ng-click="SelectRangeDate()">
+      <div class="list-item__center">
+        <div ng-bind="Language.VALUE_WARNING"></div>
+      </div>
+      <div class="list-item__right">
+        <span ng-bind="ListSetting.UseInDay"></span>
+        <i class="ion-ios-arrow-right" style="margin-left:7px;"></i>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="list-item__center">
+        <div ng-bind="Language.ALLOW_INFO"></div>
+        <div class="desc" ng-bind="Language.DESC_ALLOW_INFO"></div>
+
+      </div>
+      <div class="list-item__right">
+        <ons-switch id="switch-info" ng-modal="ListSetting.GetNotifications" ng-checked="ListSetting.GetNotifications"></ons-switch>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" value="{{ListSetting.UseInMonth}}" ng-model="ListSetting.UseInMonth" id="hiddensali" />
+  <input type="hidden" value="{{ListSetting.UseInDay}}" ng-model="ListSetting.UseInDay" id="hiddendate" />
+  
+  <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+  </ons-bottom-toolbar>
+</ons-page>

@@ -1,0 +1,15 @@
+<ons-page id="analysis.html" modifier="Ecommerce" ng-controller="analysisctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back" class="font-large"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.CART"></div>
+        <div class="right">
+            <ons-toolbar-button ng-click="EditCart()" ng-if="Cart.NumberCartItem>0">
+                <ons-icon class="edit-cart-btn font-normal" icon="ion-edit"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+</ons-page>

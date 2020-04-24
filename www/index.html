@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">-->
+    <script src="components/loader.js"></script>
+    <script src="script/jquery-3.3.1.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-sanitize.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" type="text/css" href="css/examples.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <!--<link rel="stylesheet/less" type="text/css" href="css/default.less">-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!--<link rel="stylesheet" type="text/css" href="css/ecom-main.css">-->
+ 
+    <!--<link rel="stylesheet" type="text/css" href="http://rynanmobile.com/download/SWM/ios.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="http://rynanmobile.com/download/SWM/android.css">-->
+
+    <link rel="stylesheet" type="text/css" href="chat/css/chat.css">
+   
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtxn8FnjNN__6gpsKzaHSZMbNT94WNDKQ&language=vn&region=VN"></script> -->
+    <script src="js/SQLitePlugin.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/ScrollMagic.js"></script>
+    <script src="js/aes.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/common.js"></script>
+     <script src="cordova.js"></script> 
+    <!--New ECOMMERCE-->
+    <link rel="stylesheet" href="ecommerce/css/style.css">
+    <link rel="stylesheet" href="ecommerce/css/ecom_ios.css">
+    <!-- <link rel="stylesheet" href="ecommerce/css/ecom_android.css"> -->
+    <link rel="stylesheet" href="ecommerce/lib/owl-carousel/css/owl.carousel.css" type="text/css" media="all">
+    <link rel="stylesheet" href="ecommerce/lib/owl-carousel/css/owl.theme.default.css" type="text/css" media="all">
+    <!-- <link rel="stylesheet" href="ecommerce/fonts/icofont/css/icofont.css" type="text/css" media="all"> -->
+    <!-- <link rel="stylesheet" href="ecommerce/css/screen/all-screen.css"> -->
+
+    <script src="ecommerce/js/ecommerce.js"></script>
+    <script src="ecommerce/lib/owl-carousel/js/owl.carousel.js"></script>
+    <script src="ecommerce/js/lazysizes.min.js"></script>
+    <!--END NEW ECOMMERCE-->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/ios/ios.css"> -->
+            <link rel="stylesheet" type="text/css" href="css/android/android.css">
+
+    <!-- Chia controller -->
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <link rel="stylesheet" type="text/css" href="css/water_pressure.css">
+
+    <script src="js/controller/homectrl.js"></script>
+    <script src="js/controller/menuctrl.js"></script>
+    <script src="js/controller/profilectrl.js"></script>
+    <script src="js/controller/water_pressure.js"></script>
+    <!-- End conttroller -->
+    <!-- Highchart -->
+    <script src="./highchart/highcharts.js"></script>
+    <script src="./highchart/themes/dark-unica.js"></script>
+    <script src="./highchart/modules/series-label.js"></script>
+    <script src="./highchart/modules/exporting.js"></script>
+    <script src="./highchart/modules/export-data.js"></script>
+    <!-- MomentJS -->
+    <script src="./js/moment.js"></script>
+    <!--xem phim -->
+    <link rel="stylesheet" href="media/css/media.css"> 
+    <script src="media/js/media.js"></script>
+    <script type="text/javascript" src="media/js/detailmv.js"></script>
+    <!--End xem phim-->
+</head>
+
+<body ng-controller="MainCtrl">
+    
+    <ons-splitter var="slidemenu" ng-controller="MenuMainCtrl">
+        <ons-splitter-side style="box-shadow: 0 0 10px rgb(0, 0, 0)" side="right" width="300" collapse> 
+          <ons-page modifier="menu">
+            <ons-icon ng-click="HideMenu()" icon="ion-ios-close-outline"></ons-icon>
+            <div class="sliding-menu">
+                <div class="wrap-sliding-menu">
+                    <div class="avatar">
+                        <img class="customer-avatar" ng-src="{{ipImage}}{{User.Avatar}}" onerror="this.src='img/avatar.png'" />
+                    </div>
+                    <div class="name" ng-bind="User.FullName"></div>
+                    <div class="email" ng-bind="User.Email"></div>
+                   
+                    <ons-list modifier="menu">
+                            <ons-list-item ng-click="Profile()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-person"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.PERSONAL"></div>
+                            </ons-list-item>
+                            <ons-list-item ng-click="Setting()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-ios-toggle"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.SETTING"></div>
+                            </ons-list-item>
+                            <ons-list-item ng-click="ShowFeedback()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-paper-airplane"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.FEEDBACK_CUS"></div>
+                            </ons-list-item>
+                            <ons-list-item ng-click="ListPrice()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-printer"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.TABLE_PRICE"></div>
+                            </ons-list-item>
+                            <ons-list-item ng-click="About()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-information-circled"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.INFO_APP"></div>
+                            </ons-list-item>
+                             <ons-list-item ng-click="ChangeLanguage()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-earth"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.LANGUAGE"></div>
+                            </ons-list-item>
+                            <ons-list-item ng-click="LogOut()"  tap-background-color="rgba(204,204,204,0.2)" tappable> 
+                                <div class="left">
+                                    <i class="ion-log-out"></i>
+                                </div>
+                                <div class="center" ng-bind="Language.LOG_OUT"></div>
+                            </ons-list-item>
+                    </ons-list>
+                    
+                </div>
+            </div>
+          </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content page="html/login.html"></ons-splitter-content>
+      </ons-splitter>
+
+    <ons-modal var="ModalNotice" style="background-color: rgba(0,0,0,0.2) !important;">
+        <div class="modal-notice" id="contentNotice"></div>
+    </ons-modal>
+    <div id="modal" style="position: fixed;display: none;z-index: 1000;top: 50%;left: 50%;transform: translateX(-50%);-webkit-transform: translateX(-50%); color: rgba(255,255,255,.7);">
+        <img class="fa-spin" src="img/load.png" style="width: 50px;height: 50px" />
+    </div>
+    <div id="lost-connect" style="padding:40px 20px;display: none">
+        <img src="img/telecom.png" />
+        <div>Mất kết nối internet, Vui lòng kiểm tra lại kết nối</div>
+    </div>
+
+
+    <ons-modal var="ModalLoaderEcommerce">
+        <div class="cp-skeleton cp-spinner"></div>
+    </ons-modal>
+
+    <ons-modal var="ModalMessageEcommerce">
+        <div id="modal-mess"></div>
+    </ons-modal>
+
+    <ons-modal var="ModalCheckCoupon" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalCheckCoupon()"></div>
+        <div class="white-background padding-10 fixed-bottom" style="width: calc(100% - 20px)">
+            <div style="padding:30px 0 10px 0">
+                <input class="input-ecommerce" type="text" ng-model="Coupon" placeholder="Nhập mã giảm giá" />
+                <ons-icon style="top:0; right:10px" ng-click="HideModalCheckCoupon()" icon="ion-ios-close-empty" class="close-btn"></ons-icon>
+            </div>
+
+            <ons-button ng-click="CheckCoupon()" modifier="large ecommerce-main">Kiểm tra</ons-button>
+        </div>
+    </ons-modal>
+</body>
+
+</html>

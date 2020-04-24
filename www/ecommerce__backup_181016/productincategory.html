@@ -1,0 +1,46 @@
+<ons-page  elem-ready="500" modifier="Ecommerce" ng-controller="productincategoryctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            <span ng-bind="LanguageEcom.CATEGORY"></span> <span ng-bind="Category.CatName"></span>
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+
+    <div ng-if="Products != null && Products.length > 0" class="wrap-page flex-box">
+        <div class="ecommerce-product-item box-shadow-2" ng-repeat="item in Products" ng-click="ShowDetailproduct(item)">
+            <!-- product item-->
+            <div class="thumbnail">
+                <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/noimage.png'"/>
+                 <span class="discount-icon" ng-if="item.ProDiscount > 0">
+                    <span ng-bind="LanguageEcom.REDUCED"></span> <span ng-bind="item.ProDiscount"></span>%
+                </span>
+            </div>
+            <div class="product-name" ng-bind="item.ProName"></div>
+            <div>
+                <span class="product-price">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+                </span>
+                <span class="product-old-price" ng-if="item.ProDiscount > 0 && item.PriceWithoutTax != null">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+                </span>
+            </div>
+            <div>
+                <span class="product-favorite-count">
+                    <i class="ion-ios-heart"></i> <span ng-bind="ConvertObject.ConvertNumberFormat(item.ProPrefer)"></span>
+                </span>
+                <span class="product-rate">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+                    <span>(<span ng-bind="ConvertObject.ConvertNumberFormat(item.NumberOfCmt)"></span>)</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div ng-if="Products  == null || Products.length == 0" notfound text="{{LanguageEcom.NO_PRODUCT_FOUND}}"  icon="ion-alert"></div>
+    <div loader></div> <!--Show Loader-->
+</ons-page>

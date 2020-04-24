@@ -1,0 +1,100 @@
+<ons-page id="orders.html" modifier="Ecommerce" ng-controller="ordersctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="fa fa-chevron-left"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.ORDER"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div class="box-shadow-2">
+        <div class="order-item" ng-repeat="item in ListOrder">
+            <div class="meta">
+                <div>
+                    <span ng-bind="LanguageEcom.YOUR_ORDER_SHORT"></span> #
+                    <span style="font-weight: 600;" ng-bind="item.OrderCode"></span>
+                </div>
+                <div>
+                    <span ng-bind-template="{{LanguageEcom.ORDER_DATE}}: "></span><span ng-bind="item.OrderDate | date:'dd/MM/yyyy'"></span>
+                </div>
+                <!-- <div class="btn-review-order"><i class="ion-compose"></i><span ng-bind="LanguageEcom.RATE"></span></div>
+                <div ng-click="ShowLocation(item.OrderCode)" class="btn-review-order"><i class="ion-android-locate"></i><span ng-bind="LanguageEcom.TRACKING"></span></div> -->
+
+                <!-- <div style="float:right" class="price-orders">
+                    <div ng-bind="LanguageEcom.TOTAL_MONEY"></div>
+                    <span style="color: orangered " ng-bind="ConvertObject.ConvertNumberFormat(item.TotalPrice)"></span>
+                    <span
+                        style="color: orangered ">đ</span>
+                </div> -->
+            </div>
+            <div class="list-item-product-2" ng-click="ShowOrder(item)">
+                <div class="item" style="border-bottom: .5px solid lightgray;" ng-repeat="itemchild in item.OrderDetail track by $index">
+                    <div class="thumbnail">
+                        <img ng-src="{{ipImageEcommerce}}{{itemchild._Product.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'" />
+                    </div>
+                    <div class="info">
+                        <div class="full-width">
+                            <div class="name-product" >
+                                <span ng-bind-template="{{itemchild._Product.ProName}}"></span> <span>({{itemchild._BarCode.Weight}}{{itemchild._BarCode.Unit}})</span>
+                            </div>
+                            <div style="float: left;width: 100%;">
+                                <div class="product-price">
+                                    <span ng-bind="ConvertObject.ConvertNumberFormat(itemchild.ProductPrice)"></span>đ
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sum-navi-order">
+                    <div><span ng-bind="LanguageEcom.QUANTITY"></span></div>
+                    <div><span ng-bind="item.OrderDetail.length"></span></div>
+                </div>
+                <div class="sum-navi-order">
+                    <div><span ng-bind="LanguageEcom.TOTAL"></span> : </div>
+                    <div class="price"><span ng-bind="ConvertObject.ConvertNumberFormat(item.TotalPrice)"></span>đ</div>
+                </div>
+                
+            </div>
+            <button ng-click="ShowLocation(item.OrderCode)" type="button" class="button btn-tracking"><span ng-bind="LanguageEcom.TRACKING_ORDER"></span></button>
+                <button ng-click="RatePro(item)" type="button" class="button btn-rate-feed"><span ng-bind="LanguageEcom.SEND_RATE"></span></button>
+            <!-- <div class="date"> -->
+            <!-- <div ng-bind="item.OrderDate | date:'dd/MM/yyyy'"></div> -->
+            <!-- <div>
+                    <span class="status-{{item.Status}}">
+                        <span ng-if="item.Status == 0" ng-bind="LanguageEcom.STATUS_0"></span>
+                        <span ng-if="item.Status == 1" ng-bind="LanguageEcom.STATUS_1">Đang xử lý</span>
+                        <span ng-if="item.Status == 2" ng-bind="LanguageEcom.STATUS_2">Đang giao hàng</span>
+                        <span ng-if="item.Status == 3" ng-bind="LanguageEcom.STATUS_3">Hoàn tất</span>
+                        <span ng-if="item.Status == 4" ng-bind="LanguageEcom.STATUS_4">Huỷ</span>
+                    </span>
+                </div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <!--<div loader></div> -->
+
+
+    <!-- <ons-popover  direction="down" var="SortOrderPopover" cancelable>
+                <ons-list>
+                    <ons-list-item ng-click="SortBy(5)" tappable>
+                        <div  ng-bind="LanguageEcom.NEWEST" ></div>
+                    </ons-list-item>
+                    <ons-list-item ng-click="SortBy(4)" tappable>
+                        <div ng-bind="LanguageEcom.BESTSELLING"></div>
+                    </ons-list-item>
+                    <ons-list-item ng-click="SortBy(3)" tappable >
+                        <div ng-bind="LanguageEcom.SALE"></div>
+                    </ons-list-item>
+                    <ons-list-item ng-click="SortBy(2)" tappable >
+                        <div ng-bind="LanguageEcom.CHEAP"></div>
+                    </ons-list-item>
+                    <ons-list-item ng-click="SortBy(1)" tappable >
+                        <div ng-bind="LanguageEcom.EXPENSIVE"></div>
+                    </ons-list-item>
+                </ons-list>
+            </ons-popover> -->
+</ons-page>

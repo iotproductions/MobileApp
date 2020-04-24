@@ -1,0 +1,145 @@
+<ons-page modifier="Ecommerce" ng-controller="cartctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.CART"></div>
+        <div class="right">
+            <ons-toolbar-button ng-click="EditCart()" ng-if="Cart.NumberCartItem>0">
+                <ons-icon class="edit-cart-btn font-normal" icon="ion-edit"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div class="padding-10 white-background box-shadow-2" style="margin-bottom: 10px;" ng-if="Cart.NumberCartItem > 0">
+        <div class="list-item-product-2 cart-list">
+            <div class="item flex-box border-bottom-1" ng-repeat="item in Cart.Items track by $index">
+                <div class="select-item transition-03s">
+                    <ons-checkbox class="middle" style="padding:10px" input-id="check-{{$index}}" value="-1" ng-model="item.CheckEdit"></ons-checkbox>
+                </div>
+                <div class="thumbnail transition-03s">
+                    <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'" />
+                </div>
+                <div class="info transition-03s">
+                    <div class="full-width">
+                        <div class="name-product" ng-bind-template="{{item.ProName}}"></div>
+                        <div class="cart-unit"><span>{{item.Weight}}{{item.Unit}}</span></div>
+                        <div style="float: left;width: 100%;">
+                            <div class="product-price" style="float:left">
+                                <span ng-bind="ConvertObject.ConvertNumberFormat(item.ProductPrice)"></span>đ
+                            </div>
+                            <div class="group-quantity">
+                                <ons-button class="btnquantity" ng-click="Minus(item)" modifier="quiet">
+                                    -
+                                </ons-button>
+                                <input type="number" ng-change="CheckNumber(item.Quantity,$index)" ng-model="item.Quantity" class="input-quantity" />
+                                <ons-button class="btnquantity" ng-click="Plus(item)" modifier="quiet">
+                                    +
+                                </ons-button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div ng-if="Cart.NumberCartItem > 0" class="padding-10 white-background box-shadow-2" style="margin-bottom: 10px;padding-top: 0px !important;padding-bottom: 0 !important;">
+        <div class="Select-Label" style="float:left;width:100%" ng-click="ShowModalCheckCoupon()">
+            <div style="float:left" ng-bind="LanguageEcom.ENTER_DISCOUNT_CODE"></div>
+            <div style="float:right">
+                <i class="ion-android-more-vertical"></i></div>
+        </div>
+    </div>
+    <div ng-if="Cart.NumberCartItem > 0" class="padding-10 white-background box-shadow-2" >
+        <div class="total-cart" style="border-bottom:0px">
+            <span ng-bind="LanguageEcom.TOTAL"></span>
+            <div class="product-price"><span ng-bind="ConvertObject.ConvertNumberFormat(Cart.CartTotal)"></span>đ</div>
+        </div>
+          <div class="total-cart" ng-if="TotalCoupon>0" style="border-top: 1px solid rgba(1, 1, 1, .1);">
+            <span ng-bind="LanguageEcom.REDUCED"></span>
+            <div class="product-price"><span ng-bind="TotalCoupon"></span>đ</div>
+        </div>
+         <div class="total-cart" ng-if="TotalCoupon>0" style="border-bottom:0px">
+            <span ng-bind="LanguageEcom.TOTAL_PRICE"></span>
+            <div class="product-price"><span ng-bind="TotalAfterDiscount"></span>đ</div>
+        </div>
+    </div>
+
+    <div ng-if="Cart.NumberCartItem == 0" notfound text="Không có sản phẩm nào trong giỏ hàng" icon="ion-ios-cart-outline"></div>
+
+    <ons-bottom-toolbar class="white-background auto-height">
+        <div ng-show="Edit == 1 && Cart.NumberCartItem > 0">
+            <div style="float: left;margin-left: 10px;">
+                <span class="center-vertical">
+                <ons-checkbox style="display:inline-block" input-id="check-all" ng-model="CheckAll" ng-change="CheckAllItem()" ></ons-checkbox>
+                <label class="label-selectall" ng-bind="LanguageEcom.CHOOSE_ALL"></label>
+            </span>
+            </div>
+            <div style="width: 40%;float: right;">
+                <ons-button ng-click="DeleteAll()" modifier="large ecommerce-delete" ng-bind="LanguageEcom.CLEAR"></ons-button>
+            </div>
+        </div>
+        <div ng-if="Edit == -1 && Cart.NumberCartItem > 0">
+            <div class="white-background" style="display:none">
+                <span class="total-cart float-right">
+                <span ng-bind="LanguageEcom.TOTAL_PRICE"></span>
+                <span class="product-price"><span ng-bind="ConvertObject.ConvertNumberFormat(Cart.CartTotal)"></span>đ</span>
+                </span>
+                <span class="float-right" ng-if="Discount > 0">
+                <span ng-bind="LanguageEcom.PRICE_AFTER_DISCOUNT"></span>
+                <span class="product-price">
+                    <span  ng-bind="ConvertObject.ConvertNumberFormat(TotalAfterDiscount)"></span>đ
+                </span>
+                </span>
+                <span style="clear:both"></span>
+            </div>
+            <div style="width:calc(100%); float:right">
+                <ons-button ng-click="CheckOut()" modifier="large ecommerce-main" ng-bind="LanguageEcom.ORDER"></ons-button>
+            </div>
+        </div>
+        <ons-button ng-click="ContinueShopping()" ng-if="Cart.NumberCartItem == 0" modifier="large ecommerce-main" ng-bind="LanguageEcom.CONTINUE_SHOPPING"></ons-button>
+    </ons-bottom-toolbar>
+    <ons-modal var="ModalCheckCoupon" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalCheckCoupon()"></div>
+        <div class="white-background fixed-center add-voucher-panel">
+            <div class="header-popup-coupon">
+                <div ng-bind="LanguageEcom.COUPON"></div>
+            </div>
+            <ons-button class="button btn-trans close-icon-btn">
+            <ons-icon ng-click="HideModalCheckCoupon()" icon="ion-ios-close-empty" style="color: white;"></ons-icon>
+            </ons-button>
+            <div>
+            <input class="input-ecommerce input-checkcoupon" type="text" ng-model="Coupon" placeholder="Nhập mã giảm giá" />
+            </div>
+            <div style="float: left;width: 100%;">
+            <ons-button ng-click="SelectCoupon()" style="border-right: 1px solid rgba(1, 1, 1, .1);" class="btnsave-coupon size-btnselect" modifier="large ecommerce-main" ng-bind="LanguageEcom.SELECT_"></ons-button>
+            <ons-button ng-click="CheckCoupon()" modifier="large ecommerce-main" class="btnsave-coupon size-btnselect">
+                <i id="checkbutton" class="ion-checkmark-round"></i> 
+                <svg id="waitingload-btn" style="animation: progress__rotate .5s linear infinite;" class="progress-circular progress-circular--indeterminate">
+  <circle class="progress-circular__background"/>
+  <circle class="progress-circular__primary progress-circular--indeterminate__primary" style="animation: progress__dash 1s ease-in-out infinite;"/>
+  <circle class="progress-circular__secondary progress-circular--indeterminate__secondary"/>
+</svg>
+<!--<i id="waitingload-btn"  class="fa-spin ion-load-c"></i> -->
+                <span ng-bind="LanguageEcom.CHECK"></span></ons-button>
+            </div>
+        </div>
+        <!--<div class="white-background fixed-center">
+            <div class="header-discoupon">
+                <div ng-bind="LanguageEcom.DISCOUNT_COUPON"></div>
+                <div>
+                    <ons-icon style="top:0; right:10px" ng-click="HideModalCheckCoupon()" icon="ion-ios-close-empty" class="close-btn"></ons-icon>
+                </div>
+            </div>
+            <div style="float: left;width: 100%;position:relative;border-bottom: 1px solid lightcoral ">
+                <input class="input-ecommerce input-checkcoupon" type="text" ng-model="Coupon" placeholder="Nhập mã giảm giá" />
+                <ons-button ng-click="CheckCoupon()" modifier="large ecommerce-main" class="btncheck-coupon"><span ng-bind="LanguageEcom.CHECK"></span></ons-button>
+            </div>
+          
+        </div>-->
+    </ons-modal>
+</ons-page>

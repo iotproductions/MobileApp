@@ -1,0 +1,83 @@
+<ons-page  modifier="Ecommerce maplocation" ng-controller="trackingctrl">
+    <ons-toolbar modifier="Ecommerce" class="boxshadowtoolbar">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.TRACKING_ORDER"></div>
+        <div class="right transition-03s" ng-click="DirectionOrder()">
+            <div class="location-icon-toolbar"></div>
+        </div>
+    </ons-toolbar>
+     <div class="maplocation">
+         <div class="top-tracking"><div><span ng-bind="LanguageEcom.YOUR_ORDER_SHORT"></span>: #<span ng-bind="DataDetail.OrderCode"></span></div>
+<div><span ng-bind="LanguageEcom.DISTRIBUTION"></span> RYNAN AGRIFOODS</div>
+<div ng-click="CallShipper()" class="callshipper">
+</div>
+</div>
+
+             <div id="googleMap" style="width:100%;height:100%"></div>
+        </div>
+     <div class="info-shipper">
+         <div class="info-shipper-left">
+             <div ng-bind="LanguageEcom.ADDRESS_SHIPPING"></div>
+             <div ng-bind="DataDetail.ShipLocation.Address">253 Nguyễn Thị Minh Khai, Trà Vinh, Tỉnh Trà Vinh</div>
+             <div>
+                <span ng-bind="LanguageEcom.ORDER_DATE"></span>: <span ng-bind="DataDetail.OrderDate|date : 'dd/ MM/ yyyy HH:mm'"></span>
+             </div>
+         </div>
+         <div class="info-shipper-right">
+            <div ng-bind="LanguageEcom.STATUS">
+               
+            </div>
+             <!--Đã giao hàng  -->
+             <div ng-if="DataDetail.Status==3" class="delivery-hand"></div>
+             <div ng-if="DataDetail.Status==3" ng-bind="LanguageEcom.STATUS_3"></div>
+             <!--Đang giao hàng  -->
+              <div ng-if="DataDetail.Status==2" class="delivery-truck"></div>
+             <div ng-if="DataDetail.Status==2" ng-bind="LanguageEcom.STATUS_2"></div> 
+             <!--Đang xử lý  -->
+              <div ng-if="DataDetail.Status==1" class="processing-order"></div> 
+             <div ng-if="DataDetail.Status==1" ng-bind="LanguageEcom.STATUS_1"></div> 
+             <!--Mới đặt hàng  -->
+             <div ng-if="DataDetail.Status==0" class="Order-New"></div> 
+             <div ng-if="DataDetail.Status==0" ng-bind="LanguageEcom.STATUS_0"></div> 
+         </div>
+        <!-- <div class="info-shipper-left">
+            <img src="ecommerce/img/default_avatar.png"></div>
+              <div class="info-shipper-center"><div>
+            ShiperFood One
+        </div>
+        <div>
+            (0294)-777-444
+        </div>
+        </div>
+        <div class="info-shipper-right">
+            <div class="phone-call-icon"></div>
+        </div> -->
+        </div>
+        <!-- <div class="detail-order-location">
+            <div class="header" ng-bind="LanguageEcom.DETAILS">
+
+            </div>
+            <div class="detail-order-location-content">
+                <div ng-repeat="item in DataDetail.TrackingDetail" class="detail-tracking">
+                  <div class="detail-left-track">
+                    <div ng-if="item.Status==2" class="truckorder icon-order"></div>
+                    <div ng-if="item.Status==1" class="process-order icon-order"></div>
+                    <div ng-if="item.Status==3" class="order-comp-icon icon-order"></div>
+                    <div ng-if="item.Status==4" class="delete icon-order"></div>
+                  </div>
+                  <div class="detail-center-track">
+                      <div ng-if="item.Status==3" style="color:green"> {{item.Description}}</div>
+                  <div ng-if="item.Status==4" style="color:red"> {{item.Description}}</div>
+                  <div ng-if="item.Status!=3 && item.Status!=4"> {{item.Description}}</div>
+                  <div>
+                      <span ng-bind="LanguageEcom.TIME"></span>: <span ng-bind="item.CreateDate"></span>
+                  </div>
+                  </div>
+                </div>
+            </div>
+        </div> -->
+</ons-page>

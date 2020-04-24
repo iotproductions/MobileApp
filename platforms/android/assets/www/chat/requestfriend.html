@@ -1,0 +1,31 @@
+<ons-page ng-controller="requestfriendctrl" modifier="page_bg">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageChat.REQUEST_FRIEND"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    
+    <ul class="list-friend-search" id="list-request-friend">
+        <li ng-repeat="item in ListRequest">
+            <div class="find-friend-avatar">
+                <img  ng-src="{{ipImage}}{{item.AvatarSend}}" />
+            </div>
+            <div class="find-friend-name">
+                <div>
+                    <div  ng-bind="item.FullNameSend"></div>
+                    <div ng-bind="item.AccountSend"></div>
+                </div>
+                 <div ng-click="Accept(item.AccountSend, $event)"  class="send-request-friend accept-friend">
+                    <div ng-bind="LanguageChat.OK"></div>
+                </div> 
+            </div> 
+            
+        </li>
+    </ul>
+    <div class="no_feedback" ng-if="ListRequest.length == 0" >Chưa có lời mời kết bạn</div>
+</ons-page>

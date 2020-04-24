@@ -1,0 +1,31 @@
+<ons-page modifier="Ecommerce" ng-controller="ecommercenotificationsctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.NOTIFICATION"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <ons-list ng-if="ListNotification != null" class="box-shadow-2 notifications">
+        <ons-list-item  ng-click="ShowNotification(item)" ng-repeat="item in ListNotification" tappable>
+            <div class="left">
+                <img ng-if="item.Avatar == '' || item.Avatar == null " src="ecommerce/img/mess.png" />
+                <img ng-if="item.Avatar != '' && item.Avatar != null " onerror="this.src='ecommerce/img/mess.png'" ng-src="{{ipImageEcommerce}}{{item.Avatar}}" />
+            </div>
+            <div class="center">
+                <div class="list-item__title">
+                    <div class="title-left">
+                        <span ng-class="{'active' : item.FlagRead == 0}" ng-bind="item.Title"></span>
+                    </div>
+                     <div class="title-right"  ng-bind="item.LastUpdate | date:'dd/MM/yyyy'"></div>
+                </div>
+                <div class="list-item__subtitle">
+                      <div ng-bind="item.ShortDescription"></div>
+                </div>
+            </div>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

@@ -1,0 +1,71 @@
+<ons-page modifier="Ecommerce" ng-controller="vouchersctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" style="max-width:65%" ng-bind="LanguageEcom.DISCOUNT_CODE"></div>
+        <div class="right" style="max-width:25%">
+            <ons-toolbar-button class="label-toolbar" ng-click="ShowModalAddVoucher()">
+                <span ng-bind="LanguageEcom.ADD"></span>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div class="padding-10">
+        <div class="voucher" ng-repeat="item in Vouchers | orderBy: '-CreatedDate'">
+            <div class="label-company">
+                <div class="shop"></div> <div>RYNAN AGRIFOODS</div>
+            </div>
+            <div ng-if="item.Status!=1" class="wrap-voucher" ng-click="Copy($index)">
+                <div class="wrap-coupon-code">
+                    <span id="voucher-{{$index}}" ng-bind-template="CODE: {{item.DealNo}}"></span>
+                </div>
+                <div class="discount">
+                    <div><span ng-bind="item.Promotion.Discount"></span>%</div>
+                </div>
+                <div class="meta">
+                    <div ng-bind="item.Note">
+                    </div>
+                </div>
+            </div>
+            <div ng-if="item.Status==1" class="wrap-voucher wrap-voucher-expiry">
+                <div class="wrap-coupon-code">
+                    <span id="voucher-{{$index}}" ng-bind-template="CODE: {{item.DealNo}}"></span>
+                </div>
+                <div class="discount">
+                    <div><span ng-bind="item.Promotion.Discount"></span>%</div>
+                </div>
+                <div class="meta">
+                    <div ng-bind="item.Note">
+                    </div>
+                </div>
+            </div>
+             <div class="footer-coupon">
+                <div><span ng-bind="LanguageEcom.EXPIRY_DATE"></span> : <span ng-bind="item.ExpiredDate | date:'dd/MM/yyyy'"></span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <ons-modal var="ModalAddVoucher" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalAddVoucher()"></div>
+        <div class="white-background fixed-center add-voucher-panel">
+            <div class="header-popup-coupon">
+                <div ng-bind="LanguageEcom.REGISTER_COUPON"></div>
+                <div class="sub">Mã giảm giá sẽ được lưu vào tài khoản của bạn để quản lý</div>
+            </div>
+            <ons-icon ng-click="HideModalAddVoucher()" icon="ion-ios-close-empty" class="close-btn" style="top:0; right:10px;color: white;"></ons-icon>
+            <div>
+            <input class="input-ecommerce" type="text" ng-model="DealNo" placeholder="Nhập mã giảm giá" />
+            </div>
+            <ons-button ng-click="Save()" class="btnsave-coupon" modifier="large ecommerce-main" ng-bind="LanguageEcom.SAVE"></ons-button>
+        </div>
+    </ons-modal>
+
+    <!--<div loader></div>-->
+    <!--Show Loader-->
+    <!--<ons-bottom-toolbar modifier="transparent"  class="padding-10 auto-height">
+        <ons-button ng-click="ShowModalAddVoucher()"  modifier="large ecommerce-main" ng-bind="LanguageEcom.ADD"></ons-button>
+    </ons-bottom-toolbar>-->
+</ons-page>

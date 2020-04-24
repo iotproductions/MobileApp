@@ -1,0 +1,119 @@
+.page--media .toolbar
+{
+    background-color: #1D1D28;
+    background-image: none;
+}
+.page--media .toolbar-button, .toolbar-button--outline, .toolbar-button--quiet {
+    color: white !important;
+    font-size: 200%;
+}
+.page--media .itemfilm {
+    float: left;
+    width: calc(50% - 10px);
+    text-align: center;
+    margin: 0 5px;
+    font-size: .9em;
+    padding: 5px 0;
+}
+.page--media .toolbar__title {
+    color: white !important;
+    width: 70% !important;
+    text-transform: uppercase;
+}
+.page--media__content{
+    background-color: inherit !important;
+    color: white;
+    font-size:1em;
+}
+.page--media .itemfilm .imgfilm {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 180px;
+}
+
+.page--media .itemfilm .label {
+    font-size: .9em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.page--media .topfilm {
+    float: left;
+    width: 100%;
+    border-bottom: 2px rgba(255, 255, 255, 1);
+    height: 160px;
+}
+
+.page--media .header-film {
+    color: orange;
+    text-align: left;
+    padding: 10px;
+    float: left;
+    width: calc(100% - 20px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+    background-color: rgba(1, 1, 1, .4);
+}
+
+.page--media .label-topfilm {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-shadow: 0 0 12px orange;
+}
+
+.page--media .filmname {
+    padding-bottom: 10px;
+    float: left;
+    margin-right: 15px;
+}
+
+.page--media .content-film {
+    font-size: .85em;
+    opacity: .8;
+    font-size: 1em;
+    opacity: .6;
+    padding: 10px 0;
+    line-height: 1.4;
+    float: left;
+    width: 100%;
+}
+.page--media .content-film img{
+    width: 100%;
+}
+.page--media .listchapter{
+    float: left;
+    border: 1px solid gray;
+    padding: 2px 3px;
+    background-color: rgba(255, 255, 255, .1) ;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;opacity: .4;
+}
+.page--media .activechap{
+    border: 1px solid orangered;
+    opacity: 1;
+}
+.page--media .item-menu-movie{
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    float: left;
+    width: calc(100% - 20px); 
+}
+.page--media .child-menu-child{
+    line-height: 2;
+    font-size: .95em;
+    opacity: .8
+}
+.page--notop__content{
+    top: 0px !important;
+}
+.page--media .top-menu-movie{
+    padding: 10px;
+    border-bottom: 1px solid rgba(1, 1, 1, .5) ;
+    box-shadow: 0 0 3px rgba(255, 255, 255, .05);
+    font-size: .9em;
+    color: orange;
+}

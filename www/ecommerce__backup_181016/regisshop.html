@@ -1,0 +1,78 @@
+<ons-page id="regisshop.html" modifier="Ecommerce" ng-controller="RegisShopCtrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <!-- <ons-icon icon="ion-ios-arrow-back" class="font-large"></ons-icon> -->
+                <div style="color: lightgray;padding-left: 10px;" ng-bind="LanguageEcom.CANCEL">Huỷ</div>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            Đăng Ký Gian Hàng
+        </div>
+        <div class="right">
+            <ons-toolbar-button style="color: orange !important" ng-click="Save()">
+                <div ng-bind="LanguageEcom.SAVE"></div>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div class="regisshop">
+        <div class="coveravatar">
+            <img style="height:100%;width:100%" ng-src="{{ipImageEcommerce}}{{Data.CoverAvatar}}"  id="background-shop"/>
+            <img ng-click="SetAvatar(2)" src="ecommerce/img/instagram-2.png" />
+            <img id="avatar-shop" ng-click="SetAvatar(1)" ng-src="{{ipImageEcommerce}}{{Data.Avatar}}" onerror="this.src='ecommerce/img/person-flat.png'" class="avatar-shop">
+
+        </div>
+        <div class="item-content-regis">
+            <div>
+                <span ng-bind="LanguageEcom.CONTACT_NAME"></span> <span id="shop-contactname" style="color:red"> *</span>
+            </div>
+            <div>
+                <input ng-value="Data.ContactName" ng-model="Data.ContactName" placeholder="Nguyễn Văn Trung" type="input" class="text-input" />
+            </div>
+        </div>
+        <div class="item-content-regis">
+            <div>
+                <span ng-bind="LanguageEcom.NAMESHOP"></span> <span id="shop-name" style="color:red"> *</span>
+            </div>
+            <div>
+                <input ng-value="Data.BrandName" ng-model="Data.BrandName" placeholder="shopmevabe" type="input" class="text-input" />
+            </div>
+        </div>
+        <div class="item-content-regis">
+            <div>
+                <span ng-bind="LanguageEcom.ADDRESS"></span> <span id="shop-address" style="color:red"> *</span>
+            </div>
+            <div>
+                <input ng-value="Data.Address" ng-model="Data.Address" placeholder="123 Nguyễn Văn Trỗi..." type="input" class="text-input" />
+            </div>
+        </div>
+        <div class="item-content-regis">
+            <div>
+                <span ng-bind="LanguageEcom.EMAIL"></span> <span id="shop-email" style="color:red"> *</span>
+            </div>
+            <div>
+                <input ng-value="Data.Email" ng-model="Data.Email" type="input" placeholder="sample@gmail.com" class="text-input" />
+            </div>
+        </div>
+        <div class="item-content-regis">
+            <div ng-bind="LanguageEcom.PHONE">
+                <span ng-bind="LanguageEcom.PHONE"></span> <span id="shop-phone" style="color:red"> *</span>
+            </div>
+            <div>
+                <input ng-value="Data.PhoneNumber" ng-model="Data.PhoneNumber" placeholder="0909888888" type="input" class="text-input" />
+            </div>
+        </div>
+
+    </div>
+    <div style="float: left;width: 100%;">
+        <textarea ng-model="Data.ShoftIntroduce" ng-value="Data.ShoftIntroduce" placeholder="Giới thiệu ngắn về gian hàng của bạn chuẩn bị bán" class="shop-introduce" type="textarea"></textarea>
+    </div>
+    <canvas style="display:none" id="imgCanvasShop"></canvas>
+    <!-- <ons-bottom-toolbar style="text-align:center;background-image:none;
+    background-color: transparent;">
+            <div style="
+            float: left;
+                width: 100%;
+                text-align: center;"><button ng-click="Save()" class="button btn-savechannel" ng-bind="LanguageEcom.REGISTER"></button></div>
+        </ons-bottom-toolbar> -->
+</ons-page>

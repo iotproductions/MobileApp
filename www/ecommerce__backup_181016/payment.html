@@ -1,0 +1,92 @@
+<ons-page modifier="Ecommerce TabEcomShip" ng-controller="paymentctrl">
+    <ons-toolbar class="toolbar--noshadow shiporder" modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.PAYMENT"></div>
+        <div class="right">
+        </div>
+        <div class="tab-process">
+            <div class="tab">
+                <!-- <div class="addressorder"></div> -->
+                <div class="tab-bar__label" ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+            </div>
+            <div class="tab active">
+                <!-- <div class="visa"></div> -->
+                <div class="tab-bar__label" ng-bind="LanguageEcom.PAYMENT"></div>
+
+            </div>
+            <div class="tab">
+                <!-- <div class="ordercomp"></div> -->
+                <div class="tab-bar__label" ng-bind="LanguageEcom.ORDERS"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div style="float:left;width:calc(100%);padding-top:10px">
+        <div ng-click="SetMethod(1,$event)" class="payment-method white-background active">
+            <div class="payment-thumb border-bottom-1">
+                <img src="ecommerce/img/credit-card.svg" />
+            </div>
+            <div class="payment-des" ng-bind="LanguageEcom.TRANSFER"></div>
+        </div>
+
+        <div ng-click="SetMethod(0,$event)" class="payment-method white-background">
+            <div class="payment-thumb border-bottom-1">
+                <img src="ecommerce/img/wallet.svg" />
+            </div>
+            <div class="payment-des" ng-bind="LanguageEcom.CASH"></div>
+        </div>
+    </div>
+    <!--Diễn giải thanh toán online  -->
+    <div class="desc-type-cart" ng-if="Data.PayStyle==1"> 
+        <div>
+            <i class="ion-information-circled"></i> <span ng-bind="LanguageEcom.ACCEPT_CART"></span>
+        </div>
+        <div><img src="ecommerce/img/visa-2.svg" /> <img src="ecommerce/img/mastercard.svg" /></div>
+    </div>
+    <div ng-if="Data.PayStyle==1" class="card-add-info"> 
+        <div class="header-card-add" ng-bind="LanguageEcom.CARD_INFO">
+        </div>
+        <div class="content-card-add">
+        <div ng-bind="LanguageEcom.CARD_NO">
+
+        </div>
+        <div>
+            <input type="text" value="1234 5445 8887 6663" />
+        </div>
+        </div>
+        <div class="content-card-add half-item">
+        <div ng-bind="LanguageEcom.EXPIRY_DATE_CARD">
+
+        </div>
+        <div>
+            <input type="text" value="18 / 20" />
+        </div>
+        </div>
+     <div class="content-card-add half-item">
+        <div ng-bind="LanguageEcom.CCV">
+            CCV
+        </div>
+        <div>
+            <input type="password" value="555" />
+        </div>
+        </div>
+    </div>
+    <!--Diễn giải thanh toán tiền mặt  -->
+    <div class="desc-type-cart" ng-if="Data.PayStyle==0">
+        <div style="line-height:normal">
+            <!-- <i class="ion-information-circled"></i> -->
+             <span ng-bind="LanguageEcom.DESC_PAY_CASH"></span>
+        </div>
+    </div>
+    <ons-bottom-toolbar modifier="transparent" class="auto-height">
+        <ons-button ng-click="CheckOut()" modifier="large ecommerce-main">
+            <span ng-bind="LanguageEcom.PAYMENT"></span>
+            <!-- <i class="ion-arrow-right-c float-right"></i> -->
+        </ons-button>
+    </ons-bottom-toolbar>
+
+    <!--<div loader></div> -->
+</ons-page>

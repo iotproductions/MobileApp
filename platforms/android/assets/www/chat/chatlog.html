@@ -1,0 +1,48 @@
+<ons-page ng-controller="chatlogctrl" modifier="page_bg">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="ion-ios-arrow-back"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Tin nhắn</div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <ul class="list-chat-log">
+        <li  ng-repeat="item in ListLog">
+            <div ng-if="Account == item.AccountTo" ng-click="GoToChat(item.AccountSend,item.AvatarSend, item.FullNameSend, $event)" style="min-height:30px; overflow:hidden">
+                <div class="chat-log-avatar">
+                    <img ng-src="{{ipImage}}{{item.AvatarSend}}" />
+                </div>
+                <div class="chat-log-name">
+                    <div>
+                        <span ng-bind="item.FullNameSend"></span>
+                        <span ng-bind="item.TimeSince"></span>
+                    </div>
+                    <div>
+                        <span  ng-bind="item.LastContent"></span> 
+                        <span ng-if="item.AccToUnRead > 0" ng-bind="item.AccToUnRead"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div ng-if="Account == item.AccountSend" ng-click="GoToChat(item.AccountTo,item.AvatarTo, item.FullNameTo, $event)" style="min-height:30px; overflow:hidden">
+                <div class="chat-log-avatar">
+                    <img ng-src="{{ipImage}}{{item.AvatarTo}}" />
+                </div>
+                <div class="chat-log-name">
+                    <div>
+                        <span ng-bind="item.FullNameTo"></span>
+                        <span ng-bind="item.TimeSince"></span>
+                    </div>
+                    <div>
+                        <span  ng-bind="item.LastContent"></span> 
+                        <span ng-if="item.AccSendUnRead > 0" ng-bind="item.AccSendUnRead" ></span>
+                    </div>
+                </div>
+            </div> 
+        </li>
+    </ul>
+    <div class="no_feedback" ng-if="ListLog.length == 0" >Không có tin nhắn nào</div>
+</ons-page>

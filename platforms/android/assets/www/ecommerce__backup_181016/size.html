@@ -1,0 +1,38 @@
+<ons-page id="size.html" modifier="Ecommerce" ng-controller="sizectrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.PACKAGE_SIZE">
+
+        </div>
+        <div class="right">
+            <ons-toolbar-button style="color: orange;" ng-click="Save()">
+                <div ng-bind="LanguageEcom.SAVE"></div>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar> 
+    <div class="img-size-pro">
+        <img src="ecommerce/img/packagesize.png" />
+        <div class="package-size-desc"  ng-bind="LanguageEcom.PACKAGE_SIZE_DESC"></div>
+    </div>
+    <div class="item-size">
+        <div >
+            <span ng-bind="LanguageEcom.WEIGHT__"></span> <span style="color:red"> *</span> 
+        </div>
+        <div><input placeholder="{{LanguageEcom.UNITCM}}" ng-model="Data.W" ng-value="Data.W" type="text" class="text-input"/></div>
+    </div>
+    <div class="item-size">
+        <div><span ng-bind="LanguageEcom.LENGTH"></span> <span style="color:red"> *</span> </div>
+        
+        <div><input placeholder="{{LanguageEcom.UNITCM}}" ng-model="Data.L" ng-value="Data.L" type="text" class="text-input"/></div>
+    </div>
+    <div class="item-size">
+        <div><span ng-bind="LanguageEcom.HIGHT"></span> <span style="color:red"> *</span> </div>
+        <div>
+            <input placeholder="{{LanguageEcom.UNITCM}}" ng-model="Data.H" ng-value="Data.H" type="text" class="text-input"/>
+        </div>
+    </div>
+</ons-page>

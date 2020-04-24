@@ -1,0 +1,33 @@
+<ons-page id="searchnotice.html" modifier="page_bg swm" ng-controller="searchnoticectrl">
+    <ons-toolbar class="border">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="ion-ios-arrow-back"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            <input id="textsearchnoti" ng-change="onchane()" value="{{KeySearch}}" ng-model="KeySearch" class="text-input text-search-notice"
+                placeholder="{{Language.SEARCH}}" type="text" />
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div class="dynamicContent" style="border:0px;border-bottom:0px;margin-top:10px;">
+        <div id="content" style="position: relative;width: 100%;height: auto !important">
+            <div class="noti-group" ng-click="ShowDetailNotica(item)" ng-repeat="item in DataSearch">
+                <div class="noti-content">
+
+                    <div class="noti-desc" ng-bind="item.Description"></div>
+                    <div class="noti-time" style="color: white">
+                        <span ng-bind-template="{{item.LastUpdate}}"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="loader2" class="loader" style="width: 100%; text-align: center;background-color: rgba(1,1,1,.2)">
+            <img class="fa-spin" src="img/load.png" style="width: 25px;height: 25px" />
+            <span style="text-transform: lowercase" ng-bind="Language.NEWS_OLD"></span>
+        </div>
+    </div>
+</ons-page>

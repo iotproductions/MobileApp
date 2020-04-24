@@ -1,0 +1,152 @@
+<ons-page id="main.html" modifier="page_bg_main swm main" ng-controller="mainctrl">
+  <ons-toolbar>
+    <div class="center">
+      <span ng-bind="Language.LOGO"></span>
+    </div>
+    <div class="right">
+      <ons-toolbar-button ng-click="ShowMenu()">
+        <ons-icon icon="fa-cog"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+
+  </ons-toolbar>
+  <div id="main_lost" style="display: none" lostconnect>
+  </div>
+  <div id="main" style="float: left;width: 100%">
+    <div class="navimain">
+      <div class="water">
+        <div>
+          <div style="margin-top:8px;" ng-bind="Language.USE_TODAY"></div>
+          <div class="mk-main-content-sali-valuesali">
+            <span ng-bind-template="{{SWDataCurrent.SumInDate}}"></span>
+            <span style="font-size:70%;"> m<sup>3</sup></span>
+          </div>
+        </div>
+        <div ng-if="Profile.UserName == 'ChuMyCus'">
+          <div ng-bind-template="{{Language.MONEY_USE}}" style="margin-top:8px;"></div>
+          <div class="mk-main-content-sali-valuesali" style="color:yellow;opacity: .8">
+            <span ng-bind-template="{{SWDataCurrent.Money|number}}đ"></span>
+          </div>
+        </div>
+        
+        <div ng-if="Profile.UserName != 'ChuMyCus'">
+          <div style="margin-top:8px;" ng-bind="Language.CURRENT_INDEX"></div>
+          <div class="mk-main-content-sali-valuesali" style="color:yellow;opacity: .8">
+            <span ng-bind-template="{{IndexAdr|number}}"></span>
+            <span style="font-size:70%;"> m<sup>3</sup></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="mk-main-content-sali">
+      <div ng-show="OnAds==true" class="ad" id="ad">
+        <ons-carousel style="height:100%;width:100%" auto-scroll-ratio="0.1" overscrollable fullscreen swipeable auto-scroll id="carouselad">
+          <ons-carousel-item ng-click="ShowAdDetail($index)" ng-repeat="item in Ads">
+            <div class="titlead" ng-bind="item.Name"></div>
+            <img style="width: 100%;" ng-src="{{item.Link}}" />
+          </ons-carousel-item>
+        </ons-carousel>
+      </div>
+      <div class="mk-main-content-time">
+        <div class="mk-main-backnext">
+          <ons-button ng-click="BackChart()" style="border-top-left-radius: 4px;" class="button btn-trans">
+            <i style="font-size: 1.4em !important;" class="ion-arrow-left-a"></i>
+          </ons-button>
+
+          <ons-button ng-click="CurrentChart('mk-main-label01','mk-main-active-label')" class="button btn-trans">
+            <div class="mk-label-current" ng-bind="Language.CURRENT"></div>
+          </ons-button>
+
+          <ons-button ng-click="NextChart()" style="border-top-right-radius: 4px;" class="button btn-trans">
+            <i style="font-size: 1.4em !important;" class="ion-arrow-right-a"></i>
+          </ons-button>
+
+        </div>
+        <div class="mk-main-datetime">
+          <ons-button class="button btn-trans" ng-click="ShowChartYear('mk-main-label03','mk-main-active-label')">
+            <div id="mk-main-label03" class="mk-main-label-datetime" ng-bind="Language.YEAR"></div>
+          </ons-button>
+          <ons-button class="button btn-trans" ng-click="ShowChartMonth('mk-main-label02','mk-main-active-label')">
+            <div id="mk-main-label02" class="mk-main-label-datetime" ng-bind="Language.MONTH"></div>
+          </ons-button>
+
+          <ons-button class="button btn-trans" ng-click="ShowChartDate('mk-main-label01','mk-main-active-label')">
+            <div id="mk-main-label01" class="mk-main-label-datetime mk-main-active-label" ng-bind="Language.DATE"></div>
+          </ons-button>
+        </div>
+      </div>
+      <div class="mk-title-chart">
+        <div class="mk-title-chart-left">
+          <span ng-bind="Language.CHART"></span> (<span>m
+            <sup>3</sup>
+          </span>
+          <span style="text-transform: lowercase" ng-bind="Language.WATER"></span>)
+        </div>
+        <div class="mk-title-chart-right" ng-bind="Main.TitleDate"></div>
+      </div>
+      <div style="position:relative" class="canvas-base">
+        <div class="total-data-chart">
+          <span style="font-size:inherit;float:left" ng-bind-template="{{Language.USE}} : "></span>
+          <div style="color:rgb(11, 214, 214);float:left;padding-left:2px" ng-bind-template=" {{SWData.SumInDate}}"></div>
+          <span style="color:rgb(11, 214, 214);float:left"> m
+            <sup>3</sup>
+          </span>
+          <span ng-if="Profile.UserName == 'ChuMyCus'"  style="font-size:inherit;margin-left: 6px;" ng-bind-template="{{Language.MONEY_USE}} : "></span>
+          <div ng-if="Profile.UserName == 'ChuMyCus'"  style="color:yellow" ng-bind-template="{{SWData.Money|number}}đ"></div>
+        </div>
+        <canvas id="myChart" height="200px"></canvas>
+        <div class="title-bottom-chart-pressure">
+          <div class="left">
+            <span></span>
+            <span ng-bind="Language.DATA_WATER"></span>
+          </div>
+          <div class="right">
+            <span ng-if="TypeDate == 'D'" ng-bind="Language.HOUR"></span>
+            <span ng-if="TypeDate == 'M'" ng-bind="Language.DATE"></span>
+            <span ng-if="TypeDate == 'Y'" ng-bind="Language.MONTH"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="swm-bottom-function">
+      <div>
+        <div class="mk-main-item-func transition-03s" ng-click="SetLockValveWater()">
+          <img ng-if="LockValve =='O' || LockValve == '' || LockValve =='PC'" id="img-lock-water" src="img/Khoa_nuoc1.png" />
+          <img ng-if="LockValve =='C' || LockValve =='PO'" id="img-lock-water" src="img/Khoa_nuoc.png" />
+          <div id="label-lock-water">
+            <span ng-if="LockValve =='O'" ng-bind="Language.LOCK_WATER_2"></span>
+            <span ng-if="LockValve =='C'" ng-bind="Language.LOCK_WATER"></span>
+            <span ng-if="LockValve =='PO'" ng-bind="Language.OPENING"></span>
+            <span ng-if="LockValve =='PC'" ng-bind="Language.LOCKING"></span>
+            <span ng-if="LockValve ==''" ng-bind="Language.NO_VALVE"></span>
+          </div>
+        </div>
+        <div ng-if="Profile.UserName != 'ChuMyCus'" class="mk-main-item-func transition-03s" style="margin-left: 0px !important" onclick="Setting()">
+          <img src="img/settings_main.png" />
+          <div ng-bind="Language.SETTING"></div>
+        </div>
+        <div ng-if="Profile.UserName == 'ChuMyCus'" class="mk-main-item-func transition-03s" style="margin-left: 0px !important"
+          onclick="ShowShopping()">
+          <img src="img/icon-shop.png" />
+          <div ng-bind="Language.SHOPPING"></div>
+        </div>
+        <!-- <div ng-if="Profile.UserName != 'ChuMyCus'" class="mk-main-item-func transition-03s" style="margin-left: 0px !important"
+          onclick="ListPrice()">
+          <img id="tableprice" src="img/tableprice.png" />
+          <div ng-bind="Language.TABLE_PRICE">Bảng giá</div>
+        </div> -->
+
+        <div class="mk-main-item-func transition-03s" style="margin-left: 0px !important" onclick="ShowWaterPressure()">
+          <img id="adsimg" src="img/ap_luc_nuoc.png" />
+          <div ng-bind="Language.WATER_PRESSURE"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <ons-bottom-toolbar class="bar-bottom">
+    <div toolbarmk></div>
+  </ons-bottom-toolbar>
+</ons-page>

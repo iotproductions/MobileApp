@@ -1,0 +1,55 @@
+<ons-page id="configchart.html" modifier="page_bg swm" ng-controller="configchartctrl">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="Back()">
+        <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center" ng-bind="Language.CONFIG_CHART">
+    </div>
+    <div class="right">
+    </div>
+  </ons-toolbar>
+  <div name="lostconnect" class="lostconnect" id="configchart-lostconnect"></div>
+  <div id="configchart">
+
+    <div class="config-item">
+      <div class="col-2">
+        <div ng-bind="Language.MUCNUOC_MIN"></div>
+
+        <input type="text" ng-model="Data.MucNuocMin" class="text-input config-input" />
+      </div>
+      <div class="col-2">
+        <div ng-bind="Language.MUCNUOC_MAX"></div>
+        <input type="text" ng-model="Data.MucNuocMax" class="text-input config-input" />
+      </div>
+      <div class="col-2">
+        <div ng-bind="Language.BUOC_DEM"></div>
+        <input type="text" ng-model="Data.StepSize" placeholder="5, 10, 15, 20..." class="text-input config-input" />
+      </div>
+      <div class="col-2">
+        <div ng-bind="Language.MINUS_VALUE"></div>
+        <input type="text" ng-model="Data.ValueTru" class="text-input config-input" />
+      </div>
+      <div class="col-1">
+        <div ng-bind="Language.LIST_AWD_SENSOR"></div>
+        <div class="list-item-req">
+          <li class="list__item list__item--tappable" style="border-bottom:1px solid rgba(1,1,1,.1);" ng-repeat="item in ListAWD" ng-click="SaveData(item)">
+            <div class="list__item__left">
+              <label class="radio-button">
+                <input type="radio" id="{{item.IDAWD}}" class="radio-button__input" name="radw">
+                <div class="radio-button__checkmark"></div>
+              </label>
+            </div>
+            <label for="{{item.IDAWD}}" ng-bind-template="{{item.Description}}" class="list__item__center">
+            </label>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ons-bottom-toolbar id="config-chart" style="text-align:center;padding:5px">
+    <button type="button" class="button mk-request-btn" ng-bind="Language.SAVE_CONFIG" ng-click="SaveConfig()"></button>
+  </ons-bottom-toolbar>
+</ons-page>

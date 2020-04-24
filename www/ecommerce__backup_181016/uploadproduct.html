@@ -1,0 +1,100 @@
+<ons-page id="uploadproduct.html" modifier="Ecommerce" ng-controller="uploadproductctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.ADD_PRODUCT">
+
+        </div>
+        <div class="right">
+                <ons-toolbar-button style="color: orange;" ng-click="Save()">
+                        <div ng-bind="LanguageEcom.SAVE"></div>
+                    </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div class="content-up-sell">
+        <div class="image-upload">
+            <div class="pic-up" ng-repeat="item in ListPicture">
+                <img style="width:100%;height:100%" ng-src={{item.newPath}}/>
+            </div>
+            <div ng-click="ShowUploadImg()" class="pic-default">
+                +
+                <div ng-bind="LanguageEcom.ADD_PICTURE">
+                </div>
+            </div>
+        </div>
+    </div>
+    <canvas style="display:none" id="canvas-upimg"></canvas>
+    <div class="content-up-sell">
+        <input maxlength="120" ng-change="CheckLengthProName()" type="text" ng-model="Data.ProName" ng-value="Data.ProName" placeholder="{{LanguageEcom.PRODUCT_NAME}}" class="text-input text-addpro" />
+        <div class="character-input-name"><span ng-bind="CharacterName"></span>/120</div>
+    </div>
+    <div class="content-up-sell">
+        <textarea ng-model="Data.ProDescription" ng-value="Data.ProDescription" placeholder="{{LanguageEcom.DESC_PRO}}" class="textarea-desc text-input"></textarea>
+    </div>
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/cate.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.CATEGORY"></div>
+        </div>
+        <div ng-click="SelectCate()" style="float:right">
+            <span ng-if="Data.CatName==null" style="color:gray" ng-bind="LanguageEcom.SELECT_CATE"></span> <span ng-if="Data.CatName!=null"
+                ng-bind="Data.CatName"></span>
+        </div>
+    </div>
+    <form name="myForm">
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/package.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.WAREHOUSE"></div>
+        </div>
+        <div style="float:right">
+            <input maxlength="10" name="quan_field" type="number" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" placeholder="{{LanguageEcom.QUANTITY}}" ng-value="Data.Quantity" ng-model="Data.Quantity" class="text-input"/>
+            <span class="lbl-err" ng-show="myForm.quan_field.$error.pattern" ng-bind="LanguageEcom.QUANTITY_PRO_NUMBER"></span>
+            
+        </div>
+    </div>
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/price-tag.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.PRICE"></div>
+        </div>
+        <div style="float:right;max-width:50%">
+                <input name="price_field" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" required type="text" maxlength="12" placeholder="{{LanguageEcom.ENTER_PRICE}}"  placeholder="LanguageEcom.QUANTITY" ng-value="Data.ProPrice" ng-model="Data.ProPrice" class="text-input"/>
+                <span class="lbl-err" ng-show="myForm.price_field.$error.pattern" ng-bind="LanguageEcom.PRICE_PRO_NUMBER"></span>
+        </div>
+    </div>
+</form>
+    <div class="label-price-quantity">
+        Bạn có thể thiết lập thông tin giá sỉ bên dưới.
+    </div>
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/price-tag.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.PRICE_BY_QUANTITY"></div>
+        </div>
+        <div ng-click="AddWhoSale()" style="float:right"><span ng-if="Data.PriceLast==null" style="color:gray" ng-bind="LanguageEcom.ENTER_PRICE"></span> <span ng-if="Data.PriceLast!=null"
+                ng-bind="Data.PriceLast"></span>
+        </div>
+    </div>
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/weight.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.WEIGHT"></div>
+        </div>
+        <div style="float:right"><span ng-if="Data.Price==null" style="color:gray" ng-bind="LanguageEcom.ENTER_WEIGHT"></span> <span ng-if="Data.Price!=null"
+                ng-bind="Data.Price"></span>
+        </div>
+    </div>
+    <div class="content-up-sell">
+        <div style="float:left"><img src="ecommerce/img/engineering.png" class="icon-up-pro" />
+            <div style="display: inline-block;vertical-align: 2px;"
+                ng-bind="LanguageEcom.PACKING_SIZE"></div>
+        </div>
+        <div ng-click="SetSize()" style="float:right"><span ng-if="PackageSize==null || PackageSize.length<1" style="color:gray" ng-bind="LanguageEcom.ENTER__"></span> <span style="font-size: .9em;" ng-if="PackageSize!=null && PackageSize.length>0"
+                ng-bind="PackageSize[0].Value"></span>
+        </div>
+    </div>
+</ons-page>

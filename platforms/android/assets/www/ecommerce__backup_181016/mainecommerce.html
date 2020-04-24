@@ -1,0 +1,119 @@
+<ons-page  modifier="Ecommerce" ng-controller="mainecommercectrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            <div class="wrap-ecommerce-search-ip">
+                <input class="ecommerce-search-ip" type="text" placeholder="{{LanguageEcom.SEARCH_PRODUCT}}" />
+            </div>
+        </div>
+        <div class="right" ng-click="ShowCart()">
+            <div class="shopping-cart-icon"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+        </div>
+    </ons-toolbar>
+    <div style="min-height:180px;width:100%;float:left">
+    <ons-carousel style="min-height:180px" auto-scroll-ratio="0.1" swipeable auto-scroll id="carousel" >
+        <ons-carousel-item  ng-repeat="item in Ads"><img style="width:100%"  ng-src="{{ipImageEcommerce}}{{item.CommerLinkImage[0]}}" /></ons-carousel-item>
+        <div class="dot-carousel" ng-if="Data.CommerLinkImage.length>1"><div><div class="dotitem" id="{{$index}}" ng-repeat="item in Data.CommerLinkImage"></div></div></div>
+    <!-- <div style="min-height:180px" ecommercemainslider>
+
+    </div> -->
+    </ons-carousel>
+    </div>
+    <div ecommercecategoryslider></div>
+    <div class="ecommerce-tabs-product">
+         <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+	     <label for="tab-1" ng-bind="LanguageEcom.BESTSELL"></label>
+	     <input id="tab-2" type="radio" name="tab-group" />
+	     <label for="tab-2" ng-bind="LanguageEcom.PROMOTION">Khuyến mãi</label>
+         <div class="content">
+            <!--<div class="content-1">-->
+                    <div mostsellproductslider class="content-1"></div>
+            <!--</div>-->
+            <!--<div class="content-2">-->
+                    <div ecommercesaleoffproductslider class="content-2"></div>
+            <!--</div>-->
+         </div>
+    </div>
+
+    <div class="ecommerce-header-panel"> <!--combo hằng ngày-->
+        <span ng-bind="LanguageEcom.COMBO_TODAY"></span>
+        <span ng-click="ShowListProduct(-1)"><span style="text-transform: none;" ng-bind="LanguageEcom.VIEW_ALL"></span> <i class="ion-ios-arrow-forward"></i></span>
+    </div>
+    <div class="ecommerce-list-feature-product"> 
+        <div class="ecommerce-product-item box-shadow-3 combo" ng-repeat="item in ListCombo" ng-click="ShowDetailproduct(item)"> 
+            <div class="thumbnail" style="padding:0">
+                <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/noimage.png'" />
+                <span class="discount-icon" ng-if="item.ProDiscount > 0">
+                    <span ng-bind="LanguageEcom.REDUCED"></span> <span ng-bind="item.ProDiscount"></span>%
+                </span>
+            </div>
+            <div class="product-name" ng-bind="item.ProName"></div>
+            <!--<div>
+                 <span class="product-price">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+                </span>
+                <span class="product-old-price" ng-if="item.ProDiscount > 0 && item.PriceWithoutTax != null">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+                </span>
+            </div>-->
+            <div>
+                <span class="product-rate combo-price">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+                    <!--<span ng-bind="ConvertObject.ConvertNumberFormat(item.NumberOfCmt)"></span>-->
+                </span>
+                 <span class="product-favorite-count margin-favorite" style="float:left">
+                     <div class="like-2"></div>
+                     <div ng-bind="item.ProPrefer"></div>
+                </span>
+                <div class="addtocart"><ons-button class="btn-addcart" ng-bind="LanguageEcom.ADD"></ons-button></div>
+                <!--<span class="product-item-menu">
+                    <i class="ion-android-more-vertical"></i>
+                </span>-->
+            </div>
+        </div>
+    </div>
+
+   <div class="ecommerce-header-panel"><!-- Sản phẩm mới -->
+        <span ng-bind="LanguageEcom.NEW_PRODUCT"></span>
+        <span ng-click="ShowListProduct(5)"><span ng-bind="LanguageEcom.VIEW_ALL" style="text-transform: none;">Xem tất cả</span> <i class="ion-ios-arrow-forward"></i></span>
+    </div>
+    <div class="ecommerce-list-feature-product"> 
+        <div class="ecommerce-product-item slide" ng-repeat="item in NewProducts"> <!-- product item-->
+            <div class="thumbnail thumbnail-item">
+                <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'"/>
+                 <span class="discount-icon" ng-if="item.ProDiscount > 0">
+                    <span ng-bind-template="{{item.ProDiscount}}%"></span>
+                    <span style="line-height:0;font-size:.7em">OFF</span>
+                </span>
+                <div class="additemtocart" ng-click="QuickBuy(item)">
+                    +    
+                </div>
+                <div ng-click="ShowDetailproduct(item)" class="touchpro">
+
+                </div>
+            </div>
+            <div class="product-name" ng-bind="item.ProName"></div>
+            <div>
+                 <span class="product-price">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+                </span>
+                <span class="product-old-price" ng-if="item.ProDiscount > 0 && item.PriceWithoutTax != null">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+                </span>
+            </div>
+            <div>
+                <span class="product-favorite-count">
+                     <div class="like-2"></div>
+                     <div ng-bind="item.ProPrefer"></div>
+                </span>
+                <span class="product-rate">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</ons-page>

@@ -1,0 +1,359 @@
+.page--page_bg__content {
+    top: 135px;
+}
+.page__background.page--login__background{
+    background-color:#202233;
+}
+/*.page--page_bg_main__content {
+    top: 135px;
+}*/
+
+
+/*.page-with-bottom-toolbar >page--swm__content
+{
+    bottom: 49px !important;
+        }*/
+
+
+.ecom-button-clearall {
+    height: initial;
+    font-size: initial;
+}
+
+@media screen and (min-width: 768px) and (max-width:1024px) {
+    .btn-continue-payment {
+        height: 100%;
+    }
+    .ecom-detailpro-content > div.name {
+        font-size: 40px;
+    }
+    .ecom-detailpro-content > div.price {
+        font-size: 40px;
+    }
+    .ecom-detail-btn-action {
+        padding: 0;
+        height: 100%;
+    }
+    div.page__content.page--bgecom__content {
+        bottom: 110px !important;
+    }
+    .row > .col-hafl i {
+        top: calc(60% - 5px);
+        font-size: 23px;
+    }
+    .ecom-button-clearall {
+        height: 100% !important;
+    }
+    .ecom-cartorder-item-right {
+        width: calc(80% - 5px);
+    }
+    .ecom-cartorder-item-left {
+        width: 15%;
+    }
+    .ecom-cartorder-item-right > div {
+        width: 100%;
+    }
+    .ecom-buttom-bar-cartoder {
+        height: 110px !important;
+    }
+    .btn-checkout {
+        height: 180%;
+    }
+    .ecom-price {
+        font-size: 30px;
+    }
+    .page--swm .toolbar__right {
+        line-height: 1;
+    }
+    .list-item-req {
+        margin-top: 10px;
+    }
+    .mk-menu-navibutton > .button:first-child {
+        width: 200px;
+        font-size: inherit;
+    }
+    .list__item {
+        height: 60px;
+    }
+    .mk-menu-navibutton > .button:last-child {
+        width: 200px;
+        font-size: inherit;
+    }
+    .wrap_form_request {
+        padding: 0 10px;
+    }
+    .mk-item-request >input {
+        font-size: 23px !important;
+        height: 60px !important;
+    }
+    .header-cate-item {
+        height: 5vw;
+        line-height: inherit;
+    }
+    .header-toolbar-cate {
+        font-size: 23px !important;
+    }
+    .cate-icon-sort-up {
+        top: -5px;
+        font-size: inherit;
+    }
+    .cate-icon-sort-down {
+        top: 9px;
+        font-size: inherit;
+    }
+    .mk-main-item-func > img {
+        width: 60px;
+        height: 60px;
+    }
+    .tab-bar__icon {
+        font-size: 35px;
+    }
+    .tab-bar__button {
+        height: 100%;
+        font-size: 18px;
+    }
+    .tab-bar__icon + .tab-bar__label {
+        font-size: inherit;
+    }
+   .page--swm__content {
+        font-size: 23px !important;
+    }
+    .page-with-bottom-toolbar > .page--swm__content {
+        bottom: 59px !important;
+    }
+    .page--page_bg__content {
+        top: 84px !important;
+    }
+    .mk-main-label-datetime {
+        font-size: 23px;
+    }
+    .mk-main-content-time {
+        padding: 0px 0 8px 0;
+    }
+    .page--bgecom__content {
+        top: 94px !important;
+        bottom: 110px !important;
+    }
+    .page[status-bar-fill] > .toolbar {
+        padding-top: 30px;
+        height: 59px;
+    }
+    .mk-main-icon-chart {
+        font-size: 35px;
+    }
+    .toolbar-button, .toolbar-button--outline, .toolbar-button--quiet {
+        font-size: 35px !important;
+    }
+    .ecom-cate-addcart {
+        width: 50px;
+        height: 50px;
+    }
+    .ecom-cate-addcart i {
+        font-size: 30px;
+    }
+    .mk-label-current {
+        font-size: 23px !important;
+        /*vertical-align: 8px;*/
+    }
+    .marginchart2 {
+        margin-top: -41px !important;
+    }
+    .item-sliding-menu {
+        font-size: inherit;
+        display: block;
+        height: 60px;
+        line-height: 60px !important;
+    }
+    .item-sliding-menu > span {
+        font-size: inherit;
+    }
+    .config-item {
+        padding: 10px 25px;
+    }
+    .config-header {
+        padding: 10px 25px;
+    }
+    .menu-main>.name {
+        font-size: 30px;
+    }
+    .menu-main>.email {
+        font-size: 20px;
+        opacity: 0.7;
+    }
+    .menu-main > .avatar {
+        width: 25vw;
+        height: 25vw;
+    }
+    .wrap-list-item-sliding-menu {
+        padding: 0 7%;
+        opacity: 1;
+    }
+    .item-sliding-menu > i {
+        font-size: 25px !important;
+        width: 35px !important;
+    }
+    .page--swm .bottom-bar {
+        height: 59px;
+    }
+    .location-btn {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .mk-main-content-temp {
+        vertical-align: 2px;
+    }
+    .mk-main-content-ph {
+        vertical-align: 2px;
+    }
+    .page--bgcate__content {
+        top: 154px !important;
+    }
+    .toolbar-cate {
+        height: 120px !important;
+    }
+    .page--bgcateblack__content {
+        top: 94px !important;
+    }
+    .text-input {
+        font-size: inherit !important;
+        height: 60px;
+    }
+    .page--swm .toolbar__title {
+        font-size: 23px;
+    }
+    ons-toolbar-button > ons-icon[icon*="ion-"] {
+        font-size: 35px !important;
+    }
+    .tab-bar {
+        height: 35px;
+    }
+    canvas#myChart {
+        height: calc(100%) !important;
+    }
+    .canvas-base {
+        height: 505px !important;
+    }
+    .button {
+        font-size: 23px;
+    }
+    .process-left-header {
+        padding-right: 5vw !important;
+    }
+    .ecom-cate-item {
+        height: auto !important;
+    }
+    .mk-main-weather-data {
+        top: 24px !important;
+        width: 65%;
+    }
+    .mk-main-content-sali-valuesali {
+        font-size: 8vw !important;
+    }
+    .mk-main-item-func {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 320px) and (max-height: 568px) {
+    .mk-main-label-datetime
+    {
+        vertical-align: -1px;
+        font-size: .9em;
+    }
+
+    .noti-group {
+        padding: 5px 10px;
+    }
+    .mk-main-item-func > img
+    {
+        width: 8vw;
+        height: 8vw;
+    }
+    .noti-content {
+        padding: 5px 5px 10px 5px;
+    }
+    .item-sliding-menu > span {
+        line-height: 2.5;
+    }
+   .page--swm__content {
+        font-size: 16px !important;
+    }
+    .ecom-cate-addcart {
+        width: 30px;
+        height: 30px;
+    }
+    .ecom-cate-addcart i {
+        font-size: 20px;
+    }
+    .mk-main-content-sali {
+        width: calc(100% - 10px);
+    }
+    .mk-main-content-time {
+       width: 100%;
+float: left;
+    }
+    .mk-label-current {
+        /*font-size: 16px !important;*/
+/*        text-transform: uppercase;*/
+    }
+    .marginchart2 {
+        margin-top: -41px !important;
+    }
+    .item-sliding-menu > i {
+        font-size: 25px !important;
+        width: 35px !important;
+        padding: 0;
+        line-height: 1.4;
+    }
+    .page--swm .bottom-bar {
+        height: 49px;
+    }
+    .location-btn {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .mk-main-content-temp {
+        vertical-align: 2px;
+    }
+    .mk-main-content-ph {
+        vertical-align: 2px;
+    }
+    .page--bgcate__content {
+        top: 94px !important;
+    }
+    .toolbar-cate {
+        height: 74px !important;
+    }
+    .page--bgcateblack__content {
+        top: 94px !important;
+    }
+    .page--swm .toolbar__title {
+        font-size: 15px;
+    }
+    ons-toolbar-button > ons-icon[icon*="ion-"] {
+        font-size: 20px;
+    }
+    /*.page {
+        font-size: 14px !important;
+    }*/
+    .tab-bar {
+        height: 35px;
+    }
+
+    .process-left-header {
+        padding-right: 5vw !important;
+    }
+    .ecom-cate-item {
+        height: 37vh !important;
+    }
+    .mk-main-weather-data {
+        top: 24px !important;
+    }
+    .mk-main-content-sali-valuesali {
+        font-size: 180% !important;
+    }
+    .mk-main-item-func {
+        padding: 5px;
+        font-size: 75%;
+    }
+}

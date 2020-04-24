@@ -1,0 +1,103 @@
+<ons-page id="mainshop.html" modifier="Ecommerce cate" ng-controller="mainshopctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            <span ng-bind="LanguageEcom.CHANNEL_SHOP"></span>
+        </div>
+        <div class="right">
+            <div ng-click="ShowCart()" style="transform: translateY(-50%);padding: 5px 10px;-webkit-transform: translateY(-50%);">
+                <div class="shopping-cart-icon"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+            </div>
+            <div ng-click="Account()" style="transform: translateY(-50%);padding: 5px 10px;left: unset;right: 5%;">
+                <div class="menu-icon-tool"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="search-div">
+        <div class="cateshopchanel">
+            <i class="ion-navicon-round"></i>
+        </div> <input type="text" placeholder="Nhập sản phẩm cần tìm" class="text-input extend-input-search">
+        <i class="ion-ios-search-strong"></i></div>
+    <div class="slide-cateimg">
+        <img id="imgads" src="ecommerce/img/ad01.png" />
+    </div>
+    <div class="header-mainshop"><span ng-bind="LanguageEcom.SALEOFF"></span>
+        <div style="
+    display:inline-block;
+    margin-left:10px;"><span class="icon-flashsale" ng-bind="Timer.Hour">01</span>:<span ng-bind="Timer.Minute" class="icon-flashsale" >40</span>:<span ng-bind="Timer.Second" class="icon-flashsale">50</span></div>
+        <div class="viewmore" ng-bind="LanguageEcom.VIEWMORE"></div>
+    </div>
+    <div mostsellproductslider class="content-1"></div>
+    <div ng-if="ListBrandFavorite.length>0" class="header-mainshop">
+        <span ng-bind="LanguageEcom.FAVORITE_BRAND"></span>
+    </div>
+    <div ng-if="ListBrandFavorite.length>0" style="background-color: rgba(1,1,1,.08);float:left;width:100%">
+    <div class="item-brand" ng-repeat="item in ListBrandFavorite">
+        <!-- product item-->
+        <div class="thumbnail" ng-click="ShowStore(item.CustomerCode)">
+            <img ng-src="{{ipImageEcommerce}}{{item.Avatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'" />
+        </div>
+        <!-- <div class="product-name" ng-bind="item.ProName"></div> -->
+    </div></div>
+    <!-- Danh sách các sản phẩm đề xuất -->
+    <div class="header-mainshop">
+        <span ng-bind="LanguageEcom.JUST_FOR_YOU"></span>
+    </div>
+    <div class="ecommerce-product-item" ng-repeat="item in ListProByShop">
+        <!-- product item-->
+        <div class="thumbnail thumbnail-item">
+            <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'" />
+            <span class="discount-icon" ng-if="item.ProDiscount > 0">
+                    <span ng-bind-template="{{item.ProDiscount}}%"></span>
+            <span style="line-height:0;font-size:.7em">OFF</span>
+            </span>
+            <div class="additemtocart" ng-click="QuickBuy(item)">
+                +
+            </div>
+            <div ng-click="ShowDetailproduct(item)" class="touchpro">
+
+            </div>
+        </div>
+        <div class="product-name" ng-bind="item.ProName"></div>
+        <div>
+            <span class="product-price">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+            </span>
+            <span class="product-old-price" ng-if="item.ProDiscount > 0 && item.PriceWithoutTax != null">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+            </span>
+        </div>
+        <div>
+            <span class="product-favorite-count">
+                     <div class="like-2"></div>
+                     <div ng-bind="item.ProPrefer"></div>
+                </span>
+            <span class="product-rate">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+            </span>
+        </div>
+    </div>
+
+    <ons-bottom-toolbar style="text-align:center">
+            <div style="height: calc(100% - 10px);padding: 5px">
+                <div ng-click="ShowAccount()" class="item-barcustom" style="float:left"><i class="user-toolbar"></i>
+                    <div ng-bind="LanguageEcom.ACCOUNT"></div>
+                </div>
+                <div ng-click="ShowInfo()" class="item-barcustom" ><i class="chatmessage-toolbar"></i>
+                    <div ng-bind="LanguageEcom.MESSAGE"></div>
+                </div>
+                <div ng-click="ShowInfo()" class="item-barcustom" style="float:left"><i class="info-toolbar"></i>
+                    <div ng-bind="LanguageEcom.NOTIFICATION"></div>
+                </div>
+                <div ng-click="ShowHome()" class="item-barcustom" style="float:right"><i class="home-toolbar"></i>
+                    <div ng-bind="LanguageEcom.HOME"></div>
+                </div>
+            </div>
+            <div id="btn-target" ng-click="RegisterShop()" class="circel-catemain" style="display:none"><i id="actionseller2" class="ion-plus-round"></i></div>
+            <div class="circel-around" style="display:none"></div>
+        </ons-bottom-toolbar>
+</ons-page>

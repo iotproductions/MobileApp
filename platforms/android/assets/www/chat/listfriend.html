@@ -1,0 +1,27 @@
+<ons-page ng-controller="listfriendctrl" modifier="page_bg">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageChat.FRIEND"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <ul id="users">
+        <li  ng-repeat="item in ListFriend" >
+            <div ng-click="GoToChat(item.Account,item.Avatar, item.FullName)" class="user-online-avatar">
+                <img  ng-src="{{ipImage}}{{item.Avatar}}" />
+                <span ng-if="item.Online == 1" class="online"></span>
+                <span ng-if="item.Online == 0" ></span>
+            </div>
+            <div ng-click="GoToChat(item.Account,item.Avatar, item.FullName)" class="user-online-name">
+                <span ng-bind="item.FullName"></span>
+                
+            </div> 
+             <span ng-click="DeleteFriend(item.Account,$event)" class="delete-friend-btn" ng-bind="LanguageChat.DEL_FRIEND"></span>
+        </li>
+    </ul>
+    <div class="no_feedback" ng-if="ListFriend.length == 0 " ng-bind="LanguageChat.NOT_FOUND_FRIEND"></div>
+</ons-page>

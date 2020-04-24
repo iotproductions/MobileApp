@@ -1,0 +1,68 @@
+<ons-page id="catemain.html" modifier="Ecommerce cate" ng-controller="catemainctrl">
+    <ons-toolbar modifier="Ecommerce cate">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            <span ng-bind="LanguageEcom.CHANNEL_SHOP"></span>
+        </div>
+        <div class="right">
+            <div ng-click="ShowCart()" style="transform: translateY(-50%);padding: 5px 10px;-webkit-transform: translateY(-50%);">
+                <div class="shopping-cart-icon"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+            </div>
+            <div ng-click="Account()" style="transform: translateY(-50%);padding: 5px 10px;left: unset;right: 5%;">
+                <div class="menu-icon-tool"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="search-div"> <input type="text" placeholder="Nhập sản phẩm cần tìm" class="text-input">
+        <i class="ion-ios-search-strong"></i></div>
+    <div class="slide-cateimg">
+        <!-- <img src="ecommerce/img/ad01.jpg"/> -->
+        <img id="imgads" src="ecommerce/img/ad01.png" />
+    </div>
+    <!-- <div class="title-cate">Phân loại sản phẩm</div> -->
+    <div class="navi-cate-main">
+        <!-- <div ng-click="ShowByIndex(0)" class="itemcatemain">
+            <span ng-bind="LanguageEcom.ALL"></span>
+            <div class="arrow"></div>
+        </div> -->
+        <div ng-click="ShowByIndex(0)" class="itemcatemain" ng-bind="LanguageEcom.PRODUCT_RYNAN">Sản phẩm RYNAN
+            <div class="arrow"></div>
+        </div>
+        <div class="itemcatemain" ng-click="ShowByIndex(1)" ng-bind="LanguageEcom.CHANEL_SELLER">Kênh người bán
+            <div class="arrow"></div>
+        </div>
+    </div>
+
+    <div ng-click="ShowByCate(item)" ng-repeat="item in CatData track by $index" class="item-cate">
+        <div ng-if="item.Color == 1" style="background: #f1f1f1;">
+            <img ng-src="{{ipImageEcommerce}}{{item.IconImage}}" src="{{ipImageEcommerce}}{{item.IconImage}}">
+            <div ng-bind="item.CatName">Phân bón thông minh</div>
+        </div>
+        <div ng-if="item.Color != 1">
+            <img ng-src="{{ipImageEcommerce}}{{item.IconImage}}" src="{{ipImageEcommerce}}{{item.IconImage}}">
+            <div ng-bind="item.CatName">Phân bón thông minh</div>
+        </div>
+    </div>
+    <ons-bottom-toolbar style="text-align:center">
+        <div style="height: calc(100% - 10px);padding: 5px">
+            <div ng-click="ShowAccount()" class="item-barcustom" style="float:left"><i class="user-toolbar"></i>
+                <div ng-bind="LanguageEcom.ACCOUNT"></div>
+            </div>
+            <div ng-click="ShowInfo()" class="item-barcustom"><i class="info-toolbar"></i>
+                <div ng-bind="LanguageEcom.NOTIFICATION"></div>
+            </div>
+            <div ng-click="ShowInfo()" class="item-barcustom" style="float:left"><i class="chatmessage-toolbar"></i>
+                <div ng-bind="LanguageEcom.MESSAGE"></div>
+            </div>
+            <div ng-click="ShowHome()" class="item-barcustom" style="float: right;"><i class="home-toolbar"></i>
+                <div ng-bind="LanguageEcom.HOME"></div>
+            </div>
+        </div>
+        <div id="btn-target" ng-click="RegisterShop()" class="circel-catemain" style="display: none"><i id="actionseller" class="ion-plus-round"></i></div>
+        <div class="circel-around"  style="display: none"></div>
+    </ons-bottom-toolbar>
+</ons-page>

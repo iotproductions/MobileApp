@@ -1,0 +1,32 @@
+<ons-page id="category.html"  modifier="Ecommerce cate" ng-controller="categoryctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.CATEGORY">
+            Danh mục
+        </div>
+        <div id="tabright-cate" class="right">
+                <div ng-click="ShowCart()" style="transform: translateY(-50%);padding: 5px 10px;-webkit-transform: translateY(-50%);">
+                    <div class="shopping-cart-icon"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+                </div>
+                <div ng-click="Account()" style="transform: translateY(-50%);padding: 5px 10px;left: unset;right: 5%;">
+                    <div class="menu-icon-tool"></div>
+                </div>
+            </div>
+    </ons-toolbar>
+    <ons-list  class="box-shadow-2">
+        <div class="header-category" ng-bind="Category.CatName"></div>
+        <ons-list-item tappable ng-repeat="item in ListCategory" ng-click="ShowCategory(item)">
+            <div class="left">
+                <img class="list-item__thumbnail" ng-src="{{ipImageEcommerce}}{{item.IconImage}}">
+            </div>
+            <div class="center" ng-bind="item.CatName">
+            </div>
+        </ons-list-item>
+    </ons-list>
+    <div ng-if="ListCategory.length ==0" notfound text="Loại mặt hàng này chưa được mở bán." icon="ion-ios-cart-outline"></div>
+   <!--<div loader></div> -->
+</ons-page>

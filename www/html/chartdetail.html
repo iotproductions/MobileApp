@@ -1,0 +1,102 @@
+<ons-page id="chartdetail.html" modifier="bgwaterdl swm phantich"  ng-controller="chartdetailctrl">
+     <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="Back()">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.ALYSIS_DATA">
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div name="lostconnect" class="lostconnect" id="chartdetail-lostconnect"></div>
+    <div id="chartdetail">
+        <div class="alysis-bottom">
+            <div class="alysis-item">
+                    <div class="lb" style="color: #27CFD5" ng-bind="TitleBeforeUse"></div>
+                    <div class="vl"><span  ng-bind="Data.BeforeIndex"></span> <span style="font-size:80%">m<sup>3</sup></span></div>
+            </div>
+            <div class="alysis-item">
+                    <div class="lb" style="color: #FFEB26" ng-bind="Language.TOTAL_USED"></div>
+                    <div class="vl">
+                        <span ng-bind="Data.SumInDate"></span> <span style="font-size:80%">m<sup>3</sup></span>
+                    </div>
+            </div>
+            <div class="alysis-item" style="width: auto">
+                <div class="lb" style="color: #FF5E26" ng-bind="Data.TietKiem"></div>
+                <div class="vl" ><span ng-bind="Data.ToTalSum"></span> <span style="font-size:80%">m<sup>3</sup></span></div>
+            </div>
+
+            <div ng-show="ShowOutRange" class="content-rori">
+                <div style="float:left"><i class="fa fa-exclamation-triangle"></i></div>
+                <div style="float:left">
+                        <div ng-bind="Language.MSS_SYSTEM_DETECTION_LEAK"></div>
+                        <div style="display: inline-block">
+                            <span ng-bind="Language.LOST"></span> 
+                            <span ng-bind="Data.LostData|number"></span> m<sup>3</sup> - {{Language.TOTAL}}: <span ng-bind="Data.MoneyLost|number"></span> <sup>đ  </sup> 
+                        </div>
+                </div>
+            </div>
+            <div ng-show="ShowInRange" class="content-rori">
+                <div ng-bind="MSS_SMART_WATER_NO_SIGN_OF_LEAK"></div>
+            </div>
+        </div>
+        <div class="alysis-content">
+            <div class="navigator" >
+               
+                <div class="mk-main-backnext">
+                        <ons-button ng-click="BackChart()" style="border-top-left-radius: 4px;" class="button btn-trans">
+                            <i style="font-size: 1.4em !important;" class="ion-arrow-left-a"></i>
+                        </ons-button>
+    
+                        <ons-button ng-click="CurrentChart('mk-main-label01','mk-main-active-label')" class="button btn-trans">
+                            <div class="mk-label-current" ng-bind="Language.CURRENT"></div>
+                        </ons-button>
+    
+                        <ons-button ng-click="NextChart()" style="border-top-right-radius: 4px;" class="button btn-trans">
+                            <i style="font-size: 1.4em !important;" class="ion-arrow-right-a"></i>
+                        </ons-button>
+    
+                    </div>
+                <div class="title-alysis-form">
+                    <div ng-click="ShowData('Y',0)" name="aly-label" class="label"><div ng-bind="Language.YEAR"></div></div>
+                    <div ng-click="ShowData('M',1)" name="aly-label" class="label"><div ng-bind="Language.MONTH"></div></div>
+                    <div ng-click="ShowData('D',2)" name="aly-label" class="label label-active"><div ng-bind="Language.DATE"></div></div>
+                </div>
+            </div>
+            <div class="header-alysis" ng-bind="Language.WATER_USE_DETAIL"></div>
+            <div class="header-alysis" style="float:right" ng-bind-template="{{DataCurrent}}"></div>
+            <div class="data" ng-repeat="item in Data.data | orderBy:'-Time'">
+                <div ng-if="$index==0 && item.Time<24" style="position: absolute;right: 5px;top:2px">
+                    <i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size: 110%;animation: fa-spin 5s infinite linear;-webkit-animation: fa-spin 5s infinite linear;"></i>
+                </div>
+                <div class="left-alysis">
+                    <div class="time-ali" ng-bind="item.TimeSend"></div>
+                    <div class="sc" ng-if="item.Time>=19 && TypeDate=='D'" ng-bind="Language.NIGHT"></div>
+                    <div class="sc" ng-if="item.Time>12 && item.Time<19 && TypeDate=='D'" ng-bind="Language.AFTERNOON"></div>
+                    <div class="sc" ng-if="item.Time<12 && TypeDate=='D'" ng-bind="Language.MORNING"></div>
+                    <div class="sc" ng-if="TypeDate=='M'" ng-bind="Language.DATE"></div>
+                    <div class="sc" ng-if="TypeDate=='Y'" ng-bind="Language.MONTH"></div>
+                </div>
+                <div ng-if="item.SumInTime==null" style="margin-top: 0px;line-height: 2;opacity: .4" class="right-alysis">
+                    <span ng-bind="Language.NOT_DATA_SEND"></span>
+                </div>
+                <div class="right-alysis" ng-if="item.SumInTime!==null">
+                    <i ng-show="item.ShowOutRange" class="fa fa-exclamation-circle"></i>
+                    <div>
+                        <span style="opacity: .8" ng-bind-template="{{Language.USE}}: "></span>
+                        <span ng-show="item.ShowInRange" style="color: beige;" ng-bind="item.SumInTime | number"></span>
+                        <span ng-show="item.ShowOutRange" style="color: indianred;" ng-bind="item.SumInTime | number"></span>
+                            <span>m<sup>3</sup></span>
+                    </div>
+                    <div ng-show="ShowInRange" ng-bind="Language.WARNING_CONTENT_ALERT"></div>
+                    <div ng-show="ShowOutRange" ng-bind="Language.WARNING_CONTENT_ALERT_2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <ons-bottom-toolbar class="bar-bottom">
+     <div toolbarmk></div>
+   </ons-bottom-toolbar>
+</ons-page>

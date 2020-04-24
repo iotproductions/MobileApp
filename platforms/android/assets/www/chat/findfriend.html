@@ -1,0 +1,44 @@
+<ons-page ng-controller="findfriendctrl" modifier="page_bg findfriend">
+    <ons-toolbar style="height: 90px;border-bottom: 0px solid rgba(1, 1, 1, .4);box-shadow: 0 0 0px 0 rgba(1, 1, 1, .4);">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageChat.FIND_FRIEND"></div>
+        <div class="right">
+        </div>
+        <div class="ip-find-friend">
+        <input ng-change="QuickSearch()" class="text-input input-base" placeholder="Tìm kiếm" type="text" ng-model="keysearch" />
+    </div>
+    </ons-toolbar>
+    <div style="padding: 15px;text-align: center" ng-show="IsShow" id="loading-friend">
+        <i class="fa fa-spinner fa-spin fa-2x fa-fw" style="font-size:20px"></i>
+    </div>
+    <ul class="list-friend-search">
+        <li ng-repeat="item in ListFriendSearch track by $index" id="li-find-{{$index}}">
+            <div class="find-friend-avatar">
+                <img src='../../img/avatar-default.png' ng-src="{{ipImage}}{{item.Avatar}}" />
+            </div>
+            <div class="find-friend-name">
+                <div>
+                    <div ng-bind="item.FullName"></div>
+                    <div ng-bind="item.Account" ng-if="item.Status!=1"></div>
+                    <div ng-bind="LanguageChat.SEND_REQUESTED" ng-if="item.Status==1"></div>
+                </div>
+                <div ng-if="item.Status==0" ng-click="Add(item.Account, $index)" class="send-request-friend">
+                    <div ng-bind="LanguageChat.ADD"></div>
+                </div> 
+                 <div ng-if="item.Status==1"  class="text-request-friend">
+                </div> 
+                 <div ng-if="item.Status==2" ng-click="Accept(item.Account, $index)"  class="send-request-friend">
+                    <div ng-bind="LanguageChat.OK"></div>
+                </div> 
+                 <div ng-if="item.Status==3"  class="text-request-friend">
+                    <div ng-bind="LanguageChat.FRIEND"></div>
+                </div> 
+            </div> 
+            
+        </li>
+    </ul>
+</ons-page>

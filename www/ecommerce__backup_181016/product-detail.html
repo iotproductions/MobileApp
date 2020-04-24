@@ -1,0 +1,413 @@
+<ons-page id="product-detail.html" modifier="Ecommerce product" ng-controller="productdetailctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back" class="font-large"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.PRODUCT"></div>
+        <div class="right" ng-click="ShowCart()">
+            <div class="shopping-cart-icon" style="right:5% !important"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+        </div>
+        <!-- <div class="tab-parent">
+            <div id="tabdetail" class="tab-detail">
+                <div ng-click="LoadTab(0)" id="tabde00" class="tab-item-detail active-item-tab">
+                    <div ng-bind="LanguageEcom.DETAIL"></div>
+                </div>
+                <div ng-click="LoadTab(1)" id="tabde01" class="tab-item-detail">
+                    <div ng-bind="LanguageEcom.DESCRIPTION"></div>
+                </div>
+                <div ng-click="LoadTab(2)" id="tabde02" class="tab-item-detail">
+                    <div ng-bind="LanguageEcom.RATE"></div>
+                </div>
+            </div>
+        </div> -->
+    </ons-toolbar>
+    <div class="div-detail" ontouchend="scrollloaddiscuss('product-detail.html',this)" ng-if="IndexTab==0">
+        <div class="image-detail-top">
+                <span class="discount-icon discount-large" ng-if="Data.ProDiscount > 0">
+                        <span ng-bind="LanguageEcom.REDUCED"></span> <span ng-bind="Data.ProDiscount"></span>%
+                    </span>
+            <ons-carousel auto-scroll-ratio="0.1" fullscreen swipeable auto-scroll id="carousel">
+                <ons-carousel-item style="text-align: center;" ng-repeat="item in Data.ListImage">
+                    <img class="image-slide-detail-pro" onerror="this.src='ecommerce/img/noimage.png'" ng-src="{{ipImageEcommerce}}{{item.LinkImage}}"
+                    />
+                </ons-carousel-item>
+                <div class="dot-carousel" ng-if="Data.ListImage.length>1">
+                    <div>
+                        <div class="dotitem" id="{{$index}}" ng-repeat="item in Data.ListImage">
+
+                        </div>
+                    </div>
+                </div>
+            </ons-carousel>
+        </div>
+        <div class="white-background" style="padding-top:10px">
+            <div class="detail-product-name">
+                <span ng-bind="Data.ProName"></span> 
+                <div class="eommerce-star-rating detail-product-rate" style="
+                float: left;width: 100%;text-align: left;">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(Data.Rate)" class="ng-binding"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>                <span style="
+                    color: #3B3B3B !important;font-size: .8em;opacity: .7;" ng-bind-template="({{Data.Rate}} {{LanguageEcom.RATE}})" class="ng-binding">4.2</span></div>
+            </div>
+            <div class="detail-product-price">
+                <div> <span class="price-old"><span ng-if="Data.ProDiscount > 0 && Data.PriceWithoutTax != null" ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceWithoutTax)"></span></span>
+                </div>
+                <span class="price"><span ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceDetail)"></span>đ</span>
+            </div>
+            
+            <!-- <div style="
+                float: right;
+                    padding-right: 15px;
+                    font-size: .9em;
+                    margin: 2px 0;">Trọng lượng: 5kg</div> -->
+
+            <!-- <div ng-if="Data.Unit!='COMBO'" class="detail-product-weight">
+                <div>
+                    <span class="label" ng-bind="LanguageEcom.WEIGHT"></span>: <span class="weight" ng-bind="Data.Weight"></span>
+                    <span class="unit" ng-bind="Data.Unit"></span>
+                </div>
+                <span class="price-old"><span ng-if="Data.ProDiscount > 0 && Data.PriceWithoutTax != null" ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceWithoutTax)"></span></span>
+            </div> -->
+            <div class="short-des" ng-if="Data.ProTitle.length > 0" ng-bind-html="Data.ProTitle"></div>
+            <div ng-if="Data.Unit!=null && Data.Unit !=''" class="title-weight" ng-bind-template="{{LanguageEcom.WEIGHT}} ({{Data.Unit}})">
+
+            </div>
+            <div ng-if="Data.ListProductExt.length>1" class="content-weight">
+                <div class="item-weight" ng-class="{'active': item == WeightSelected}" ng-click="SelectWeight(item)" ng-repeat="item in Data.ListProductExt"
+                    ng-bind-template="{{item.Weight}}{{item.Unit}}"></div>
+            </div>
+        </div>
+
+
+        <ons-list id="supplier" class="Supplier-li">
+            <!-- <ons-list-item ng-if="Data.ListProductExt.length > 1" ng-click="ShowModalSelectWeight()" modifier="chevron" tappable><span ng-bind="LanguageEcom.WEIGHT_OTHER"></span></ons-list-item> -->
+            <ons-list-item modifier="chevron" tappable>Cung cấp bởi: RYNAN AGRIFOODS</ons-list-item>
+        </ons-list>
+        <div class="Supplier-li white-background" ng-if="Data.ProProperties != null && Data.ProProperties.length > 0">
+            <div class="border-bottom-1" ng-repeat="item in Data.ProProperties">
+                <div class="flex-box" ng-repeat="(key , value) in  item">
+                    <div class="border-right-1 padding-10 product-properties-left" ng-bind="key"></div>
+                    <div class="padding-10 product-properties-right" ng-bind="value"></div>
+                </div>
+            </div>
+        </div>
+        <ons-list id="discuss" class="rate-li">
+            <div style="float: left;width: 100%;">
+                <div style="padding: 10px 10px;float: left;" ng-bind="LanguageEcom.DISCUSSION"></div>
+                <div ng-click="ShowDiscussion()" class="write-comment" ng-bind="LanguageEcom.ADD"></div>
+            </div>
+            <div>
+                <div class="item-discuss" ng-repeat="itemdis in DataDiscuss">
+                    <div class="left-discuss">
+                        <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{itemdis._idCustomer.Avatar}}" />
+                    </div>
+                    <div class="right-discuss">
+                        <div ng-bind="itemdis._idCustomer.CustomerName"></div>
+                        <div ng-bind="itemdis.Content"></div>
+                        <div>
+                            <a ng-click="ShowChild(itemdis._id)"><span ng-bind="itemdis.ListTop5Answer.length"></span> <span ng-bind="LanguageEcom.DISCUSSION"></span></a>
+                            <i class="ion-record"></i>
+                            <span>{{ConvertObject.ConvertDateToHour(itemdis.CreatedDate)}}</span>
+                            <!-- <i class="ion-record"></i> <a ng-click="ReplyMess(itemdis._id)" ng-bind="LanguageEcom.REPLY"></a> -->
+                        </div>
+                    </div>
+                    <div id="{{itemdis._id}}" style="display:none">
+                        <div style="float: left ;width: 100%" ng-repeat="child in itemdis.ListTop5Answer track by $index">
+                            <div class="right-discuss-child">
+                                <div class="left-discuss">
+                                    <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{child._idCustomer.Avatar}}" />
+                                </div>
+                                <div class="right-discuss">
+                                    <div ng-bind="child._idCustomer.CustomerName"></div>
+                                    <div ng-bind="child.Content"></div>
+                                    <div>
+                                        <span>{{ConvertObject.ConvertDateToHour(child.CreatedDate)}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-discuss view-all" ng-if="ViewMoreDiscuss==true">
+                    <a ng-click="ChangeToDiscuss()"><span ng-bind="LanguageEcom.VIEW_ALL"></span> +</a>
+                </div>
+            </div>
+        </ons-list>
+        <ons-list class="rate-li">
+            <div style="float: left;width: 100%;">
+                <div style="padding: 10px 10px;float: left;">
+                    <span ng-bind="LanguageEcom.RATE"></span> <span ng-if="Data.TotalRate>0" ng-bind-template="({{Data.TotalRate}})"></span>
+                </div>
+                <div style="padding:10px;float:right">
+                    <div class="eommerce-star-rating detail-product-rate">
+                        <span ng-bind-html="ConvertObject.ConvertShowStarRating(Data.Rate)"></span> <span style="color: #3B3B3B !important;font-size: .9em;"
+                            ng-bind="Data.Rate" ng-if="Data.Rate>0"></span></div>
+                </div>
+                <!-- <div ng-click="ShowModalRatingProduct()" class="write-comment" ng-bind="LanguageEcom.WRITE_REVIEW"></div> -->
+                <div class="content-rate-pro">
+                    <div class="item-rate" ng-repeat="itemrate in ListRateShort">
+                        <div> <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{itemrate._idCustomer.Avatar}}"
+                            />
+                        </div>
+                        <div>
+                            <div ng-bind="itemrate._idCustomer.CustomerName"></div>
+                            <div class="eommerce-star-rating">
+                                <div ng-bind-html="ConvertObject.ConvertShowStarRating(itemrate.Rate)"></div>
+                            </div>
+                            <div ng-bind="itemrate.Description"></div>
+                        </div>
+                    </div>
+                    <div ng-if="ListRateShort!=null && ListRateShort.length>0" class="viewallrate">
+                        <span ng-click="LoadTab(2)"><span ng-bind="LanguageEcom.VIEW_ALL"></span> +</span>
+                    </div>
+                    <div style="text-align: center;padding-bottom: 10px;font-size: .9em;opacity: .7" ng-if="ListRateShort==null || ListRateShort.length<1">
+                        <span ng-bind="LanguageEcom.NO_RATING_FOUND"></span>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div ratechart></div> -->
+        </ons-list>
+        <div class="wrap-relate-product padding-10" ng-if="RelateProducts.length > 0 && RelateProducts != null">
+            <div class="detail-product-header-li" ng-bind="LanguageEcom.RELATED_PRODUCTS"></div>
+            <div relateproductslider></div>
+        </div>
+    </div>
+    <!--Description  -->
+    <div ng-if="IndexTab==1" ng-bind-html="Data.ProDescription" class="paragraph white-background padding-10">
+    </div>
+    <div ng-if="IndexTab==2">
+        <div ratechart></div>
+        <div class="navi-rate-filter">
+            <div><span ng-bind="LanguageEcom.ALL"></span> (<span ng-bind="Data.TotalRate"></span>)</div>
+            <div> <i class="ion-image"></i> 5 </div>
+            <div><i class="ion-android-star"></i></div>
+            <div><i class="ion-android-star"></i><i class="ion-android-star"></i></div>
+            <div><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div>
+            <div><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i></div>
+            <div><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i><i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+            </div>
+        </div>
+        <div class="header-rate-comment"><span ng-bind="LanguageEcom.RATE"></span> & <span ng-bind="LanguageEcom.COMMENT"></span></div>
+        <div ng-if="ListRate != null && ListRate.length > 0" class="list-rate-comment">
+            <div ng-repeat="comment in ListRate" class="ecommerce-item-comment">
+                <div class="ecommerce-item-comment-avatar">
+                    <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{comment._idCustomer.Avatar}}" />
+                </div>
+                <div class="ecommerce-item-comment-detail">
+                    <div>
+                        <span class="ecommerce-item-comment-customer-name" ng-bind="comment._idCustomer.CustomerName"></span>
+                        <!--<i ng-if="comment.BoughtFlag == 1" class="ion-checkmark-circled rate-verify-icon"></i>-->
+                        <span class="ecommerce-item-comment-date" ng-bind="comment.DateCreate | date:'HH:mm dd/MM/yyyy'"></span>
+                    </div>
+                    <div class="product-rating" ng-bind-html="ConvertObject.ConvertShowStarRating(comment.Rate)"></div>
+                    <div class="ecommerce-item-comment-content" ng-bind="comment.Description"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div ng-if="ListRate  == null || ListRate.length == 0" notfound text="{{LanguageEcom.NO_RATING_FOUND}}" icon="ion-alert"></div> -->
+    </div>
+    <ons-bottom-toolbar id="bottombar" modifier="ecommerce">
+        <!-- Bottom tabbar -->
+        <div class="detail-product-tabbar" ng-if="IndexTab==0">
+            <div ng-click="ShareSocial()">
+                <div style="position:relative" class="share-icon">
+                    <!-- <span class="number-cart-item"  ng-bind="Cart.NumberCartItem" ng-if="Cart.NumberCartItem > 0"></span> -->
+                </div>
+                <div ng-bind="LanguageEcom.SHARE"></div>
+            </div>
+            <div ng-click="AddFavorite()">
+                <div class="like-2 add-favorite" ng-class="{'active': Data.FavoriteProduct == true}"></div>
+                <div ng-bind="LanguageEcom.FAVORITE"></div>
+            </div>
+            <div ng-click="ShowModalAddToCart()">
+                <span ng-bind="LanguageEcom.BUY"></span>
+                <ons-ripple color="rgba(255,255,255,0.3)" background="rgba(255,255,255,0.2)"></ons-ripple>
+            </div>
+        </div>
+        <div class="detail-product-tabbar" ng-if="IndexTab==3">
+            <input type="text" class="text-input" />
+        </div>
+    </ons-bottom-toolbar>
+    <ons-modal var="ModalAddToCart" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalAddToCart()"></div>
+        <div class="white-background fixed-bottom">
+            <div class="flex-box border-bottom-1 add-to-cart-panel border-bottom-1">
+                <div class="thumbnail">
+                    <img ng-src="{{ipImageEcommerce}}{{Data.LinkAvatar}}" />
+                </div>
+                <div class="info">
+                    <div class="full-width">
+                        <div class="name-product" ng-bind="Data.ProName"></div>
+                        <div>
+                            <span class="product-price">
+                               <span id="currency" ng-bind="LanguageEcom.CURRENCY"></span>
+                            <span ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceDetail)"></span>
+                            </span> /
+                            <span class="weight" ng-bind="Data.Weight"></span><span class="unit" ng-bind="Data.Unit"></span>
+                        </div>
+                    </div>
+                    <div class="add-to-cart-quantity-panel">
+                        <div ng-bind="LanguageEcom.QUANTITY"></div>
+                        <div class="group-quantity" style="float:left">
+                            <ons-button class="btnquantity button" ng-click="Minus()" modifier="quiet">
+                                -
+                            </ons-button>
+                            <input type="number" ng-change="CheckNumber(Quantity)" ng-model="Quantity" class="input-quantity">
+                            <ons-button class="btnquantity button" ng-click="Plus()" modifier="quiet">
+                                +
+                            </ons-button>
+                        </div>
+                    </div>
+                </div>
+                <ons-button class="close-button close-btn" ng-click="HideModalAddToCart()"></ons-button>
+            </div>
+            <!-- <div class="add-to-cart-quantity-panel">
+                <div ng-bind="LanguageEcom.QUANTITY"></div>
+                <div class="group-quantity" style="float:left">
+                    <ons-button class="btnquantity button" ng-click="Minus()" modifier="quiet">
+                        -
+                    </ons-button>
+                    <input type="number" ng-change="CheckNumber(Quantity)" ng-model="Quantity" class="input-quantity">
+                    <ons-button class="btnquantity button" ng-click="Plus()" modifier="quiet">
+                        +
+                    </ons-button>
+                </div>
+            </div> -->
+            <ons-button ng-click="AddToCart()" modifier="large ecommerce-main full-padding" ng-bind="LanguageEcom.ADD_TO_CART"></ons-button>
+        </div>
+    </ons-modal>
+
+    <ons-modal var="ModalSelectWeight" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalSelectWeight()"></div>
+        <div class="white-background fixed-bottom">
+            <div class="flex-box border-bottom-1 add-to-cart-panel border-bottom-1" style="position:relative">
+                <div class="thumbnail">
+                    <img ng-src="{{ipImageEcommerce}}{{Data.LinkAvatar}}" />
+                </div>
+                <div class="info">
+                    <div class="middle full-width">
+                        <div class="name-product" ng-bind="Data.ProName"></div>
+                        <div>
+                            <span class="product-price">
+                                <span ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceDetail)"></span>đ
+                            </span> /
+                            <span class="weight" ng-bind="Data.Weight"></span><span class="unit" ng-bind="Data.Unit"></span>
+                        </div>
+                    </div>
+                </div>
+                <ons-button class="close-button close-btn" ng-click="HideModalSelectWeight()">
+
+                </ons-button>
+            </div>
+            <div class="select-weight-panel border-bottom-1">
+                <div style="padding:10px 0; color:#000000" ng-bind="LanguageEcom.SELECT_QUANTITY"></div>
+                <span class="item-weight transition-03s" ng-class="{'active': item == WeightSelected}" ng-click="SelectWeight(item)" ng-repeat="item in Data.ListProductExt"
+                    ng-bind-template="{{item.Weight}}{{item.Unit}}"></span>
+            </div>
+            <div class="add-to-cart-quantity-panel">
+                <div ng-bind="LanguageEcom.QUANTITY"></div>
+                <ons-button class="font-size-20" modifier="quiet" ng-click="Minus()">
+                    <i class="ion-ios-minus-outline minus-quantity"></i>
+                </ons-button>
+                <input type="number" ng-change="CheckNumber(Quantity)" class="input-quantity" ng-model="Quantity" />
+                <ons-button class="font-size-20" modifier="quiet" ng-click="Plus()">
+                    <i class="ion-ios-plus-outline plus-quantity"></i>
+                </ons-button>
+            </div>
+            <ons-button ng-click="AddToCart()" modifier="large ecommerce-main" ng-bind="LanguageEcom.ADD_TO_CART"></ons-button>
+        </div>
+    </ons-modal>
+    <!--Modal nhập reply tin discussion  -->
+    <ons-modal var="ModalReplyDiscuss" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideReplyDiscuss()"></div>
+        <div class="white-background fixed-bottom" style="max-height: 50%;width: calc(100%); text-align:left !important; color:#000000 !important; padding-top:20px; line-height:1.5">
+            <div class="white-background content-discuss">
+                <div class="item-discuss" ng-repeat="itemdis in DataFilterDis">
+                    <div class="left-discuss">
+                        <img ng-src="{{ipImageEcommerce}}{{itemdis._idCustomer.Avatar}}" />
+                    </div>
+                    <div class="right-discuss">
+                        <div ng-bind="itemdis._idCustomer.CustomerName"></div>
+                        <div ng-bind="itemdis.Content"></div>
+                        <div>
+                            <span>8 giờ trước</span>
+                            <a href="#tabde03" ng-click="ReplyMess(itemdis._id)" ng-bind="LanguageEcom.REPLY"></a>
+                        </div>
+                    </div>
+                    <div style="float: left ;width: 100%;" ng-repeat="child in itemdis.ListTop5Answer">
+                        <div class="right-discuss-child">
+                            <div class="left-discuss">
+                                <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{child._idCustomer.Avatar}}" />
+                            </div>
+                            <div class="right-discuss">
+                                <div ng-bind="child._idCustomer.CustomerName"></div>
+                                <div ng-bind="child.Content"></div>
+                                <div>
+                                    <span>8 giờ trước</span>
+                                    <!-- <a href="#tabde03" ng-click="ReplyMess(child._id)" ng-bind="LanguageEcom.REPLY"></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="replyinput">
+                <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{Avatar}}" />
+                <input type="text" ng-model="ReplyCmtText" value="{{ReplyCmtText}}" placeholder="{{LanguageEcom.ENTER_COMMENT}}" class="text-input"
+                />
+                <a ng-if="ReplyCmtText!=''" ng-click="ReplyDiscuss()"><span ng-bind="LanguageEcom.SEND"></span></a>
+            </div>
+            <ons-button class="close-button close-btn" ng-click="HideReplyDiscuss()">
+
+            </ons-button>
+        </div>
+    </ons-modal>
+    <!--Modal nhập discussion  -->
+    <ons-modal var="ModalDiscussionProduct" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideDiscuss()"></div>
+        <div class="white-background padding-10 fixed-bottom" style="width: calc(100% - 20px); text-align:left !important; color:#000000 !important; padding-top:20px; line-height:1.5">
+            <div class="white-background" style="padding:10px 0">
+                <span ng-bind="LanguageEcom.DISCUSSION"></span><span>:</span>
+                <div class="comment-rate">
+                    <textarea ng-model="Comment" class="textarea full-width" rows="3" placeholder="{{LanguageEcom.ENTER_COMMENT}}"></textarea>
+                </div>
+            </div>
+            <ons-button class="close-button close-btn" ng-click="HideDiscuss()">
+
+            </ons-button>
+            <ons-button ng-click="SendDiscuss()" modifier="large ecommerce-main" ng-bind="LanguageEcom.SEND"></ons-button>
+        </div>
+    </ons-modal>
+
+
+    <ons-modal var="ModalRatingProduct" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="HideModalRatingProduct()"></div>
+        <div class="white-background padding-10 fixed-bottom" style="width: calc(100% - 20px); text-align:left !important; color:#000000 !important; padding-top:20px; line-height:1.5">
+            <div class="white-background">
+                <span ng-bind="LanguageEcom.QUALITY"></span><span>:</span>
+                <span class="rating">
+                                <input ng-model="Rating" value="5" type="radio" id="star5" name="rating"  /><label class = "full" for="star5" title="5 sao"></label>
+                                <input ng-model="Rating" value="4" type="radio" id="star4" name="rating"  /><label class = "full" for="star4" title="4 sao"></label>
+                                <input ng-model="Rating" value="3" type="radio" id="star3" name="rating" /><label class = "full" for="star3" title="3 sao"></label>
+                                <input ng-model="Rating" value="2" type="radio" id="star2" name="rating" /><label class = "full" for="star2" title="2 sao"></label>
+                                <input ng-model="Rating" value="1" type="radio" id="star1" name="rating"  /><label class = "full" for="star1" title="1 sao"></label>
+                        </span>
+            </div>
+            <div class="white-background" style="padding:10px 0">
+                <span ng-bind="LanguageEcom.COMMENT"></span><span>:</span>
+                <div class="comment-rate">
+                    <textarea ng-model="Comment" class="textarea full-width" rows="3" placeholder="{{LanguageEcom.ENTER_COMMENT}}"></textarea>
+                </div>
+            </div>
+            <ons-button class="close-button close-btn" ng-click="HideModalRatingProduct()">
+
+            </ons-button>
+            <ons-button ng-click="SendRating()" modifier="large ecommerce-main" ng-bind="LanguageEcom.SEND_RATE"></ons-button>
+        </div>
+    </ons-modal>
+</ons-page>

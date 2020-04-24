@@ -1,0 +1,38 @@
+<ons-page id="changelanguage.html" modifier="page_bg swm" ng-controller="ChangeLanguageCtrl">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.LANGUAGE_CHANGE"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div>
+        <ons-list style="background:transparent">
+            <ons-list-item ng-click="ChangeLanguage('vn')">
+                <div class="left">
+                    <img class="list-item__thumbnail" src="img/vn.png">
+                </div>
+                <div class="center">
+                    Tiếng Việt
+                </div>
+                <div class="right">
+                        <ons-radio name="language" input-id="language-vn"  value="vn" ng-model="LCode" ng-checked="LCode == 'vn'"></ons-radio>
+                </div>
+            </ons-list-item>
+            <ons-list-item ng-click="ChangeLanguage('en')"> 
+                <div class="left">
+                    <img class="list-item__thumbnail" src="img/us.png" style="border-radius:180px">
+                </div>
+                <div class="center">
+                    English
+                </div>
+                <div class="right">
+                        <ons-radio name="language" input-id="language-en"  value="en" ng-model="LCode" ng-checked="LCode == 'en'"></ons-radio>
+                </div>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-page>

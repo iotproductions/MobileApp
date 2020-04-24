@@ -1,0 +1,35 @@
+<ons-page id="rate-order.html" modifier="Ecommerce" ng-controller="rateorderctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.RATE">
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div class="padding-10 white-background box-shadow-2">
+        <div class="item" style="border-bottom: .5px solid lightgray;" ng-repeat="itemchild in item.OrderDetail track by $index">
+            <div class="thumbnail">
+                <img ng-src="{{ipImageEcommerce}}{{itemchild._Product.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'"
+                />
+            </div>
+            <div class="info">
+                <div class="full-width">
+                    <div class="name-product">
+                        <span ng-bind-template="{{itemchild._Product.ProName}}"></span> <span>({{itemchild._BarCode.Weight}}{{itemchild._BarCode.Unit}})</span>
+                    </div>
+                    <div style="float: left;width: 100%;">
+                        <div class="product-price">
+                            <span ng-bind="ConvertObject.ConvertNumberFormat(itemchild.ProductPrice)"></span>đ
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ons-page>

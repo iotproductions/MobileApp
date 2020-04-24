@@ -1,0 +1,29 @@
+<ons-page id="whosale.html" modifier="Ecommerce" ng-controller="whosalectrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.INPUT_RANGE_PRICE"></div>
+        <div class="right">
+            <ons-toolbar-button style="color: orange;" ng-click="Save()">
+                    <div ng-bind="LanguageEcom.SAVE"></div>
+                </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+    <div class="item-price-whosale" style="background-color: white;border-bottom:1px solid rgba(1, 1, 1, .2);">
+        <span ng-bind="LanguageEcom.HEADER_PRICE_WHOSALE"></span>
+    </div>
+    <div class="item-price-whosale" ng-repeat="item in ListPrice">
+        <div class="del-whosale-price"><i ng-click="RemovePrice($index)" class="ion-ios-close-outline" style="color:red"></i></div>
+        <div class="quantity-whosale">
+            <input ng-model="item.LimitCount" ng-value="item.LimitCount" type="number" placeholder="{{LanguageEcom.QUANTITY}}" class="text-input" />
+        <div class="char-gather">></div>
+    </div>
+        <div class="price-whosale"><input type="number" ng-model="item.Price" ng-value="item.Price" placeholder="{{LanguageEcom.ENTER_PRICE}}" class="text-input" /></div>
+    </div>
+    <div style="float: left;width: 100%;margin-top: .5px;border-bottom: 1px solid rgba(1, 1, 1, .1);">
+        <button ng-click="AddRangePrice()" class="button btnaddrange-price" type="button" ng-bind="LanguageEcom.ADD_RANGE_PRICE"></button>
+    </div>
+</ons-page>

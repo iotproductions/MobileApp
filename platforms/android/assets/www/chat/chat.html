@@ -1,0 +1,27 @@
+<ons-tabbar ng-controller="chatctrl" id="chat-tab-bar" class="chat-tab-bar">
+  <ons-tab ng-click="LoadTabbar('chat/chatlog.html')" page="chat/chatlog.html" active="true">
+    <!--<ons-icon icon="ion-chatbubble-working"></ons-icon> -->
+    <img src="chat/img/Tin_nhan.png"/>
+    <span id="number-new-mess" class="icon-count-friend-request" ng-if="NumberNewMess > 0" ng-bind="NumberNewMess"></span> 
+    </br >
+    <span style="font-size: 14px" ng-bind="LanguageChat.MESSAGE"></span>
+  </ons-tab>
+  <ons-tab ng-click="LoadTabbar('chat/listfriend.html')" page="chat/listfriend.html" >
+    <!--<ons-icon icon="ion-ios-people"></ons-icon> </br >-->
+    <img src="chat/img/Ban_be.png"/>
+    </br >
+    <span style="font-size: 14px" ng-bind="LanguageChat.FRIEND"></span>
+  </ons-tab>
+  <ons-tab ng-click="LoadTabbar('chat/findfriend.html')" page="chat/findfriend.html"   >
+    <!--<ons-icon icon="ion-ios-search-strong"></ons-icon> </br >-->
+    <img src="chat/img/Tim_ban.png"/></br >
+    <span style="font-size: 14px" ng-bind="LanguageChat.FIND_FRIEND"></span>
+  </ons-tab>
+  <ons-tab id="add-friend-tabbar" ng-click="LoadTabbar('chat/requestfriend.html')" page="chat/requestfriend.html"   >
+    <!--<ons-icon id="icon-add-friend" icon="ion-person-add"></ons-icon>-->
+    <img src="chat/img/Them_ban.png"/>
+    <span class="notification" ng-if="NumberNewRequest > 0" ng-bind="NumberNewRequest"></span> 
+    </br >
+    <span style="font-size: 14px" ng-bind="LanguageChat.INVITE"></span>
+  </ons-tab>
+</ons-tabbar>

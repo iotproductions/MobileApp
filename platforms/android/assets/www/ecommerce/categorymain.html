@@ -1,0 +1,26 @@
+<ons-page   modifier="Ecommerce" ng-controller="categorymainctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.CATEGORY">
+            Danh mục
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <ons-list  class="box-shadow-2">
+        <div class="header-category" ng-bind="Category.CatName"></div>
+        <ons-list-item tappable ng-repeat="item in ListCategory" ng-click="ShowCategory(item)">
+            <div class="left">
+                <img class="list-item__thumbnail" ng-src="{{ipImageEcommerce}}{{item.IconImage}}">
+            </div>
+            <div class="center" ng-bind="item.CatName">
+            </div>
+        </ons-list-item>
+    </ons-list>
+   
+   <!--<div loader></div> -->
+</ons-page>

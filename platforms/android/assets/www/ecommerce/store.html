@@ -1,0 +1,86 @@
+<ons-page modifier="Ecommerce seller cate NoneTransparent" ng-controller="storectrl">
+    <ons-toolbar modifier="Ecommerce NoneTransparent" style="background-color: transparent !important ;">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center"></div>
+        <div class="right">
+            <div ng-click="ShowCart()" style="left:0% !important;transform: translateY(-50%);padding: 5px 10px;-webkit-transform: translateY(-50%);">
+                <div class="shopping-cart-icon"><span ng-if="Cart.NumberCartItem>0" class="notification" ng-bind="Cart.NumberCartItem"></span></div>
+            </div>
+            <div ng-click="Account()" style="transform: translateY(-50%);padding: 5px 10px;left: unset;right: 5%;">
+                <div class="menu-icon-tool"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+   <div class="top-store" style="background-image:url({{ipImageEcommerce}}{{Data.CoverAvatar}});background-size: cover;">
+        <img src="ecommerce/img/best-seller.png" class="img-sellerbest" />
+    <div class="content-store">
+        <img ng-src="{{ipImageEcommerce}}{{Data.Avatar}}"/>
+        <div>
+            <div style="float:left;text-shadow: 0 0 2px black" ng-bind="Data.BrandName"></div>
+            <div style="float: left;text-shadow: 0 0 2px black;
+            font-size: .9em;" ng-bind="Data.ContactName"></div>
+        </div>
+    </div>
+</div> 
+<div class="navi-seller">
+    <div>30<div style="
+font-size: .8em;opacity:.6" ng-bind="LanguageEcom.PRODUCT"></div></div><div>150<div style="
+font-size: .8em;opacity:.6" ng-bind="LanguageEcom.ORDERS"></div></div>
+<div>99%<div style="
+font-size: .8em;opacity:.6" ng-bind="LanguageEcom.FEEDBACK"></div></div>
+<div style="width: 15%"><div></div></div>
+</div>
+<div class="header-seller-info">
+    <div>
+        <span ng-bind="LanguageEcom.SHOPINFO"></span>
+        <div class="desc-seller" ng-bind="Data.ShoftIntroduce"></div> 
+    </div>
+</div>
+<div class="header-seller-info">
+        <div style="
+        font-size: .9em;"><span ng-bind="LanguageEcom.RATING"></span>
+         : 5.0 <i style="color:orange;" class="ion-android-star"></i> (400 đánh giá)</div>
+</div>
+<div ng-if="DataPro.length>0" class="header-seller-info">
+    <div ng-bind="LanguageEcom.TOP_BEST_SELLER"></div>
+</div>
+<div class="ecommerce-product-item" ng-repeat="item in DataPro">
+        <!-- product item-->
+        <div class="thumbnail thumbnail-item">
+            <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" onerror="this.src='ecommerce/img/icon-no-image.png'" />
+            <span class="discount-icon" ng-if="item.ProDiscount > 0">
+                    <span ng-bind-template="{{item.ProDiscount}}%"></span>
+            <span style="line-height:0;font-size:.7em">OFF</span>
+            </span>
+            <div class="additemtocart" ng-click="QuickBuy(item)">
+                +
+            </div>
+            <div ng-click="Edit(item)" class="touchpro">
+                <!-- ShowDetailproduct(item) -->
+
+            </div>
+        </div>
+        <div class="product-name" ng-bind="item.ProName"></div>
+        <div>
+            <span class="product-price">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+            </span>
+            <span class="product-old-price" ng-if="item.ProDiscount > 0 && item.PriceWithoutTax != null">
+                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+            </span>
+        </div>
+        <div>
+            <span class="product-favorite-count">
+                     <div class="like-2"></div>
+                     <div ng-bind="item.ProPrefer"></div>
+                </span>
+            <span class="product-rate">
+                    <span ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+            </span>
+        </div>
+    </div>
+</ons-page>

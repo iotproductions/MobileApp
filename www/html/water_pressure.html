@@ -1,0 +1,119 @@
+<ons-page id="water_pressure.html" modifier="page_bg swm pressure" ng-controller="water_pressurectrl">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.WATER_PRESSURE"></div>
+        <div class="right"></div>
+    </ons-toolbar>
+    <div id="main_lost" style="display: none" lostconnect></div>
+    <div class="main_pressure">
+        <div class="navimain">
+            <div class="water">
+                <div>
+                    <div style="margin-top:8px;" ng-bind="Language.CURRENT_INDEX"></div>
+                    <div class="mk-main-content-sali-valuesali">
+                        <span ng-bind="NewIndex.PressureValue"></span>
+                        <span>bar</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="margin-top:8px;text-align: left;margin-left: 10px" ng-bind="Language.PIN_REMAIN"></div>
+                    <div class="mk-main-content-sali-valuesali" style="color:yellow;opacity: .8">
+                        <span ng-bind="NewIndex.PinStatus"></span>%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mk-main-content-sali">
+            <div class="mk-main-content-time"> 
+                <div class="mk-main-backnext">
+                    <ons-button ng-click="BackChart()" style="border-top-left-radius: 4px;" class="button btn-trans">
+                        <i style="font-size: 1.4em !important;" class="ion-arrow-left-a"></i>
+                    </ons-button>
+
+                    <ons-button ng-click="CurrentChart('mk-main-label01','mk-main-active-label')" class="button btn-trans">
+                        <div class="mk-label-current" ng-bind="Language.CURRENT"></div>
+                    </ons-button>
+
+                    <ons-button ng-click="NextChart()" style="border-top-right-radius: 4px;" class="button btn-trans">
+                        <i style="font-size: 1.4em !important;" class="ion-arrow-right-a"></i>
+                    </ons-button>
+
+                </div>
+                <div class="mk-main-datetime">
+                    <ons-button class="button btn-trans" ng-click="SetTypeChartDate('Y')">
+                        <div ng-class="{'mk-main-active-label' : TypeChartDate =='Y'}" class="mk-main-label-datetime" ng-bind="Language.YEAR"></div>
+                    </ons-button>
+                    <ons-button class="button btn-trans" ng-click="SetTypeChartDate('M')">
+                        <div ng-class="{'mk-main-active-label' : TypeChartDate =='M'}" class="mk-main-label-datetime" ng-bind="Language.MONTH"></div>
+                    </ons-button>
+                    
+                    <ons-button class="button btn-trans" ng-click="SetTypeChartDate('D')">
+                        <div ng-class="{'mk-main-active-label' : TypeChartDate =='D'}" class="mk-main-label-datetime" ng-bind="Language.DATE"></div>
+                    </ons-button>
+                </div>
+            </div>
+            <div class="mk-title-chart">
+                <div class="mk-title-chart-left" ng-bind="Language.CHART_WATER_PRESSURE"></div>
+                <div class="mk-title-chart-right" ng-bind="ChartTitle"></div>
+            </div>
+
+            <div style="position:relative" class="canvas-base">
+                <!-- <div style="padding-top:5px"> -->
+                    <canvas id="chart-pressure"></canvas>
+                    <span class="label-no-data-chart-pressure" ng-bind="Language.NO_DATA_PRESSURE"></span>
+                <!-- </div> -->
+
+                <div class="title-bottom-chart-pressure">
+                    <div class="left">
+                        <span></span>
+                        <span ng-bind="Language.DATA_WATER_PRESSURE"></span>
+                    </div>
+                    <div class="right">
+                        <span ng-if="TypeChartDate == 'D'"  ng-bind="Language.HOUR"></span>
+                        <span ng-if="TypeChartDate == 'M'"  ng-bind="Language.DATE"></span>
+                        <span ng-if="TypeChartDate == 'Y'"  ng-bind="Language.MONTH"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swm-bottom-water">
+            <div>
+                <div class="mk-main-item-func transition-03s" ng-click="SetLockValveWater()">
+                    <img ng-if="LockValve =='O' || LockValve == '' || LockValve =='PC'" id="img-lock-water" src="img/Khoa_nuoc1.png" />
+                    <img ng-if="LockValve =='C' || LockValve =='PO'" id="img-lock-water" src="img/Khoa_nuoc.png" />
+                    <div id="label-lock-water">
+                        <span ng-if="LockValve =='O'" ng-bind="Language.LOCK_WATER_2"></span>
+                        <span ng-if="LockValve =='C'" ng-bind="Language.LOCK_WATER"></span>
+                        <span ng-if="LockValve =='PO'" ng-bind="Language.OPENING"></span>
+                        <span ng-if="LockValve =='PC'" ng-bind="Language.LOCKING"></span>
+                        <span ng-if="LockValve ==''" ng-bind="Language.NO_VALVE"></span>
+                    </div>
+                </div>
+                <div ng-if="Profile.UserName != 'ChuMyCus'" class="mk-main-item-func transition-03s" style="margin-left: 0px !important"
+                    onclick="Setting()">
+                    <img src="img/settings_main.png" />
+                    <div ng-bind="Language.SETTING"></div>
+                </div>
+                <div ng-if="Profile.UserName == 'ChuMyCus'" class="mk-main-item-func transition-03s" style="margin-left: 0px !important"
+                    onclick="ShowShopping()">
+                    <img src="img/icon-shop.png" />
+                    <div ng-bind="Language.SHOPPING"></div>
+                </div>
+                
+                <div class="mk-main-item-func transition-03s" style="margin-left: 0px !important"
+                    onclick="ShowWater()">
+                    <img id="adsimg" src="img/drop-4.png" />
+                    <div ng-bind="Language.WATER_SH"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+    </ons-bottom-toolbar>
+</ons-page>

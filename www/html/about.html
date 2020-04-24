@@ -1,0 +1,35 @@
+<ons-page modifier="page_bg swm" ng-controller="aboutctrl">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="ion-ios-arrow-back"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.INFO_APP" style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+        </div>
+        <div class="right">
+
+        </div>
+    </ons-toolbar>
+    <div name="lostconnect" class="lostconnect" id="about-lostconnect"></div>
+    <div style="padding:10px;">
+        <div class="about-list">
+            <div>
+                <span ng-bind="Language.APPLICATION"></span> <span ng-bind="Language.SMART_WATER_METER"></span>
+            </div>
+            <div>
+                <span ng-bind="Language.VERSION"></span> <span  ng-bind="InstalledVersion"></span>
+            </div>
+           
+        </div>
+    </div>
+    <div class="company-info">
+        <div>
+            <img style="max-width:150px" src="img/logo.png" />
+        </div>
+        <div>
+            <span ng-bind="Language.COMPANY_NAME"></span> <br />
+            <span ng-bind="Language.COMPANY_ADDRESS"></span>
+        </div>
+    </div>
+</ons-page>

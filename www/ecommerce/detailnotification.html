@@ -1,0 +1,20 @@
+<ons-page modifier="Ecommerce" ng-controller="DetailEcommerceNotificationCtrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="fa fa-chevron-left"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.NOTIFICATION"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+     <div class="padding-10 box-shadow-2 white-background">
+        <div class="page-title" ng-bind="Data.Title"></div>
+        <div class="page-date">
+            <span ng-bind="Language.DAY"></span>
+            <span  ng-bind="Data.LastUpdate | date:'dd/MM/yyyy'"></span>
+        </div>
+        <div class="page-content" ng-bind-html="Data.Content"></div>
+    </div>
+</ons-page>

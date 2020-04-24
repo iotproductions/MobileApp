@@ -1,0 +1,117 @@
+<ons-page modifier="Ecommerce TabEcomShip" ng-controller="shippingctrl">
+    <ons-toolbar class="toolbar--noshadow shiporder" modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.ORDER"></div>
+        <div class="right">
+        </div>
+        <div class="tab-process">
+            <div class="tab active">
+                <!-- <div class="addressorder"></div> -->
+                <div class="tab-bar__label" ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+            </div>
+            <div class="tab">
+                <!-- <div class="visa"></div> -->
+            <div class="tab-bar__label" ng-bind="LanguageEcom.PAYMENT"></div>
+
+            </div>
+            <div class="tab">
+                <!-- <div class="ordercomp"></div> -->
+            <div class="tab-bar__label" ng-bind="LanguageEcom.ORDERS"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+    <div class="white-background box-shadow-2" style="padding-top: 10px;">
+        <div class="item-address">
+            <div ng-bind="LanguageEcom.FULLNAME"></div>
+            <div>
+                <input type="text" ng-model="ShipLocation.FullName"  class="text-input full-width" placeholder="{{ShipLocation.FullName}}" >
+            </div>
+        </div>
+        <div class="item-address" style="min-height: 40px;">
+            <div ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+            <div style="min-height: 50px">
+                <textarea style="line-height: 1.5;height: 100%;" rows="2" type="text" ng-model="ShipLocation.Address" value="{{ShipLocation.Address}}" class="text-input full-width" placeholder="{{ShipLocation.Address}}" ></textarea>
+            </div>
+        </div>
+        <div class="item-address">
+            <div ng-bind="LanguageEcom.PROVINCE"></div>
+            <div>
+                <input type="text" ng-model="ShipLocation.ProvinceName" ng-click="ModalListProvince.show()"  readonly class="text-input full-width" placeholder="{{ShipLocation.ProvinceName}}" >
+            </div>
+        </div>
+         <div class="item-address half-item">
+            <div ng-bind="LanguageEcom.PHONE"></div>
+            <div>
+                <input type="text" ng-model="ShipLocation.PhoneNumber"  class="text-input full-width" placeholder="{{ShipLocation.PhoneNumber}}" >
+            </div>
+        </div>
+        <div class="item-address half-item">
+            <div ng-bind="LanguageEcom.SHIPPING_PRICE"></div>
+            <div>
+                 <input type="text" value="0đ"   readonly class="text-input full-width" placeholder="{{LanguageEcom.SHIPPING_PRICE}}" > 
+            </div>
+        </div>
+        <div class="item-address">
+            <div style="line-height: 2;float: left;" ng-bind="LanguageEcom.ADD_ADDRESS_TO_LIST"></div>
+            <div style="float: right;background: none;border: 0;margin: 0;">
+                 <ons-switch ng-model="cool"></ons-switch>
+            </div>
+        </div>
+       <!-- <ons-list class="profile-list">
+                 <ons-list-item>
+                    <div class="left min-width-120" ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+                    <div class="center">
+                           <input type="text" ng-model="ShipLocation.Address"  class="text-input full-width" placeholder="{{ShipLocation.Address}}" >
+                    </div>
+                </ons-list-item>
+                 <ons-list-item>
+                    <div class="left min-width-120" ng-bind="LanguageEcom.PROVINCE"></div>
+                    <div class="center">
+                           <input type="text" ng-model="ShipLocation.ProvinceName" ng-click="ModalListProvince.show()"  readonly class="text-input full-width" placeholder="{{ShipLocation.ProvinceName}}" > 
+                    </div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="left min-width-120" ng-bind="LanguageEcom.SHIPPING_PRICE"></div>
+                    <div class="center">
+                           <input type="text" value="0đ"   readonly class="text-input full-width" placeholder="{{LanguageEcom.SHIPPING_PRICE}}" > 
+                    </div>
+                </ons-list-item>
+                <ons-list-item>
+                <div class="center" ng-bind="LanguageEcom.ADD_ADDRESS_TO_LIST">
+                </div>
+                <div class="right">
+                    <ons-switch ng-model="cool"></ons-switch>
+                </div>
+                </ons-list-item>
+        </ons-list> -->
+    </div>
+
+    <ons-modal var="ModalListProvince" direction="up" animation="fade">
+        <div style="width:100%; height:100%; position:fixed; top:0; left:0" ng-click="ModalListProvince.hide()"></div>
+        <div  style="width: calc(100% - 40px); padding:20px; overflow:hidden">
+           <ons-list class="border-radius-10" style="height: calc(100vh - 40px); overflow-y:scroll">
+               <ons-list-item tappable>
+                   <div class="right">
+                       <ons-icon ng-click="ModalListProvince.hide()" icon="ion-ios-close-empty" style="font-size:2em"></ons-icon>
+                   </div>
+               </ons-list-item>
+               <ons-list-item ng-click="ChooseProvice(item)" ng-repeat="item in ListProvince" >
+                   <div class="center" ng-bind="item.ProvinceName"></div>
+               </ons-list-item>
+           </ons-list>
+        </div>
+    </ons-modal>
+
+    <ons-bottom-toolbar modifier="transparent"  class="auto-height">
+        <ons-button ng-click="NextToPayment()" modifier="large ecommerce-main">
+            <span ng-bind="LanguageEcom.CONTINUE_PAYMENT"></span>
+            <i class="ion-arrow-right-c float-right"></i>
+        </ons-button>
+    </ons-bottom-toolbar>
+
+    <!--<div loader></div> -->
+</ons-page>

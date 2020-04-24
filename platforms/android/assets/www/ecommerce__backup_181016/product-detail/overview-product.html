@@ -1,0 +1,96 @@
+<ons-page ng-if="IndexTab==0" id="overview-product.html" ontouchend="scrollloaddiscuss('overview-product.html',this)" modifier="Ecommerce">
+    <div style="position:relative;height:42vh">
+        <ons-carousel auto-scroll-ratio="0.1" fullscreen swipeable auto-scroll id="carousel">
+            <ons-carousel-item ng-repeat="item in Data.ListImage">
+                <img style="width:100%;height:100%" onerror="this.src='ecommerce/img/noimage.png'" ng-src="{{ipImageEcommerce}}{{item.LinkImage}}"
+                />
+            </ons-carousel-item>
+            <div class="dot-carousel" ng-if="Data.ListImage.length>1">
+                <div>
+                    <div class="dotitem" id="{{$index}}" ng-repeat="item in Data.ListImage">
+
+                    </div>
+                </div>
+            </div>
+        </ons-carousel>
+    </div>
+    <div class="white-background" style="padding-top:10px">
+        <div class="detail-product-name" ng-bind="Data.ProName"></div>
+        <div class="detail-product-price">
+            <span class="price"><span ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceDetail)"></span>đ</span>
+        </div>
+        <div ng-if="Data.Unit!='COMBO'" class="detail-product-weight">
+            <div>
+                <span class="label" ng-bind="LanguageEcom.WEIGHT"></span>: <span class="weight" ng-bind="Data.Weight"></span>
+                <span class="unit" ng-bind="Data.Unit"></span>
+            </div>
+            <span class="price-old"><span ng-if="Data.ProDiscount > 0 && Data.PriceWithoutTax != null" ng-bind="ConvertObject.ConvertNumberFormat(Data.PriceWithoutTax)"></span></span>
+        </div>
+        <div class="short-des" ng-if="Data.ProTitle.length > 0" ng-bind-html="Data.ProTitle"></div>
+    </div>
+
+
+    <ons-list id="supplier" class="Supplier-li">
+        <ons-list-item ng-if="Data.ListProductExt.length > 1" ng-click="ShowModalSelectWeight()" modifier="chevron" tappable><span ng-bind="LanguageEcom.WEIGHT_OTHER"></span></ons-list-item>
+        <ons-list-item modifier="chevron" tappable>Cung cấp bởi: RYNAN AGRIFOODS</ons-list-item>
+    </ons-list>
+    <div class="Supplier-li white-background" ng-if="Data.ProProperties != null && Data.ProProperties.length > 0">
+        <div class="border-bottom-1" ng-repeat="item in Data.ProProperties">
+            <div class="flex-box" ng-repeat="(key , value) in  item">
+                <div class="border-right-1 padding-10 product-properties-left" ng-bind="key"></div>
+                <div class="padding-10 product-properties-right" ng-bind="value"></div>
+            </div>
+        </div>
+    </div>
+    <ons-list id="discuss" class="rate-li">
+        <div style="float: left;width: 100%;">
+            <div style="padding: 10px 14px;float: left;" ng-bind="LanguageEcom.DISCUSSION"></div>
+            <div ng-click="ShowDiscussion()" class="write-comment" ng-bind="LanguageEcom.ADD"></div>
+        </div>
+        <div>
+            <div class="item-discuss" ng-repeat="itemdis in DataDiscuss">
+                <div class="left-discuss">
+                    <img ng-src="{{ipImageEcommerce}}{{itemdis._idCustomer.Avatar}}" />
+                </div>
+                <div class="right-discuss">
+                    <div ng-bind="itemdis._idCustomer.CustomerName"></div>
+                    <div ng-bind="itemdis.Content"></div>
+                    <div>
+                        <span>8 giờ trước</span>
+                        <span ng-bind="LanguageEcom.REPLY"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ons-list>
+    <ons-list class="rate-li">
+        <div style="float: left;width: 100%;">
+            <div style="padding: 10px 14px;float: left;" ng-bind="LanguageEcom.RATE"></div>
+            <div ng-click="ShowModalRatingProduct()" class="write-comment" ng-bind="LanguageEcom.WRITE_REVIEW"></div>
+        </div>
+        <div ratechart></div>
+    </ons-list>
+    <div class="wrap-relate-product padding-10" ng-if="RelateProducts.length > 0 && RelateProducts != null">
+        <div class="detail-product-header-li" ng-bind="LanguageEcom.RELATED_PRODUCTS"></div>
+        <div relateproductslider></div>
+    </div>
+    <ons-bottom-toolbar modifier="ecommerce">
+        <!-- Bottom tabbar -->
+        <div class="detail-product-tabbar">
+            <div ng-click="ShareSocial()">
+                <div style="position:relative" class="share-icon">
+                    <!-- <span class="number-cart-item"  ng-bind="Cart.NumberCartItem" ng-if="Cart.NumberCartItem > 0"></span> -->
+                </div>
+                <div ng-bind="LanguageEcom.SHARE"></div>
+            </div>
+            <div ng-click="AddFavorite()">
+                <div class="like-2 add-favorite" ng-class="{'active': Data.FavoriteProduct == true}"></div>
+                <div ng-bind="LanguageEcom.FAVORITE"></div>
+            </div>
+            <div ng-click="ShowModalAddToCart()">
+                <span ng-bind="LanguageEcom.BUY"></span>
+                <ons-ripple color="rgba(255,255,255,0.3)" background="rgba(255,255,255,0.2)"></ons-ripple>
+            </div>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

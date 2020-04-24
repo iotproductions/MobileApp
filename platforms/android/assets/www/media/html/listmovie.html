@@ -1,0 +1,26 @@
+<ons-page id="listmovie.html" modifier="page_bg media" ng-controller="listmoviectrl">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="Back()">
+                <i class="fa fa-chevron-left"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+            XEM PHIM TRỰC TUYẾN
+        </div>
+        <div class="right">
+            <!-- <ons-toolbar-button onclick="OpenMenu()" class="toolbar-button"><i id="main-menu" class="ion-navicon-round"></i></ons-toolbar-button> -->
+        </div>
+    </ons-toolbar>
+    <div class="header-film">
+        <div ng-bind="DescCate"></div>
+    </div>
+    <div ng-click="DetailMovie(item)" ng-repeat="item in Data" class="itemfilm">
+        <div class="imgfilm" style="background-image:url({{ipImageMovie}}{{item.Avatar}})"></div>
+        <div class="label" ng-bind="item.Title"></div>
+    </div>
+    <div ng-if="Data.length<1" style="text-align: center;padding: 50px;">
+        CHƯA CÓ THÔNG TIN PHIM.
+    </div>
+
+</ons-page>

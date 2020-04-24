@@ -1,0 +1,62 @@
+<ons-page  modifier="Ecommerce" ng-controller="favoriteproductsctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+             <ons-toolbar-button ng-click="Back()">
+                <i class="fa fa-chevron-left"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.FAVORITE_PRODUCT"></div>
+        <div class="right transition-03s" ng-click="ShowRemove()">
+            <div class="remove-icon"></div>
+        </div>
+    </ons-toolbar>
+    <div class="list-pro" ng-click="ShowDetailproduct(item)" ng-repeat="item in ListFavoriteProducts track by $index">
+         <div class="image-pro-left">
+                        <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" />
+         </div>
+         <div class="content-pro">
+               <div class="name-product" ng-bind-template="{{item.ProName}} {{item.Weight}}{{item.Unit}}"></div>
+                            <div>
+                                <span class="product-price" style="font-size:inherit">
+                                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+                                </span>
+                                <span class="product-old-price" ng-if="item.ProDiscount > 0">
+                                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+                                </span>
+                            </div>
+                            <div>
+                                <span class="eommerce-star-rating" ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+                            </div>
+         </div>
+    </div>
+   <!--<div class="white-background" ng-if="ListFavoriteProducts != null && ListFavoriteProducts.length > 0">
+        <div class="list-item-product-2 cart-list">
+            <div class="border-bottom-1 position-relative" ng-repeat="item in ListFavoriteProducts track by $index"> 
+                <div class="item flex-box" ng-click="ShowDetailproduct(item)">
+                    <div class="thumbnail">
+                        <img ng-src="{{ipImageEcommerce}}{{item.LinkAvatar}}" />
+                    </div>
+                    <div class="info">
+                        <div class="middle full-width">
+                            <div class="name-product" ng-bind-template="{{item.ProName}} {{item.Weight}}{{item.Unit}}"></div>
+                            <div>
+                                <span class="product-price">
+                                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceDetail)"></span>đ
+                                </span>
+                                <span class="product-old-price" ng-if="item.ProDiscount > 0">
+                                    <span ng-bind="ConvertObject.ConvertNumberFormat(item.PriceWithoutTax)"></span>đ
+                                </span>
+                            </div>
+                            <div>
+                                <span class="eommerce-star-rating" ng-bind-html="ConvertObject.ConvertShowStarRating(item.Rate)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ons-icon ng-click="Delete(item)" icon="ion-ios-close-empty" class="delete-item delete-fav"></ons-icon>
+            </div>
+        </div>
+    </div>-->
+    <div ng-if="ListFavoriteProducts == null || ListFavoriteProducts.length == 0" notfound text="{{LanguageEcom.NO_PRODUCT_FOUND}}"  icon="ion-alert"></div>
+   <!--<div loader></div> -->
+</ons-page>

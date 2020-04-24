@@ -1,0 +1,53 @@
+<ons-page id="discussion.html" modifier="Ecommerce" ng-controller="discussionctrl">
+    <ons-toolbar modifier="Ecommerce">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="fa fa-chevron-left"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="LanguageEcom.DISCUSSION"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div class="white-background" id="discuss">
+        <div class="item-discuss" ng-repeat="itemdis in DataDiscuss">
+            <div class="left-discuss">
+                <img ng-src="{{ipImageEcommerce}}{{itemdis._idCustomer.Avatar}}" />
+            </div>
+            <div class="right-discuss">
+                <div ng-bind="itemdis._idCustomer.CustomerName"></div>
+                <div ng-bind="itemdis.Content"></div>
+                <div>
+                    <a ng-click="ShowDiscuss(itemdis._id)"><span ng-bind="itemdis.CountAnswer"></span> <span ng-bind="LanguageEcom.DISCUSSION"></span></a>
+                    <i class="ion-record"></i>
+                    <span>{{ConvertObject.ConvertDateToHour(itemdis.CreatedDate)}}</span>
+                </div>
+            </div>
+            <div style="display:none;float:left;width:100%" id="detail_{{itemdis._id}}">
+                <div style="float: left ;width: 100%" ng-repeat="child in itemdis.ListTop5Answer">
+                    <div class="right-discuss-child">
+                        <div class="left-discuss">
+                            <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{child._idCustomer.Avatar}}" />
+                        </div>
+                        <div class="right-discuss">
+                            <div ng-bind="child._idCustomer.CustomerName"></div>
+                            <div ng-bind="child.Content"></div>
+                            <div>
+                                <span>{{ConvertObject.ConvertDateToHour(child.CreatedDate)}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ons-bottom-toolbar id="bottombar" modifier="ecommerce">
+        <!-- Bottom tabbar -->
+        <div class="replydis">
+            <img onerror="this.src='ecommerce/img/default_avatar.png'" ng-src="{{ipImageEcommerce}}{{Avatar}}" />
+            <input type="text" ng-model="ReplyCmtText" value="{{ReplyCmtText}}" placeholder="{{LanguageEcom.ENTER_COMMENT}}" class="text-input"
+            />
+            <a ng-if="ReplyCmtText!=''" ng-click="ReplyDiscuss()"><span ng-bind="LanguageEcom.SEND"></span></a>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

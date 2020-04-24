@@ -1,0 +1,45 @@
+<ons-page   modifier="Ecommerce TabEcomShip" ng-controller="ordersuccessctrl">
+    <ons-toolbar class="toolbar--noshadow shiporder" modifier="Ecommerce">
+        <div class="left">
+        </div>
+        <div class="center" ng-bind="LanguageEcom.ADD_ORDER_SUCCESS"></div>
+        <div class="right">
+        </div>
+        <div class="tab-process">
+            <div class="tab">
+                <div class="tab-bar__label" ng-bind="LanguageEcom.ADDRESS_PRO"></div>
+            </div>
+            <div class="tab">                
+            <div class="tab-bar__label" ng-bind="LanguageEcom.PAYMENT"></div>
+
+            </div>
+            <div class="tab active">
+            <div class="tab-bar__label" ng-bind="LanguageEcom.ORDERS"></div>
+            </div>
+        </div>
+    </ons-toolbar>
+   
+    <div class="white-background box-shadow-2 padding-10">
+        <img style="max-width:240px; display:block; margin:10px auto" src="ecommerce/img/xe.png" />
+        <div style="margin-top:20px;line-height: 1.5;">
+            <div>
+                <b ng-bind="LanguageEcom.ORDER_HAS_ADD_SUCCESS"></b>
+            </div>
+            <div>
+                <span ng-bind="LanguageEcom.THANK_YOU_TO_ORDER_AT"></span> RYNAN AGRIFOODS
+            </div>
+            <div>
+                <span ng-bind="LanguageEcom.YOUR_ORDER_CODE"></span> :
+            </div>
+            <div>
+                <b ng-bind="OrderCode"></b>
+            </div>
+        </div>
+    </div>
+
+     <ons-bottom-toolbar modifier="transparent"  class="auto-height">
+       <ons-button ng-click="ContinueShopping()"  modifier="large ecommerce-shopping" ng-bind="LanguageEcom.CONTINUE_SHOPPING"></ons-button>
+    </ons-bottom-toolbar>
+
+    <!--<div loader></div> -->
+</ons-page>

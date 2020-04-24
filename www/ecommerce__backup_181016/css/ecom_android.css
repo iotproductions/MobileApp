@@ -1,0 +1,75 @@
+.tabbar--ecommerce {
+    height:49px;
+}
+.toolbar--Ecommerce__left, .toolbar--Ecommerce__right, .toolbar--Ecommerce__center{
+    height: unset !important;
+}
+.toolbar--Ecommerce__center{
+    text-align: center;
+}
+.ecommerce-profile-head-panel{
+    background: rgb(58, 61, 75) !important;
+}
+.btn-addcart {
+   line-height: 36px;
+}
+.sell-child > div{
+    border-right: none;
+}
+.profile-list .left > div{
+    margin: 0 !important;
+}
+.page--product__content {
+    /* top: 97px !important; */
+}
+.page--product .toolbar-with-tab{
+    height: 97px;
+}
+.page--product .toolbar--Ecommerce__left, .page--product .toolbar--Ecommerce__right{
+    /* height: 56px !important; */
+}
+.bottom-bar--ecommerce{
+    height: 49px !important;
+}
+.bottom-bar--ecommerce .detail-product-tabbar > div:last-child{
+    line-height: 49px !important;
+}
+.close-button{
+    top: 10px;
+    right: 10px;
+    box-shadow: none;
+    background-repeat: no-repeat;
+}
+.btnquantity{
+    line-height: 36px;
+}
+.additemtocart{
+    line-height: 30px;
+}
+.close-button{
+    background-color: transparent;
+    box-shadow: none;
+}
+.close-button:active{
+    background-color: transparent;
+}
+.bottom-bar--transparent .button--ecommerce-main {
+    height: 100%;
+    line-height: 44px;
+}
+.add-to-cart-quantity-panel > div:first-child{
+    color: black;
+    float: left;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    width: auto;
+    display: inline-block;
+    margin-right: 10px;
+}
+.list-item-product-2 .item{
+    overflow: hidden;
+}
+.sum-navi-order{
+    margin-top: 10px;
+}

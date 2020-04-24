@@ -1,0 +1,42 @@
+<ons-page ng-controller="detailchatctrl" modifier="page_bg">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="ToFullName"></div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+
+    <ul  id="messages" when-scrolled="loadMore()" >
+      
+        <li ng-repeat="item in ListChat track by $index">
+            <div ng-if="FromUserName == item.AccountSend">
+                <div class="right-mess-avatar">
+                    <img ng-src="{{ipImage}}{{Avatar}}" />
+                </div>
+                <div class="right-mess-content">
+                    <div ng-bind="item.Content"></div>
+                </div>
+            </div>
+
+            <div ng-if="FromUserName != item.AccountSend">
+                <div class="left-mess-avatar">
+                    <img ng-src="{{ipImage}}{{ToAvatar}}" />
+                </div>
+                <div class="left-mess-content">
+                    <div ng-bind="item.Content"></div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+    <ons-bottom-toolbar>
+        <div style="width:100%;height: 100%">
+            <input ng-keypress="SendMes($event)" id="ipchat" placeholder="Viết tin nhắn" ng-model="ChatMes" />
+            <button id="btchat" class="button" ng-click="SendMes(null)">Gửi</button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

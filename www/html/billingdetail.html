@@ -1,0 +1,97 @@
+<ons-page id="billingdetail.html" modifier="page_bg swm" ng-controller="billingdetailctrl">
+    <ons-toolbar style="border-bottom: 1px solid rgba(1, 1, 1, .5);box-shadow: 0 0 3px 0 rgba(1, 1, 1, .3);">
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.INFO_BILL">
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div name="lostconnect" class="lostconnect" id="billingdetail-lostconnect"></div>
+    <div id="billingdetail">
+        <div class="header-invoice-detail">
+            <div class="detail-item-invoice">
+                <div style="width:100%;">
+                    <div class="content">
+                        <div style="float: left">
+                            <div ng-bind="Language.CUSTOMER"></div>
+                            <div style="text-transform: uppercase;" ng-bind="Users.FullName"></div>
+                            <div style="white-space: normal">
+                                <span>Code: </span>
+                                <span ng-bind="Users.CustomerCodeReg"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float: right;text-align: right;">
+                        <div ng-bind="Language.BILL"></div>
+                        <div style="color: #E54A35;" ng-bind-template="{{Data.NoInvoice}}"></div>
+                        <div ng-if="Data.StatusMco == 1" class="status-invoice" style="margin-top:12px" ng-bind="Language.PAYMENT"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="detail-item-invoice" style="border-bottom: 1px solid rgba(1, 1, 1, .2);padding-bottom: 5px;">
+        <div style="float:left">
+            <div class="label-detail" ng-bind="Language.DATE_PAID"></div>
+            <div class="total-money">
+                <span ng-bind-template="{{Data.DateTimeMco|date: 'dd/MM/yyyy hh:mm'}}"></span>
+            </div>
+
+        </div>
+        <div style="float:right">
+            <div class="label-detail" ng-bind="Language.TOTAL_INDEX_USE"></div>
+            <div class="total-index" style="text-align: right">
+                <span ng-bind-template="{{Data.TotalIndex|number}}"></span>
+                <span>m
+                    <sup>3</sup>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div style="float: left;width: calc(100% - 10px);padding: 2px 5px;">
+        <div class="detail-header-bill">
+            <div class="label-detail-bill">
+                <span>m
+                    <sup>3</sup>
+                </span>
+                <span ng-bind-template="{{Language.MKHOI_USE}}"></span>
+            </div>
+            <div class="label-detail-bill" style="text-align: right" ng-bind="Language.PRICE"></div>
+            <div class="label-detail-bill" ng-bind="Language.MONEY_USE" style="text-align: right"></div>
+        </div>
+        <div ng-repeat="item in Data.IndexOnPrice" class="detail-data-bill">
+            <div class="content-detail-bill">
+                <span ng-bind="item.IndexDetail"></span>
+                <span> m
+                    <sup>3</sup>
+                </span>
+            </div>
+            <div ng-bind-template="{{item.Price}} đ" style="text-align: right" class="content-detail-bill"></div>
+            <div ng-bind-template="{{item.TotalPrice|number}} đ" style="text-align: right" class="content-detail-bill"></div>
+        </div>
+        <div class="total-bill">
+            <div class="label" ng-bind="Language.TOTAL"></div>
+            <div class="money" ng-bind-template="{{Data.BillWithoutTax|number}} đ"></div>
+        </div>
+        <div class="total-bill" ng-repeat="itemvat in Data.Vat">
+            <div class="label">
+                <span ng-bind-template="{{itemvat.DescriptionTax}}"></span>
+                <span style="opacity: .7;padding-left: 10px;" ng-bind-template="{{itemvat.PercentTax}}%"></span>
+            </div>
+            <div class="vat" ng-bind-template="{{itemvat.PercentTax * Data.BillWithoutTax/100|number}} đ"></div>
+        </div>
+        <div class="total-bill">
+            <div class="label" ng-bind="Language.MONEY_USE"></div>
+            <div class="money" style="color: #35F2C4;" ng-bind-template="{{Data.BillAfterTax|number}} đ"></div>
+        </div>
+    </div>
+    </div>
+    <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+    </ons-bottom-toolbar>
+</ons-page>

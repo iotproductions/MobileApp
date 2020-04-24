@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Mytube</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon density="ldpi" src="resources/android/icon/ldpi.png" />
+    <icon density="mdpi" src="resources/android/icon/mdpi.png" />
+    <icon density="hdpi" src="resources/android/icon/hdpi.png" />
+    <icon density="xhdpi" src="resources/android/icon/xhdpi.png" />
+    <icon density="xxhdpi" src="resources/android/icon/xxhdpi.png" />
+    <icon density="xxxhdpi" src="resources/android/icon/xxxhdpi.png" />
+    <splash density="port-ldpi" src="resources/android/splash/splash-port-ldpi.png" />
+    <splash density="port-mdpi" src="resources/android/splash/splash-port-mdpi.png" />
+    <splash density="port-hdpi" src="resources/android/splash/splash-port-hdpi.png" />
+    <splash density="port-xhdpi" src="resources/android/splash/splash-port-xhdpi.png" />
+    <splash density="port-xxhdpi" src="resources/android/splash/splash-port-xxhdpi.png" />
+    <splash density="port-xxxhdpi" src="resources/android/splash/splash-port-xxxhdpi.png" />
+    <preference name="loglevel" value="DEBUG" />
+</widget>

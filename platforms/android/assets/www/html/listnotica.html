@@ -1,0 +1,71 @@
+<ons-page id="listnotica.html" modifier="page_bg swm notification" ng-controller="notificationctrl">
+    <!--<ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <i class="ion-ios-arrow-back"></i>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.INFO">
+        </div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    <div id="listnotica">
+        <div ng-repeat="item in DataNotica track by $index" ng-click="ShowDetailNotica(item)" class="noti-group">
+            <div class="noti-content">
+                <div style="display: inline-block;width:calc(100%);">
+                
+                <div>
+                <div class="noti-title" ng-bind="item.Title"></div>
+                </div>
+                    <div class="noti-time">
+                        <span>Ngày đăng tin: </span><span style="color: beige" ng-bind-template="{{Language.DATE_PUBLIC}}: {{item.FromDate|date:'dd/MM/yyyy'}}"></span></div>
+
+                </div>
+            </div>        
+        </div>
+    </div>-->
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="Back()">
+                <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center" ng-bind="Language.NOTIFICATIONS">
+        </div>
+        <div class="right">
+            <!-- <ons-toolbar-button ng-click="SearchNotica()">
+                <ons-icon icon="ion-ios-search-strong"></ons-icon>
+            </ons-toolbar-button> -->
+        </div>
+    </ons-toolbar>
+    <div class="dynamicContent" style="border:0px;border-bottom:0px;margin-top:10px;">
+        <div id="content" style="position: relative;width: 100%;height: auto !important">
+            <div class="noti-group" ng-click="ShowDetailNotica(item)" ng-repeat="item in DataNotica">
+                <div class="noti-content">
+                    <div ng-if="item.FlagRead==1">
+                        <div class="noti-desc" ng-bind="item.Description"></div>
+                        <div class="noti-time">
+                            <span ng-bind-template="{{item.LastUpdate}}"></span>
+                        </div>
+                    </div>
+                    <div ng-if="item.FlagRead==0" style="opacity: .6">
+                        <div class="noti-desc" ng-bind="item.Description"></div>
+                        <div class="noti-time" style="color: white">
+                            <span ng-bind-template="{{item.LastUpdate}}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="loader" class="loader" style="width: 100%; text-align: center;background-color: rgba(1,1,1,.2)">
+            <img class="fa-spin" src="img/load.png" style="width: 25px;height: 25px" /> <span style="text-transform: lowercase"
+                ng-bind="Language.NEWS_OLD"></span>
+        </div>
+    </div>
+
+    <ons-bottom-toolbar class="bar-bottom">
+        <div toolbarmk></div>
+    </ons-bottom-toolbar>
+</ons-page>

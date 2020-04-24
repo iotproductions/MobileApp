@@ -1,0 +1,52 @@
+/* 
+Phần html của menu nằm trong index.html
+*/
+.page--menu__background{
+    /* background: #202428; */
+    background-color: #15141c;
+}
+.page--menu ons-icon{
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999999;
+}
+.wrap-sliding-menu .customer-avatar{
+    margin: 20px auto 10px auto;
+    display: block;
+    max-width: 120px;
+    border-radius: 500px;
+    border: 4px solid #2d313a;
+}
+
+.wrap-sliding-menu .name{
+    color: #FFF;
+    text-align: center;
+}
+.wrap-sliding-menu .email{
+    color: #797d86 !important;
+    text-align: center;
+    font-size: 0.9em;
+}
+.wrap-sliding-menu .list--menu{
+    background: transparent !important;
+    color: #FFF !important;
+    border: none;
+    margin-top: 10px;
+}
+.wrap-sliding-menu .list--menu .list-item{
+    text-transform: uppercase;
+    border-bottom: 1px solid #1a1923;
+    color: #797d86 !important;
+}
+
+.wrap-sliding-menu .list--menu .list-item .left i{
+    font-size: 30px !important;
+}
+.wrap-sliding-menu .list--menu .list-item .list-item--material__center{
+    background-image: none !important;
+}
+.wrap-sliding-menu .list--menu .list-item__center{
+    background-image: none !important;
+}
