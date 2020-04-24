@@ -1,0 +1,287 @@
+<!-- index.html -->
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="cordovaApp">
+  <head>
+    <!-- For proper rendering of this page in mobile screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome.css"
+    />
+    <!-- SPELLS -->
+    <!-- load angular via CDN -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+
+    
+    <!-- Jquery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <!-- Sweet Alert -->
+    <script type="text/javascript" src="js/sweetalert2.js"></script>
+    <link rel="stylesheet" href="css/sweetalert2.css" />
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="js/sweetalert2.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <!-- Cordova -->
+    <!-- <script type="text/javascript" src="cordova.js"></script> -->
+    <!-- MomentJS -->
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <!-- Chart.jS -->
+    <script type="text/javascript" src="js/Chart.js"></script>
+      <!-- Highchart -->
+    <script src="highchart/highcharts.js"></script>
+    <script src="highchart/modules/series-label.js"></script>
+    <script src="highchart/modules/exporting.js"></script>
+    <script src="highchart/modules/export-data.js"></script>
+    <script src="highchart/themes/dark-unica.js"></script>
+    <!-- animate.css -->
+    <link rel="stylesheet" href="css/animate.css" />
+    <!-- Angular Material style sheet -->
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+    />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <link href='css/Roboto.css' rel='stylesheet' type='text/css'>
+    <link href="css/MaterialIcons.css"rel="stylesheet">
+    <link rel="stylesheet" href="css/materialDateTimePicker.css" />
+    <script type="text/javascript" src="js/materialDateTimePicker.js"></script>
+    <!-- Bootstrap Toggle -->
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="js/bootstrap-toggle.min.js"></script>
+    <!-- Main app -->
+    <script src="app/app.js"></script>
+    <link rel="stylesheet" href="app/app.css" />
+    <!-- Onsen Ui -->
+    <link rel="stylesheet" href="css/onsenui.css" />
+    <link rel="stylesheet" href="css/onsen-css-components.min.css" />
+    <script src="js/onsenui.min.js"></script>
+  </head>
+  <!-- define angular controller -->
+  <body ng-controller="mainController">
+    <div id="main">
+      <ons-page id="main.html">
+        <ons-toolbar>
+          <div class="center text-primary" ><i class="fas fa-home"></i> Smart Room</div>
+          <div class="right">
+            <ons-icon
+              id="id_btn_get_connection"
+              class="list-item__icon"
+              ng-click="refreshChartToday()"
+              ><i class="text-primary fas fa-sync-alt"></i></ons-icon>
+          </div>
+        </ons-toolbar>
+
+        <ons-card>
+          <!--
+		  <h2 class="text-center text-primary">Welcome to Smart Room !</h2>
+           <img src="img/customers.gif" alt="Onsen UI" style="width: 100%" /> 
+           <hr> -->
+          <ons-row>
+              <ons-col class="text-center" ><img src="img/android-weather-icon-2.jpg" alt="Onsen UI" style="width: 50%" /></ons-col>
+              <ons-col class="text-center" ><img src="img/humidity.png" alt="Onsen UI" style="width: 40%" /></ons-col>
+              <ons-col class="text-center" ><img src="img/clock.png" alt="Onsen UI" style="width: 40%" /></ons-col>
+            </ons-row>
+            <ons-row class="center">
+                <ons-col><h1 class="text-center text-warning">{{latest_temperature | number : 2}}°C</h1></ons-col>
+                <ons-col><h1 class="text-center text-primary">{{current_hudimity}}%</h1></ons-col>
+                <ons-col><h1 class="text-center text-info">{{latest_time}}</h1></ons-col>
+              </ons-row>
+          <!-- Datepicker -->
+          <!-- <div class="form-control-wrapper">
+              <input
+                type="text"
+                id="datepicker"
+                class="form-control floating-label"
+                placeholder="Select date"
+              />
+            </div> -->
+          <!-- Temperature charts -->
+          <!-- <ons-progress-circular class="center" indeterminate ng-if='showchartloading'></ons-progress-circular> -->
+
+          <ons-row>
+              <ons-col width="35%">
+                <input
+                type="text"
+                id="id_start_date"
+                class="text-center text-primary form-control floating-label"
+                placeholder="{{chart_start_date}}"
+              /></ons-col>
+              <ons-col width="35%"><input
+                type="text"
+                id="id_end_date"
+                class="text-center text-primary form-control floating-label"
+                placeholder="{{chart_end_date}}"
+              /></ons-col>
+              <ons-col width="30%">
+                  <button type="button" class="text-center btn btn-success mb-2" ng-click="getChartFromDateToDate(chart_start_date, chart_end_date,'H2168R1S001N001')">
+                    <i ng-if="showchartloading" class="fas fa-sync fa-spin"></i> Refresh</button>
+              </ons-col>
+            </ons-row>
+          <!-- Tempwerature chart -->
+            <div id="temperatureChart"></div>
+            <img src="img/giphy.gif" alt="Onsen UI" style="width: 100%" />
+            <!-- Device list -->
+          <ons-list-header class="text-success font-weight-bold">System status</ons-list-header>
+          <ons-list-item>
+            <div class="left">
+              <ons-icon icon="md-wifi" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center text-primary">Wifi is On</div>
+          </ons-list-item>
+          <ons-list-item>
+          <div class="left">
+                <ons-icon icon="md-bluetooth" class="list-item__icon"></ons-icon>
+              </div>
+              <div class="center text-primary">Bluetooth is Off</div>
+            </ons-list-item>
+
+          <ons-list-header class="text-success font-weight-bold">Living Room</ons-list-header>
+          <ons-list-item>
+          <div class="left">
+              <ons-icon icon="fa-assistive-listening-systems" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center text-primary">Cooling fan</div>
+            <div class="right"><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></div>
+          </ons-list-item>
+
+          <ons-list-item>
+              <div class="left">
+                  <ons-icon icon="fa-lightbulb" class="list-item__icon"></ons-icon>
+                </div>
+              <div class="center text-primary">Smart Light</div>
+              <div class="right"><input type="checkbox" id="toggle-demo" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></div>
+          </ons-list-item>
+
+          <ons-list-header class="text-success font-weight-bold">Kitchen Room</ons-list-header>
+          <ons-list-item>
+            <div class="left">
+              <ons-icon icon="md-local-bar" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center text-primary">Glass tray</div>
+            <div class="right"><input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></div>
+          </ons-list-item>
+<!--         
+          <div
+            ng-repeat="(button_name,current_state) in devices_state"
+            ng-model="current_state"
+            aria-label="Living Room"
+            ng-change="onChange(current_state)"
+          >
+            {{ button_name }}:
+            <img
+              id="id_light_status"
+              ng-src="{{current_state ? 'img/light_on.png' : 'img/light_off.png' }}"
+              alt="Description"
+              width="32"
+            />
+            {{ current_state }}
+          </div> -->
+
+          <!-- <div class="title" style="text-align: center">Device Control</div> -->
+          <div class="content">
+            <div style="text-align: center; margin-top: 30px;">
+              <!-- <p>
+                <ons-input
+                  id="id_tcp_server_ip"
+                  modifier="underbar"
+                  placeholder="Server IP:"
+                  value="192.168.84.84"
+                  float
+                ></ons-input>
+              </p>
+              <p>
+                <ons-input
+                  id="id_tcp_server_port"
+                  modifier="underbar"
+                  type="number"
+                  placeholder="Server Port:"
+                  value="80"
+                  float
+                ></ons-input>
+              </p>
+              <p style="margin-top: 30px;">
+                <ons-button onclick="tcpConnectToServer()">
+                  <ons-icon icon="md-wifi-lock"></ons-icon>
+                  Connect to device
+                </ons-button>
+
+                <ons-button
+                  style="background-color: rgb(6, 163, 137); color: rgb(255, 255, 255)"
+                  onclick="sendTCPData()"
+                >
+                  <ons-icon icon="md-send"></ons-icon>
+                  Send data
+                </ons-button>
+
+                <ons-button
+                  style="background-color: rgb(84, 0, 194); color: rgb(255, 255, 255)"
+                  onclick="controlTheLight(1)"
+                >
+                  <ons-icon icon="md-visibility"></ons-icon>
+                  Turn On
+                </ons-button>
+
+                <ons-button
+                  style="background-color: rgb(187, 138, 3); color: rgb(255, 255, 255)"
+                  onclick="controlTheLight(0)"
+                >
+                  <ons-icon icon="md-visibility-off"></ons-icon>
+                  Turn Off
+                </ons-button>
+              </p> -->
+              
+              <img src="img/dribbble_tele2.gif" alt="Onsen UI" style="width: 100%" />
+              
+            </div>
+          </div>
+        </ons-card>
+
+        <ons-card>
+          <!-- <p style="text-align:center;">
+            <img
+              class="animated bounceIn"
+              id="id_img_connection_status"
+              style="width: 150px; height: 150px;"
+              src="img/Connected.png"
+              alt="Connected"
+              style="width: 100%"
+            />
+          </p> -->
+          <h2 class="text-center text-success">Internet of Things</h2>
+          <img src="img/iot.gif" alt="Onsen UI" style="width: 100%" />
+
+          <p class="text-center text-primary font-weight-bold">
+            Connected to device {{message}}
+          </p>
+
+         
+          <div class="alert alert-primary" role="alert">
+            Control device by button
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary">ON</button>
+              <button type="button" class="btn btn-danger">OFF</button>
+              <button class="btn btn-info" ng-click="scan_qr_code()">Scan</button>
+            </div>
+          </div>
+          
+          
+        </ons-card>
+
+        
+      </ons-page>
+    </div>
+  </body>
+</html>
